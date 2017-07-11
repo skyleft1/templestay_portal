@@ -2,4 +2,67 @@
 
 *{
     border: 1px solid;
+    text-align: center;
 }
+
+.wrap_menu {
+    width: 1100px;
+    display: inline-block;
+}
+
+.wrap_menu > div{
+    text-align: center;
+}
+.wrap_menu > div > div{
+    position: relative;
+}
+
+.logo{
+    width: 200px;
+    height: 100%;
+    position: absolute;
+}
+.menu1{
+    width:1100px;
+    display: inline-block;
+    text-align: right;
+}
+.menu1 div{
+    display: inline-block;
+}
+.menu1 > div{
+    
+}
+
+.login{
+    width: 100px;
+}
+.signup{
+    width: 100px;
+}
+
+.menu2 > div{
+    text-align: right;
+}
+
+.sub_menu{
+    width: 150px;
+    display: inline-block;
+}
+
+/* footer */
+
+.wrap_footer{
+    background-color: #636363;
+}
+
+.footer_menu{
+    width: 1100px;
+    display: inline-block;
+}
+
+.footer_menu1{
+    
+}
+
+
