@@ -5,53 +5,114 @@ body{
 }
 
 *{
-    
     text-align: center;
+}
+ul{
+     list-style:none;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+a:link { 
+    text-decoration: none;
+}
+a:visited { 
+    color: #9d9d9d;  
+    text-decoration: none;
+}
+a:hover {
+    color: #9d9d9d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a1{
+    color: #9d9d9d;
+    font-size: 16px;  
+}
+a2{
+    color: #5d5d5d;
+    font-size: 20px;
+}
+a3{
+    color: #9d9d9d;
+    font-size: 16px;  
+}
+a4{
+    color: #9d9d9d;
+    font-size: 16px;  
+}
+a5{
+    color: #000000;
+    font-size: 16px; 
 }
 
 .wrap_menu {
-    width: 1100px;
-    display: inline-block;
+
 }
 
 .wrap_menu > div{
     text-align: center;
 }
-.wrap_menu > div > div{
-    position: relative;
+.logo img{
+    width: 15%;
 }
 
-.logo{
-    width: 200px;
-    height: 100%;
-    position: absolute;
+.logo img{
+    width: 170px;
 }
+
 .menu1{
-    width:1100px;
+    width: 100%;
     display: inline-block;
-    text-align: right;
+    background: #eeeeee;
+    color: #9d9d9d;
+    border-bottom: 1px solid #dcdcdc;
 }
 .menu1 div{
     display: inline-block;
+    text-align: right;
 }
 .menu1 > div{
-    
+    width: 1100px;
+    margin-right: 15px;
 }
 
 .login{
-    width: 100px;
+    width: 50px;
+    padding: 6px;
 }
 .signup{
-    width: 100px;
+    width: 65px;
+    padding: 6px;
+}
+
+.menu2{
+    border-bottom: 1px solid #dcdcdc;
 }
 
 .menu2 > div{
+    width: 1100px;
+    display: inline-block;
+}
+
+.menu2 > div > div{
+    display: inline-block;
+}
+
+.warp_menu2{
     text-align: right;
+    vertical-align: top;
+    width: 80%;
 }
 
 .sub_menu{
     width: 150px;
     display: inline-block;
+    font-size: 20px;
+    padding: 25px 0;
 }
 
 
@@ -59,7 +120,8 @@ body{
 /* footer */
 
 .wrap_footer{
-    background-color: #636363;
+    background-color: #eeeeee;
+    border-top: 1px solid #dcdcdc;
 }
 
 .footer_menu{
@@ -67,8 +129,19 @@ body{
     display: inline-block;
 }
 
-.footer_menu1{
-    
+.footer_menu1,
+.footer_menu2
+{
+    text-align: left;
+    padding: 10px 0;
 }
 
+.footer_menu1{
+    color: #7d7d7d;
+    font-size: 16px;
+}
 
+.footer_menu2{
+    color: #9d9d9d;
+    font-size: 13px;
+}

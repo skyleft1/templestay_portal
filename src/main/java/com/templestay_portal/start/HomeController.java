@@ -18,22 +18,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("connect");
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+//		model.addAttribute("serverTime", formattedDate );
 		return "index";
 	}
-	
+    
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "login";
+    }
+    @RequestMapping(value = "/loginAction", method = RequestMethod.GET)
+    public String loginAction(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "loginAction";
+    }
+    
+    @RequestMapping(value = "/join", method = RequestMethod.GET)
+    public String join(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "join";
+    }
+    @RequestMapping(value = "/joinAction", method = RequestMethod.GET)
+    public String joinAction(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "joinAction";
+    }
+    @RequestMapping(value = "/bbs", method = RequestMethod.GET)
+    public String bbs(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "bbs";
+    }
+    @RequestMapping(value = "/bbs_view", method = RequestMethod.GET)
+    public String bbs_view(Locale locale, Model model) {
+        logger.info("connect");
+        
+        return "bbs_view";
+    }
 }
