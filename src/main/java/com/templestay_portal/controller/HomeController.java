@@ -1,4 +1,4 @@
-package com.templestay_portal.start;
+package com.templestay_portal.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
