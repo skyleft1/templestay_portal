@@ -10,8 +10,12 @@
 
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+
+<link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
 <script src='/resources/js/jquery-3.1.0.js'></script>
+<script src='/resources/js/jquery-ui.js'></script>
 <script src='/resources/js/common.js'></script>
 
 
@@ -33,7 +37,7 @@
 						<form>
 							<div>
                                 <h5>예약일 선택</h5>
-								<input type='text' name='' value=''>
+								<input class='calander' type='text' name='' value=''>
 							</div>
 							<div>
                                 <h5>테마 선택</h5>
