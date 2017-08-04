@@ -26,7 +26,7 @@
     <!-- header -->
     <div class="wrap">
         <div class="header">
-            <%@ include file="guide/header.jsp"%>
+            <%@ include file="../guide/header.jsp"%>
         </div>
         
         <!-- login -->
@@ -61,7 +61,7 @@
 
         <!-- footer -->
         <div class="footer">
-            <%@ include file="guide/footer.jsp"%>
+            <%@ include file="../guide/footer.jsp"%>
         </div>
     </div>
 

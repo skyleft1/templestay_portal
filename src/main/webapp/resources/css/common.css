@@ -105,7 +105,7 @@ a5{
 .warp_menu2{
     text-align: right;
     vertical-align: top;
-    width: 80%;
+    width: 920px;
 }
 
 .sub_menu{
@@ -115,6 +115,38 @@ a5{
     padding: 25px 0;
 }
 
+.slide_menu {
+    display: none;
+    width: 100%;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index :100;
+}
+
+.slide_menu > div  {
+    width: 1100px;
+    display: inline-block;
+    text-align: right;
+}
+
+.slide_menu > div > div {
+    width: 800px;
+    display: inline-block;
+    text-align: right;
+}
+
+.slide_menu > div > div ul {
+    width: 150px;
+    display: inline-block;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.slide_menu li {
+    padding-left: 30px;
+    text-align: left;
+}
 
 
 /* footer */
