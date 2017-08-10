@@ -29,7 +29,7 @@ a:hover {
 }
 
 a1{
-    color: #9d9d9d;
+    color: #4A4A4A;
     font-size: 16px;  
 }
 a2{
@@ -49,110 +49,39 @@ a5{
     font-size: 16px; 
 }
 
-.wrap_menu {
-
+.wrap_menu div{
+    display: inline-block;
 }
 
 .wrap_menu > div{
     text-align: center;
-}
-.logo img{
-    width: 15%;
-}
-
-.logo img{
-    width: 170px;
-}
-
-.menu1{
-    width: 100%;
-    display: inline-block;
-    background: #eeeeee;
-    color: #9d9d9d;
-    border-bottom: 1px solid #dcdcdc;
-}
-.menu1 div{
-    display: inline-block;
-    text-align: right;
-}
-.menu1 > div{
     width: 1100px;
-    margin-right: 15px;
+}
+.logo {
+    width: 190px;
 }
 
-.login{
-    width: 50px;
-    padding: 6px;
-}
-.signup{
-    width: 65px;
-    padding: 6px;
+.logo img{
+    width: 190px;
 }
 
-.menu2{
-    border-bottom: 1px solid #dcdcdc;
-}
-
-.menu2 > div{
-    width: 1100px;
-    display: inline-block;
-}
-
-.menu2 > div > div{
-    display: inline-block;
-}
-
-.warp_menu2{
-    text-align: right;
+.menu{
     vertical-align: top;
-    width: 920px;
-}
-
-.sub_menu{
-    width: 150px;
+    width: 900px;
     display: inline-block;
-    font-size: 20px;
-    padding: 25px 0;
-}
-
-.slide_menu {
-    display: none;
-    width: 100%;
-    border-bottom: 1px solid #dcdcdc;
-    background-color: white;
-    position: absolute;
-    width: 100%;
-    z-index :100;
-}
-
-.slide_menu > div  {
-    width: 1100px;
-    display: inline-block;
+    color: #9d9d9d;
     text-align: right;
 }
+.menu > div{
+    padding: 30px;
 
-.slide_menu > div > div {
-    width: 800px;
-    display: inline-block;
-    text-align: right;
-}
-
-.slide_menu > div > div ul {
-    width: 150px;
-    display: inline-block;
-    font-size: 18px;
-    padding: 10px 0;
-}
-.slide_menu li {
-    padding-left: 30px;
-    text-align: left;
 }
 
 
 /* footer */
 
 .wrap_footer{
-    background-color: #eeeeee;
+    background-color: #333333;
     border-top: 1px solid #dcdcdc;
 }
 
@@ -165,15 +94,16 @@ a5{
 .footer_menu2
 {
     text-align: left;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 .footer_menu1{
-    color: #7d7d7d;
+    color: #b9b9b9;
     font-size: 16px;
+    padding-top: 30px;
 }
 
 .footer_menu2{
-    color: #9d9d9d;
+    color: #818181;
     font-size: 13px;
 }
