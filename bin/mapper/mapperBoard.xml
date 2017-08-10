@@ -6,35 +6,35 @@
     
     <select id="getBoardName" parameterType="string" resultType="string">        
         SELECT boardnm
-          FROM TB_Bbs_Board
+          FROM TB_Board
          WHERE boardcd = #{boardcd}
     </select>
     
     <select id="getBoardOne" parameterType="string" resultType="ModelBoard">
         SELECT boardcd, boardnm, UseYN 
-          FROM TB_Bbs_Board 
+          FROM TB_Board 
          WHERE boardcd = #{boardcd}
     </select>
     
     <select id="getBoardList" resultType="ModelBoard">
         SELECT boardcd, boardnm, UseYN, InsertUID, InsertDT, UpdateUID, UpdateDT
-          FROM TB_Bbs_Board
+          FROM TB_Board
         ORDER BY boardnm
     </select>         
            
     <select id="getBoardListResultMap" resultType="ModelBoard">
         SELECT * 
-          FROM TB_Bbs_Board 
+          FROM TB_Board
     </select>
      
     <insert id="insertBoard" parameterType="ModelBoard">
         INSERT INTO 
-        TB_Bbs_Board ( boardcd   , boardnm   , UseYN   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
+        TB_Board ( boardcd   , boardnm   , UseYN   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
         VALUES       ( #{boardcd}, #{boardnm}, #{UseYN}, #{InsertUID}, #{InsertDT}, #{UpdateUID}, #{UpdateDT} )
     </insert>
     
     <update id="updateBoard" parameterType="hashmap">
-        UPDATE TB_Bbs_Board 
+        UPDATE TB_Board
             SET boardnm   = #{updateValue.boardnm}
               , UseYN     = #{updateValue.UseYN}
               , UpdateUID = #{updateValue.UpdateUID}
@@ -52,7 +52,7 @@
     </update>
     
     <delete id="deleteBoard" parameterType="ModelBoard">
-        DELETE FROM TB_Bbs_Board 
+        DELETE FROM TB_Board
          WHERE 1 = 1 
           <if test="boardcd != null and boardcd != ''" >
           AND boardcd  = #{boardcd}
@@ -67,7 +67,7 @@
     
     <select id="getBoardSearch" parameterType="ModelBoard" resultType="ModelBoard">
         SELECT boardcd, boardnm, UseYN 
-          FROM TB_Bbs_Board
+          FROM TB_Board
          WHERE 1 =1 
            <if  test="boardcd != null and boardcd != ''">
            AND boardcd LIKE CONCAT('%', #{boardcd},'%')
@@ -85,7 +85,7 @@
                     SELECT 
                         boardcd, boardnm, UseYN
                     FROM 
-                        TB_BBS_Board
+                        TB_Board
                     WHERE 1 = 1
                         <if test="boardcd != null and boardcd != ''">
                         AND boardcd = #{boardcd}
@@ -108,7 +108,7 @@
         ;
      -->
     <insert id="insertBoardList" parameterType="java.util.List">
-        INSERT INTO TB_Bbs_Board( boardcd , boardnm , UseYN  )
+        INSERT INTO TB_Board( boardcd , boardnm , UseYN  )
         VALUES
             <foreach collection="list" item="item" index="index" open="(" separator="),(" close=")">
                 #{item.boardcd} , #{item.boardnm} , #{item.UseYN}
@@ -116,7 +116,7 @@
     </insert>
     
     <select id="getBoardTotalRecord" parameterType="hashmap" resultType="int">
-    SELECT count(*) FROM TB_BBS_Board
+    SELECT count(*) FROM TB_Board
         WHERE 1 = 1
         <if test="boardcd != null and boardcd != ''">
             AND boardcd = #{boardcd}
@@ -127,7 +127,7 @@
     </select> 
     
     <select id="getArticleTotalRecord" parameterType="hashmap" resultType="int">
-        SELECT count(*) FROM TB_BBS_Article 
+        SELECT count(*) FROM TB_Board_Article 
          WHERE boardcd = #{boardcd}
             <if test="searchWord != null and searchWord != ''">
             AND (title LIKE CONCAT('%', #{searchWord},'%') AND content LIKE CONCAT('%', #{searchWord},'%')   )
@@ -147,9 +147,9 @@
                            count(distinct(f.attachfileno)) attachfileNum, 
                            count(distinct(c.commentno)) commentNum
                     FROM 
-                        TB_BBS_Article a
-                        LEFT OUTER JOIN TB_BBS_Attachfile f ON a.articleno = f.articleno
-                        LEFT OUTER JOIN TB_BBS_Comments   c ON a.articleno = c.articleno
+                        TB_Board_Article a
+                        LEFT OUTER JOIN TB_Board_Article_Attachfile f ON a.articleno = f.articleno
+                        LEFT OUTER JOIN TB_Board_Article_Comment   c ON a.articleno = c.articleno
                     WHERE
                         a.boardcd = #{boardcd}
                         <if test="searchWord != null">
@@ -165,18 +165,18 @@
     
     <select id="getArticle" parameterType="int" resultType="ModelArticle">
         SELECT articleno, boardcd, title, content, insertUID, email, hit, regdate
-        FROM TB_BBS_Article
+        FROM TB_Board_Article
         WHERE articleno = #{articleno}
     </select>
     
     <insert id="insertArticle" parameterType="ModelArticle">
         INSERT INTO 
-        TB_BBS_Article ( boardcd   , title   , content   , email   , hit, regdate   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT     )
+        TB_Board_Article ( boardcd   , title   , content   , email   , hit, regdate   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT     )
             VALUES     ( #{boardcd}, #{title}, #{content}, #{email}, 0  , now() , #{InsertUID}, #{InsertDT}, #{UpdateUID}, #{UpdateDT}  )
     </insert>   
     
     <update id="updateArticle" parameterType="hashmap">
-        UPDATE TB_BBS_Article 
+        UPDATE TB_Board_Article 
            SET title     = #{updateValue.title}
              , content   = #{updateValue.content} 
              , UseYN     = #{updateValue.UseYN    , jdbcType=BOOLEAN}
@@ -201,7 +201,7 @@
     </update>
     
     <delete id="deleteArticle" parameterType="ModelArticle">
-        DELETE FROM TB_BBS_Article 
+        DELETE FROM TB_Board_Article 
          WHERE 1 = 1 
           <if test="articleno != null and articleno != ''" >
           AND articleno = #{articleno}
@@ -218,7 +218,7 @@
     </delete>
     
     <update id="increaseHit" parameterType="int">
-        UPDATE TB_BBS_Article 
+        UPDATE TB_Board_Article 
            SET hit=hit+1 
          WHERE articleno=#{articleno}
     </update>
@@ -230,7 +230,7 @@
             SELECT @RNUM := @RNUM + 1 AS r,a.*
             FROM
                 (SELECT articleno, title 
-                   FROM TB_BBS_Article 
+                   FROM TB_Board_Article 
                   WHERE boardcd = #{boardcd} 
                     AND articleno &gt; #{articleno}
                     <if test="searchWord != null">
@@ -251,7 +251,7 @@
             SELECT @RNUM := @RNUM + 1 AS r,a.*
             FROM
             (SELECT articleno, title 
-               FROM TB_BBS_Article 
+               FROM TB_Board_Article 
               WHERE boardcd = #{boardcd} 
                 AND articleno &lt; #{articleno}
                     <if test="searchWord != null">
@@ -267,25 +267,25 @@
     
 <select id="getAttachFile" parameterType="int" resultType="ModelAttachFile">
     SELECT attachfileno, filename, filetype, filesize, articleno
-      FROM TB_BBS_Attachfile
+      FROM TB_Board_Article_Attachfile
      WHERE attachfileno = #{attachfileno}
 </select>
 
 <select id="getAttachFileList" parameterType="int" resultType="ModelAttachFile">
     SELECT attachfileno, filename, filetype, filesize,articleno 
-      FROM TB_BBS_Attachfile 
+      FROM TB_Board_Article_Attachfile 
      WHERE articleno = #{articleno} 
     ORDER BY attachfileno
 </select>
 
 <insert id="insertAttachFile" parameterType="ModelAttachFile">
     INSERT INTO 
-    TB_BBS_Attachfile (filename, filetype, filesize, articleno, InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
+    TB_Board_Article_Attachfile (filename, filetype, filesize, articleno, InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
     VALUES        ( #{filename}, #{filetype}, #{filesize}, #{articleno}, #{InsertUID}, #{InsertDT}, #{UpdateUID}, #{UpdateDT} )
 </insert>
 
 <delete id="deleteAttachFile" parameterType="ModelAttachFile">
-    DELETE FROM TB_BBS_Attachfile          
+    DELETE FROM TB_Board_Article_Attachfile          
      WHERE 1 = 1 
       <if test="attachfileno != null and attachfileno != ''" >
       AND attachfileno = #{attachfileno}
@@ -301,7 +301,7 @@
 
 <select id="getComment" parameterType="hashmap" resultType="ModelComments">
     SELECT commentno, articleno, email, memo, insertUID, regdate 
-    FROM TB_BBS_Comments 
+    FROM TB_Board_Article_Comment 
     WHERE 1 = 1 
       <if test="commentno != null and commentno != ''" >
       AND commentno = #{commentno}
@@ -313,19 +313,19 @@
 
 <select id="getCommentList" parameterType="int" resultType="ModelComments">
     SELECT commentno, articleno, email, memo, insertUID, regdate
-    FROM TB_BBS_Comments
+    FROM TB_Board_Article_Comment
     WHERE articleno = #{articleno}
     ORDER BY commentno DESC
 </select>
 
 
 <insert id="insertComment" parameterType="ModelComments">
-    INSERT INTO TB_BBS_Comments ( articleno   , email   , memo   , regdate   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
+    INSERT INTO TB_Board_Article_Comment ( articleno   , email   , memo   , regdate   , InsertUID   , InsertDT   , UpdateUID   , UpdateDT    )
                          VALUES ( #{articleno}, #{email}, #{memo}, now(), #{InsertUID}, #{InsertDT}, #{UpdateUID}, #{UpdateDT} )
 </insert>
 
 <update id="updateComment" parameterType="hashmap">
-    UPDATE TB_BBS_Comments 
+    UPDATE TB_Board_Article_Comment 
        SET memo      = #{updateValue.memo   } 
          , UseYN     = #{updateValue.UseYN  } 
          , regdate     = now()
@@ -342,7 +342,7 @@
 </update>
 
 <delete id="deleteComment" parameterType="ModelComments">
-    DELETE FROM TB_BBS_Comments 
+    DELETE FROM TB_Board_Article_Comment 
     WHERE 1 = 1 
       <if test="commentno != null and commentno != ''" >
       AND commentno = #{commentno}

@@ -26,7 +26,7 @@
     <!-- header -->
     <div class="wrap">
         <div class="header">
-            <%@ include file="guide/header.jsp"%>
+            <%@ include file="../guide/header.jsp"%>
         </div>
 
     <!-- bbs -->
@@ -65,7 +65,7 @@
                         <tbody>
                             <tr>
                                 <td><a5>글 번호</a5></td>
-                                <td><a href='bbs_view'><a5>제목</a5></a></td>
+                                <td><a href='/board/article_view'><a5>제목</a5></a></td>
                                 <td><a5>작성자</a5></td>
                                 <td><a5>날짜</a5></td>
                                 <td><a5>조회 수</a5></td>
@@ -95,7 +95,7 @@
 
     <!-- footer -->
         <div class="footer">
-            <%@ include file="guide/footer.jsp"%>
+            <%@ include file="../guide/footer.jsp"%>
         </div>
     </div>
 

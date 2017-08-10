@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <script>
-$(document).ready(function(){
-    $('.menu2').mouseenter(function(e){
-    	$('.slide_menu').slideDown(200);
-    });
-    $('.menu2').mouseleave(function(e){
-        $('.slide_menu').slideUp(200);
-    });
+$(document).ready(function(e){
+	$('.menu2_slide_menu').mouseenter(function(e){
+		$('.slide_menu').stop().slideDown(200);
+	})
+	$('.menu2_slide_menu').mouseleave(function(e){
+        $('.slide_menu').stop().slideUp(200);
+    })
 })
 
 </script>
@@ -16,28 +16,15 @@ $(document).ready(function(){
     <div class="">
         <div class="wrap_menu">
             <div class="">
-                <div class="">
-                    <div class="menu1">
-                        <div class="">
-                            <div class="login"><a href='login'><a1>로그인</a1></a></div>
-                            <div>ㆍ</div>
-                            <div class="signup"><a href='join'><a1>회원가입</a1></a></div>
-                        </div>
+                <div class="logo">
+                    <a href='/'> <img src="/resources/img/logo01.png" alt="로고" /></a>
+                </div>
+                <div class="menu">
+                    <div class="login">
+                        <a href='/user/user_login'><a1>로그인</a1></a>
                     </div>
-                    <div class="menu2">
-                        <div class="menu2_1">
-                            <div class="logo">
-                                <a href='/'> 
-                                <img src="/resources/img/logo01.png" alt="로고" />
-                                </a>
-                            </div>
-                            <div class="warp_menu2">
-                                <div class="sub_menu"><a2>메인메뉴1</a2></div>
-                                <div class="sub_menu"><a2>메인메뉴2</a2></div>
-                                <div class="sub_menu"><a2>메인메뉴3</a2></div>
-                                <div class="sub_menu"><a href='bbs'><a2>게시판</a2></a></div>
-                            </div>
-                        </div>
+                    <div class="signup">
+                        <a href='/user/user_join'><a1>회원가입</a1></a>
 
                         <div class='slide_menu'>
                             <div class=''>
@@ -65,10 +52,12 @@ $(document).ready(function(){
                                </div>
                           </div>
                       </div>
+                    <div class="confirm_reserve">
+                        <a href='/user/user_join'><a1>나의 예약확인</a1></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 

@@ -14,11 +14,15 @@
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
+
 <script src='/resources/js/jquery-3.1.0.js'></script>
 <script src='/resources/js/jquery-ui.js'></script>
 <script src="/resources/js/common.js"></script>
-<script>
-		</script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
 
 </head>
 <body>
@@ -26,7 +30,7 @@
     <!-- header -->
     <div class="wrap">
         <div class="header">
-            <%@ include file="guide/header.jsp"%>
+            <%@ include file="../guide/header.jsp"%>
         </div>
         
         <!-- login -->
@@ -61,7 +65,7 @@
 
         <!-- footer -->
         <div class="footer">
-            <%@ include file="guide/footer.jsp"%>
+            <%@ include file="../guide/footer.jsp"%>
         </div>
     </div>
 
