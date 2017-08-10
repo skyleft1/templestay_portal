@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+<script>
+$(document).ready(function(){
+    $('.menu2').mouseenter(function(e){
+    	$('.slide_menu').slideDown(200);
+    });
+    $('.menu2').mouseleave(function(e){
+        $('.slide_menu').slideUp(200);
+    });
+})
+
+</script>
 
 <div class="wrap_header">
     <div class="">
@@ -14,7 +25,7 @@
                         </div>
                     </div>
                     <div class="menu2">
-                        <div class="">
+                        <div class="menu2_1">
                             <div class="logo">
                                 <a href='/'> 
                                 <img src="/resources/img/logo01.png" alt="로고" />
@@ -27,11 +38,37 @@
                                 <div class="sub_menu"><a href='bbs'><a2>게시판</a2></a></div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class='slide_menu'>
+                            <div class=''>
+                                <div class=''>
+                                    <ul class=''>
+                                        <li class=''>11</li>
+                                        <li class=''>111</li>
+                                        <li class=''>1111</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>22</li>
+                                        <li class=''>222</li>
+                                        <li class=''>2222</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>33</li>
+                                        <li class=''>333</li>
+                                        <li class=''>3333</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>44</li>
+                                        <li class=''>444</li>
+                                        <li class=''>4444</li>
+                                    </ul>
+                               </div>
+                          </div>
+                      </div>
                 </div>
             </div>
         </div>
     </div>
-
+    </div>
 </div>
 
