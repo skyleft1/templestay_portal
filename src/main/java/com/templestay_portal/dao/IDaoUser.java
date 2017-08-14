@@ -1,20 +1,12 @@
 package com.templestay_portal.dao;
 
-import java.util.List;
-
 import com.templestay_portal.model.ModelUser;
 
-public interface IDaoUser {
 
-    ModelUser login(String userid, String userpassword);
-    ModelUser getUserOne(String userid);
-    List<ModelUser> getUserList();
-    int insertUser(ModelUser user);
-    int insertUserList(List<ModelUser> users);
+public interface IDaoUser {
+        
+    int insertuser(ModelUser user);
+    ModelUser login(ModelUser user);
+    int edituser(ModelUser user);
     
-    int updatePassword(String newpassword, String currentpassword, String userid );
-    int updateUser(ModelUser updateValue, ModelUser searchValue);
-    int deleteUser(ModelUser user);
-    
-    int checkuserid(String userid);
 }

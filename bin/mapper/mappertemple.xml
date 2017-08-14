@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mappertemple">
+           
+    <insert id="insertTempleProgramOne" parameterType="ModelTemple_Program">
+        INSERT INTO 
+        TB_Temple_Program (programname, availabledate, programprice, maxperson    )
+        VALUES       ( #{programname}, #{availabledate}, #{programprice}, #{maxperson} )
+    </insert> 
+
+
+    <select id="getTempleProgramOne" parameterType="string" resultType="ModelTemple_Program">
+        SELECT *
+          FROM TB_Temple_Program 
+         WHERE programname = #{programname}
+    </select>
+    
+    <update id="updateTempleProgram" parameterType="hashmap" >
+        UPDATE TB_Temple_Program 
+            SET programname   = #{updateValue.programname}
+              , availabledate = #{updateValue.availabledate}
+              , programprice  = #{updateValue.programprice}
+              , maxperson     = #{updateValue.maxperson}
+            WHERE 1 = 1 
+              <if test="searchValue.programname != null and searchValue.programname != ''" >
+              AND programname    = #{searchValue.programname}
+              </if>
+              <if test="searchValue.programprice != null and searchValue.programprice != ''">
+              AND programprice  = #{searchValue.programprice}
+              </if>
+              <if test="searchValue.maxperson != null">
+              AND maxperson    = #{searchValue.maxperson}
+              </if>
+    </update>
+    
+    <delete id="deleteTempleProgram" parameterType="ModelTemple_Program">
+        DELETE FROM TB_Temple_Program 
+         WHERE 1 = 1 
+          <if test="programname != null and programname != ''" >
+          AND programname  = #{programname}
+          </if>
+          <if test="programprice != null and programprice != ''">
+          AND programprice  = #{programprice}
+          </if>
+          <if test="maxperson != null">
+          AND maxperson    = #{maxperson}
+          </if>
+    </delete>
+    
+    <select id="getTempleProgramList" parameterType="ModelTemple_Program" resultType="ModelTemple_Program" >
+        SELECT *
+          FROM TB_Temple_Program
+          WHERE 1 = 1
+          <if test="programtype != null and programtype != ''" >
+          AND programtype  = #{programtype}
+          </if>
+          <if test="programname != null and programname != ''" >
+          AND programname  = #{programname}
+          </if>
+          <if test="programprice != null and programprice != ''" >
+          AND programprice  = #{programprice}
+          </if>
+        ORDER BY programno
+    </select>
+      
+ </mapper>
