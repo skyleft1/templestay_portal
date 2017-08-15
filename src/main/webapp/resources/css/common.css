@@ -7,8 +7,10 @@ body{
 *{
     text-align: center;
 }
-ul{
+ul,ol{
      list-style:none;
+     padding : 0;
+     margin:0;
 }
 
 a{
@@ -26,6 +28,13 @@ a:hover {
     color: #9d9d9d;
     text-decoration: none;
     font-weight: bold;
+}
+
+input[type='button'],
+input[type='submit']
+{
+    border: 0;
+    outline: 0;
 }
 
 a1{
@@ -47,6 +56,23 @@ a4{
 a5{
     color: #000000;
     font-size: 16px; 
+}
+
+name{
+    font-size: 24px;
+    color: #ff6363;
+    font-weight: bold;
+}
+addr{
+    font-size: 14px;
+    color: #9B9B9B;
+}
+
+
+
+
+.wrap_menu{
+    border-bottom: 1px solid #d4d4d4;
 }
 
 .wrap_menu div{
@@ -124,4 +150,5 @@ a5{
 .footer_menu2{
     color: #818181;
     font-size: 13px;
+    padding-bottom: 30px;
 }

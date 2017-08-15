@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+
+
+.wrap{
+    background-color: white;
+}
+
+.wrap_reservation_reservation{
+    text-align : center;
+}
+
+.wrap_reservation_reservation > div{
+    display: inline-block;
+    text-align : center;
+    width: 1100px;
+    height: 550px;
+    margin: 80px auto;
+    
+}
+
+.wrap_reservation_reservation > div > div{
+    display: inline-block;
+    vertical-align: top;
+    padding: 30px;
+    height: 100%;
+    line-height: 40px;
+}
+
+.left div,
+.right div
+{
+    text-align : left;
+}
+
+.left{
+    width: 350px;
+    border: 1px solid #D9D9D9;
+}
+
+.left > div{
+    padding: 20px 0;
+}
+.left_2{
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+.left div{
+    display : inline-block;
+    width: 100%;
+}
+
+.left input[type='text']{
+    height: 30px;
+    width: 100%;
+}
+
+
+.wrap_reservation_reservation span{
+    display : inline-block;
+    width: 140px;    
+    text-align: left;
+    color: #828282;
+}
+
+
+.right{
+    width: 450px;
+    background-color: #F8F8F8;
+    border: 1px solid #D9D9D9;
+    margin-left: -7px;
+}
+
+
+.fee{
+    border: 1px solid #CCCCCC;
+    background-color: white;
+    padding: 15px;
+}
+
+.fee > div:nth-child(2){
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.payment_type{
+    padding: 20px;
+}
+
+
+.without_bankbook > div{
+    font-size: 13px;
+    line-height: 18px;
+    color: #9B9B9B;
+    margin-left: 30px;
+}
+
+
+
+
+/* 예약버튼 */
+.complete_reservation{
+    text-align: center !important;
+    color: white;
+    margin: 15px;
+    padding: 10px;
+    background-color: #ff6363;
+}

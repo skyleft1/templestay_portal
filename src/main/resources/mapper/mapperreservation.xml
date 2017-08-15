@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mapperreservation">
+
+    <select id="getReservation" parameterType="ModelReservation" resultType="ModelReservation">        
+        SELECT *
+          FROM TB_Reservation
+         WHERE reservationno = #{reservationno}
+        <if  test="userid != null and userid != ''">
+           AND userid = #{userid} 
+        </if>
+        <if  test="programno != null and programno != ''">
+           AND programno = #{programno} 
+        </if>
+        <if  test="checkdate != null and checkdate != ''">
+           AND checkdate = #{checkdate}
+           <!-- 날짜는 년월일만 가져와야 할 것임. --> 
+        </if>
+    </select>
+
+<!--  사용자 화면에 사용자 자신의 예약한 내역을 보여줌 -->    
+    <select id="getReservationList" parameterType="ModelReservation" resultType="ModelReservation">        
+        SELECT *
+          FROM TB_Reservation
+         WHERE userid = #{userid}
+    </select>
+    
+           
+    <insert id="insertReservation" parameterType="ModelReservation">
+        INSERT INTO 
+        TB_Reservation ( programno, userid, checkdate, number )
+        VALUES       ( #{programno}, #{userid}, #{checkdate}, #{number})
+    </insert>
+ 
+    <!--  예약일과 인원 변경 정도가 가능할듯. 값을 반드시 넘기게 해야함-->
+    <update id="updateReservation" parameterType="hashmap" >
+        UPDATE TB_Reservation 
+            SET checkdate   = #{updateValue.checkdate}
+              , number = #{updateValue.number}
+            WHERE 1 = 1 
+              <if test="searchValue.checkdate != null and searchValue.checkdate != ''" >
+              AND checkdate    = #{searchValue.checkdate}
+              </if>
+              <if test="searchValue.number != null and searchValue.number != ''">
+              AND number  = #{searchValue.number}
+              </if>
+    </update>
+    
+    
+    <!-- 예약번호로 먼저 찾고, 유저아이디만 입력시 해당유저의 예약 전체 삭제할수있음 -->
+    <delete id="deleteReservation" parameterType="ModelReservation">
+        DELETE FROM TB_Reservation
+         WHERE 1 = 1
+         <if test="reservationno != null and reservationno != ''" >
+          AND reservationno  = #{reservationno}
+          </if> 
+          <if test="userid != null and userid != ''" >
+          AND userid  = #{userid}
+          </if>
+    </delete>
+    
+
+ </mapper>

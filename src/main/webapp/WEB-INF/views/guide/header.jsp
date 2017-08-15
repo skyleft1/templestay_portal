@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <script>
 $(document).ready(function(e){
-	$('.menu2_slide_menu').mouseenter(function(e){
+	/* $('.menu_slide_menu').mouseenter(function(e){
 		$('.slide_menu').stop().slideDown(200);
 	})
-	$('.menu2_slide_menu').mouseleave(function(e){
+	$('.menu_slide_menu').mouseleave(function(e){
         $('.slide_menu').stop().slideUp(200);
-    })
+    }) */
 })
 
 </script>
@@ -17,7 +19,7 @@ $(document).ready(function(e){
         <div class="wrap_menu">
             <div class="">
                 <div class="logo">
-                    <a href='/'> <img src="/resources/img/logo01.png" alt="로고" /></a>
+                    <a href='/index'> <img src="/resources/img/logo01.png" alt="로고" /></a>
                 </div>
                 <div class="menu">
                     <div class="login">
