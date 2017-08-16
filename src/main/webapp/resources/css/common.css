@@ -104,6 +104,24 @@ addr{
 }
 
 
+.slide_menu > div > div{
+    width: 900px;
+    text-align: right;
+    display: inline-block;
+}
+
+.slide_menu ul{
+    width: 150px;
+    display: inline-block;
+    font-size: 18px;
+    padding: 10px 0;
+    
+}
+.slide_menu ul li{
+        padding-left : 30px;
+    text-align: left;
+}
+
 /* footer */
 
 .wrap_footer{

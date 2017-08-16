@@ -27,7 +27,33 @@ $(document).ready(function(e){
                     </div>
                     <div class="signup">
                         <a href='/user/user_join'><a1>회원가입</a1></a>
-                    </div>
+
+                        <div class='slide_menu'>
+                            <div class=''>
+                                <div class=''>
+                                    <ul class=''>
+                                        <li class=''>11</li>
+                                        <li class=''>111</li>
+                                        <li class=''>1111</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>22</li>
+                                        <li class=''>222</li>
+                                        <li class=''>2222</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>33</li>
+                                        <li class=''>333</li>
+                                        <li class=''>3333</li>
+                                    </ul>
+                                    <ul class=''>
+                                        <li class=''>44</li>
+                                        <li class=''>444</li>
+                                        <li class=''>4444</li>
+                                    </ul>
+                               </div>
+                          </div>
+                      </div>
                     <div class="confirm_reserve">
                         <a href='/user/user_join'><a1>나의 예약확인</a1></a>
                     </div>
