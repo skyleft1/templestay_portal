@@ -10,7 +10,7 @@ import com.templestay_portal.model.ModelTemple_Program;
 
 public interface IDaoTempleProgram {
     
-    ModelTemple_Program getTempleProgramOne(String programname);
+    ModelTemple_Program getTempleProgramOne(ModelTemple_Program program);
     int updateTempleProgram(ModelTemple_Program updatemodel, ModelTemple_Program searchmodel);
     int deleteTempleProgram(ModelTemple_Program temp);
     List<ModelTemple_Program> getTempleProgramList(ModelTemple_Program temp);

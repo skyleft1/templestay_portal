@@ -37,10 +37,26 @@ $(document).ready(function(){
     
     // 상세정보, 예약하기 가기
     $('body').on('click', '.go_view', function(e){
-        window.location.href= '/reservation/reservation_view';
+    	if($('.calander').val() == null){
+    		var programno = $(this).attr('programno');
+            window.location.href= '/reservation/reservation_view?programno='+programno;            
+        }
+        if($('.calander').val() != null){
+            var reserve_date = $('.calander').val();
+            var programno = $(this).attr('programno');
+            window.location.href= '/reservation/reservation_view?programno='+programno+'&reserve_date='+reserve_date;
+        }
     });
     $('body').on('click', '.go_reservation', function(e){
-        window.location.href= '/reservation/reservation_reservation';
+        if($('.calander').val() == null){
+            var programno = $(this).attr('programno');
+            window.location.href= '/reservation/reservation_reservation?programno='+programno;            
+        }
+        if($('.calander').val() != null){
+            var reserve_date = $('.calander').val();
+            var programno = $(this).attr('programno');
+            window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
+        }
     });
     
     
@@ -52,6 +68,11 @@ $(document).ready(function(){
         window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date;
     });
     
+    // index에서 날짜가 넘어올경우 유지함
+    var checkdate = "${reserve_date}";
+    if(checkdate != null){
+    	$('.calander').val(checkdate);
+    }
 });
 
 </script>
@@ -78,9 +99,9 @@ $(document).ready(function(){
                                     <td>
                                         <ul>
                                             <li class='left_item'>경기도</span><span
-                                                class='right_item'>00</span></li>
+                                                class='right_item'></span></li>
                                             <li class='left_item'>강원도</span><span
-                                                class='right_item'>00</span></li>
+                                                class='right_item'></span></li>
                                             <li class='left_item'>제주도</span><span
                                                 class='right_item'></span></li>
                                             <li class='left_item'>인천</span><span
@@ -150,33 +171,16 @@ $(document).ready(function(){
                                 <div class=''><name>${programlist.templecd}</name><type>[${programlist.programtype}]</<type></div>
                                 <div class=''>${programlist.programname}</div>
                                 <div class=''>${programlist.programdetail}</div>
-                                <div class=''>연락처 : </div>
-                                <div class=''>주소 : </div>
+                                <div class=''>${programlist.templeaddr_jibun}</div>
+                                <div class=''>${programlist.templephone}</div>
                             </div>
                             <div class='list_right'>
-                                <div class='go_view'>상세정보</div>
-                                <div class='go_reservation'>예약하기</div>
+                                <div class='go_view' programno='${programlist.programno}'>상세정보</div>
+                                <div class='go_reservation' programno='${programlist.programno}'>예약하기</div>
                             </div>
                         </div>
                     </c:forEach>
-                        <!-- 
-                        <div class='reservation_list' programno='1'>
-                            <div class='list_left'>
-                                <img src='/resources/img/ad24.jpg'/>
-                            </div>
-                            <div class='list_mid'>
-                                <div class=''>사찰이름 templecd<a2>테마</a2></div>
-                                <div class=''>프로그램이름 programname </div>
-                                <div class=''>설명 programdetail 설명 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 디비 </div>
-                                <div class=''>연락처 : 010101485</div>
-                                <div class=''>주소 : 강원도 산골 (지번주소로?)</div>
-                            </div>
-                            <div class='list_right'>
-                                <div class='go_view'>상세정보</div>
-                                <div class='go_reservation'>예약하기</div>
-                            </div>
-                        </div>
-                         -->
+
                     </div>
                 </div>
                 <div class='reservation_map'>

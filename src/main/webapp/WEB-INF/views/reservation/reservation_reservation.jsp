@@ -21,7 +21,29 @@
 <script>
 
 $(document).ready(function(){
-	
+	/* 
+	$('.select_num1').change(function(e){
+		console.log(document.getElementByName('select_num').value);
+	});
+	 */
+    $('#select_num').change(function(e){
+        var sel = document.getElementById('select_num');
+        var select_num = sel.options[sel.selectedIndex].value;
+        if(select_num == '직접입력'){
+            $('.select_num_show').attr('disabled', false);
+            $('.select_num_show').val('');
+        }
+        else{
+            $('.select_num_show').val(select_num);
+        }
+
+    });
+	/* 
+	$('#select_num').change(function(e){
+	$('.select_num_show').text(select_num);
+	console.log(select_num);
+	});
+	 */
 });
 
 </script>
@@ -42,13 +64,23 @@ $(document).ready(function(){
             <form>
                 <div class='left'>
                     <div class='left_1'>
-                        <div class=''><name>프로그램이름 programname</name></div>
-                        <div class=''><addr>연락처</addr></div>
+                        <div class=''><name>${temple1.templecd}</name></div>
+                        <div class=''><addr>${temple1.templeaddr_jibun}</addr></div>
                     </div>
                     <div class='left_2'>
-                        <div class=''><span>프로그램종류</span>programtype</div>
-                        <div class=''><span>예약일</span>checkdate</div>
-                        <div class=''><span>인원</span>number</div>
+                        <div class=''><span>테마</span>[${program1.programtype}]</div>
+                        <div class=''><span>예약일</span><input class='calander' type='text' name='' value='${reserve_date}'>
+
+                        </div>
+                        <div class=''><span>인원</span>
+                        <SELECT id='select_num'>
+                            <OPTION VALUE=1 SELECTED>1명</OPTION>
+                            <OPTION VALUE=2>2명</OPTION>
+                            <OPTION VALUE=3>3명</OPTION>
+                            <OPTION VALUE=직접입력>직접입력</OPTION>
+                        </SELECT>
+                        <input type='text' class='select_num_show' disabled="disabled" value='1'> 명
+                        </div>
                     </div>
                     <div class='left_3'>
                         <div class=''><span>예약자아이디</span><input type='text' value='${userid}'></div>
@@ -58,8 +90,8 @@ $(document).ready(function(){
                 </div>
                 <div class='right'> 
                     <div class='fee'>
-                        <div class=''><span>요금</span>programprice 원</div>
-                        <div class=''><span>추가인원</span>number 원</div>
+                        <div class=''><span>요금</span>${program1.programprice} 원</div>
+                        <div class=''><span>인원</span>number 원</div>
                         <div class=''><span>총 결제금액</span>원</div>
                     </div>
                     <div class='payment_type'>

@@ -1,6 +1,8 @@
 package com.templestay_portal.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,9 +25,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.templestay_portal.commons.WebConstants;
+import com.templestay_portal.model.ModelTemple;
 import com.templestay_portal.model.ModelTemple_Program;
 import com.templestay_portal.model.ModelUser;
 import com.templestay_portal.service.IServiceReservation;
+import com.templestay_portal.service.IServiceTemple;
 import com.templestay_portal.service.IServiceTempleProgram;
 import com.templestay_portal.service.IServiceUser;
 
@@ -34,8 +38,10 @@ import com.templestay_portal.service.IServiceUser;
 public class ReservationController {
 
     @Autowired
-    @Qualifier("servicetempleprogram")
-    IServiceTempleProgram srvtemp;
+    IServiceTemple srvtemple;
+    
+    @Autowired
+    IServiceTempleProgram srvtemplerogram;
 
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 	
@@ -45,49 +51,102 @@ public class ReservationController {
 	        , @RequestParam(value="thema", defaultValue="") String thema
 	        , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
 	        , HttpSession session
-	        ) {
+	        ) throws ParseException {
 		logger.info("reservation_list");
 
-		// get으로  temple의 이름, 번호, 다 + templeprogram 의 날짜 프로그램 이름 등 모두
+		ModelTemple temple = new ModelTemple();
+		ModelTemple_Program templeprogram = new ModelTemple_Program();
 
-		ModelTemple_Program temp1 = new ModelTemple_Program();
-		// location 활용하기 추가
-		temp1.setProgramtype(thema);
-	    // reserve_date 활용하기 추가
-		
-		
-		List<ModelTemple_Program> list = srvtemp.getTempleProgramList(temp1);
+		// location으로 찾기: 주소를 가져와 getTempleOne을 호출함
+		if(location.hashCode() != 0){
+		    temple.setTempleaddr_jibun(location);
+	        ModelTemple temple1 = new ModelTemple();
+	        temple1 = srvtemple.getTempleOne(temple);
+	        templeprogram.setTemplecd(temple1.getTemplecd());
+		}
+
+		// 테마로 찾기
+		if(thema.hashCode() != 0){
+		    templeprogram.setProgramtype(thema);
+		}
+        
+	    // reserve_date 로 찾기
+		if(reserve_date.hashCode() != 0){
+		    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		    Date checkdate = transFormat.parse(reserve_date);
+            templeprogram.setCheckdate(checkdate);
+        }
+        
+		List<ModelTemple_Program> list = srvtemplerogram.getTempleProgramList(templeprogram);
 		model.addAttribute("list", list);
+		
+		// 날짜 유지
+		model.addAttribute("reserve_date", reserve_date);
 		
 		return "reservation/reservation_list";
 	}
 	
 	
-	   @RequestMapping(value = "/reservation_view", method = RequestMethod.GET)
-	    public String reservation_view(Model model
-	            , HttpSession session
-	            ) {
-	        logger.info("reservation_view");
+    @RequestMapping(value = "/reservation_view", method = RequestMethod.GET)
+    public String reservation_view(Model model
+            , @RequestParam(value="programno", defaultValue="") Integer programno
+            , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
+            , HttpSession session) {
+        
+        logger.info("reservation_view");
+        
+        // 프로그램 값들 내보내기
+        ModelTemple_Program program = new ModelTemple_Program();
+        program.setProgramno(programno);
+        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        
+        model.addAttribute("program1", program1);
 
-	        return "reservation/reservation_view";
-	   }
-	   
-	   @RequestMapping(value = "/reservation_reservation", method = RequestMethod.GET)
-       public String reservation_reservation(Model model
-               , HttpSession session
-               ) {
-           logger.info("reservation_reservation");
+        ModelTemple temple = new ModelTemple();
+        // program1의 templecd값을 가져와 temple에 set 해줌
+        temple.setTemplecd(program1.getTemplecd());
+        ModelTemple temple1 = srvtemple.getTempleOne(temple);
+        
+        model.addAttribute("temple1", temple1);
+        
+        // 날짜 유지
+        model.addAttribute("reserve_date", reserve_date);
+        
+        return "reservation/reservation_view";
+    }
+    
+    @RequestMapping(value = "/reservation_reservation", method = RequestMethod.GET)
+    public String reservation_reservation(Model model
+            , @RequestParam(value="programno", defaultValue="") Integer programno
+            , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
+            , HttpSession session) {
+        logger.info("reservation_reservation");
+        
+        // 프로그램 값들 내보내기
+        ModelTemple_Program program = new ModelTemple_Program();
+        program.setProgramno(programno);
+        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        
+        model.addAttribute("program1", program1);
 
-           return "reservation/reservation_reservation";
-       }
-	   
-	   
-       @RequestMapping(value = "/reservation_reservation_success", method = RequestMethod.GET)
-       public String reservation_reservation_success(Model model
-               , HttpSession session
-               ) {
-           logger.info("reservation_reservation_success");
-
-           return "reservation/reservation_reservation_success";
-       }
+        ModelTemple temple = new ModelTemple();
+        // program1의 templecd값을 가져와 temple에 set 해줌
+        temple.setTemplecd(program1.getTemplecd());
+        ModelTemple temple1 = srvtemple.getTempleOne(temple);
+        
+        model.addAttribute("temple1", temple1);
+        
+     // 날짜 유지
+        model.addAttribute("reserve_date", reserve_date);
+        
+        return "reservation/reservation_reservation";
+    }
+    
+    @RequestMapping(value = "/reservation_reservation_success", method = RequestMethod.GET)
+    public String reservation_reservation_success(Model model,
+            HttpSession session) {
+        logger.info("reservation_reservation_success");
+        
+        return "reservation/reservation_reservation_success";
+    }
 }

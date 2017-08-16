@@ -16,24 +16,20 @@ import com.templestay_portal.model.ModelTemple_Program;
 
 @Repository("daotempleprogram")
 public class DaoTempleProgram implements IDaoTempleProgram {
-    // SLF4J Logging
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-    
+
     @Autowired
     @Qualifier("sqlSession")
     SqlSession session;
 
-
-
     @Override
     public int insertTempleProgramOne(ModelTemple_Program board) {
-        return session.insert("mapper.mappertemple.insertTempleProgramOne");
+        return session.insert("mapper.mappertemple.insertTempleProgramOne", board);
     }
 
 
     @Override
-    public ModelTemple_Program getTempleProgramOne(String programname) {
-        return session.selectOne("mapper.mappertemple.getTempleProgramOne", programname);
+    public ModelTemple_Program getTempleProgramOne(ModelTemple_Program program) {
+        return session.selectOne("mapper.mappertemple.getTempleProgramOne", program);
     }
 
     @Override

@@ -14,14 +14,10 @@ import com.templestay_portal.model.ModelTemple_Program;
 
 @Service("servicetempleprogram")
 public class ServiceTempleProgram implements IServiceTempleProgram {
-    // SLF4J Logging
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-    
+
     @Autowired
     @Qualifier("daotempleprogram")
     IDaoTempleProgram dao;
-    
-
     
     @Override
     public int insertTempleProgramOne(ModelTemple_Program board) {
@@ -29,17 +25,17 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
         try {
              result = dao.insertTempleProgramOne(board);
         } catch (Exception e) {
-            logger.error("insertTempleProgramOne" + e.getMessage() );
+            e.getMessage();
         }
         return result;
     }
     @Override
-    public ModelTemple_Program getTempleProgramOne(String programname) {
+    public ModelTemple_Program getTempleProgramOne(ModelTemple_Program program) {
         ModelTemple_Program result = null;
         try {
-             result = dao.getTempleProgramOne(programname);
+             result = dao.getTempleProgramOne(program);
         } catch (Exception e) {
-            logger.error("getTempleProgramOne" + e.getMessage() );
+            e.getMessage();
         }
         return result;
         
@@ -52,7 +48,7 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
         try {
             result = dao.updateTempleProgram(updatemodel, searchmodel);
         } catch (Exception e) {
-            logger.error("updateTempleProgram" + e.getMessage() );
+            e.getMessage();
         }
         
         return result;
@@ -64,7 +60,7 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
         try {
             result = dao.deleteTempleProgram(board);
         } catch (Exception e) {
-            logger.error("deleteTempleProgram" + e.getMessage());
+            e.getMessage();
         }
         
         return result;
@@ -76,7 +72,7 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
         try {
             result = dao.getTempleProgramList(temp);
         } catch (Exception e) {
-            logger.error("getTempleProgramList " + e.getMessage() );
+            e.getMessage();
         }
         
         return result;

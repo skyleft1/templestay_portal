@@ -28,10 +28,13 @@ $(document).ready(function(){
         $('.big_img > img:nth-child('+index+')').show();
     });
     
-    
+
     $('body').on('click', '.go_reservation', function(e){
-        window.location.href= '/reservation/reservation_reservation';
+    	var programno = $(this).attr('programno');
+    	var reserve_date = '${reserve_date}';
+        window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
     });
+
 });
 
 
@@ -53,18 +56,17 @@ $(document).ready(function(){
         <div class="wrap_reservation_view">
             <div class="">
                 <div class='temple_info'>
-                    <div class=''>불국사(templecd)</div>
-                    <div class=''>연락처</div>
-                    <div class=''>주소
-                        <div class=''>지번주소</div>
-                        <div class=''>도로명주소</div>
+                    <div class=''>${temple1.templecd}</div>
+                    <div class=''>${temple1.templephone}</div>
+                    <div class=''>
+                        <div class=''>${temple1.templeaddr_jibun}</div>
                     </div>
                 </div>
                 
                 <div class='program_info'>
-                    <div class=''>폐지줍기(programname)</div>
-                    <div class=''>테마(programtype)</div>
-                    <div class=''>설명(programdetail) 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 프로젝트 중 </div>
+                    <div class=''>${program1.programname}</div>
+                    <div class=''>[${program1.programtype}]</div>
+                    <div class=''>${program1.programdetail}</div>
                     <div class=''>
                         
                         <div class="big_img" >
@@ -86,7 +88,7 @@ $(document).ready(function(){
                     <div id='map'></div>
                 </div>
                
-                <div class='go_reservation'>예약하기</div>
+                <div class='go_reservation' programno='${program1.programno}'>예약하기</div>
             </div>
         </div>
         

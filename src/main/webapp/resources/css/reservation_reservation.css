@@ -47,12 +47,28 @@ form > div{
     border-top: 1px solid #CCCCCC;
     border-bottom: 1px solid #CCCCCC;
 }
+.left_2 > div:nth-child(2) input[type='text']{
+    height: 30px;
+    width: 205px;
+}
+.left_2 > div:nth-child(3) input[type='text']{
+    height: 26px;
+    width: 85px;
+
+}
+.left_2 > div:nth-child(3) SELECT{
+    height: 30px;
+    width: 80px;
+    margin-left: -6px;
+}
+
+
 .left div{
     display : inline-block;
     width: 100%;
 }
 
-.left input[type='text']{
+.left_3 input[type='text']{
     height: 30px;
     width: 100%;
 }

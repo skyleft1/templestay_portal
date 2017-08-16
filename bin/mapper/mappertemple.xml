@@ -4,6 +4,23 @@
 
 <mapper namespace="mapper.mappertemple">
            
+    <!--  concat으로 주소의 첫부분(ex. 서울) 만 검색해도 나오게 함 -->
+    <select id="getTempleOne" parameterType="ModelTemple" resultType="ModelTemple">
+        SELECT *
+          FROM TB_Temple 
+         WHERE 1 = 1
+            <if test="templecd != null and templecd != ''" >
+            AND templecd = #{templecd}
+            </if>
+            <if test="templeaddr_road != null and templeaddr_road != ''" >
+            AND templeaddr_road LIKE CONCAT( #{templeaddr_road}, '%' )
+            </if>
+            <if test="templeaddr_jibun != null and templeaddr_jibun != ''" >
+            AND templeaddr_jibun LIKE CONCAT( #{templeaddr_jibun}, '%' )
+            </if>
+    </select>
+           
+           
     <insert id="insertTempleProgramOne" parameterType="ModelTemple_Program">
         INSERT INTO 
         TB_Temple_Program (programname, availabledate, programprice, maxperson    )
@@ -11,10 +28,16 @@
     </insert> 
 
 
-    <select id="getTempleProgramOne" parameterType="string" resultType="ModelTemple_Program">
+    <select id="getTempleProgramOne" parameterType="ModelTemple_Program" resultType="ModelTemple_Program">
         SELECT *
           FROM TB_Temple_Program 
-         WHERE programname = #{programname}
+         WHERE 1 = 1
+         <if test="programno != null and programno != ''">
+         AND programno = #{programno}
+         </if>
+         <if test="programname != null and programname != ''">
+         AND programname = #{programname}
+         </if> 
     </select>
     
     <update id="updateTempleProgram" parameterType="hashmap" >
@@ -49,12 +72,24 @@
           </if>
     </delete>
     
+    
+    <!--  between 이용해서 가능날짜별로 조회가능하게 함 --> 
     <select id="getTempleProgramList" parameterType="ModelTemple_Program" resultType="ModelTemple_Program" >
-        SELECT *
+        SELECT * 
+          <if test="templecd != null and templecd != ''" >
+          , (select templeaddr_jibun from TB_Temple where templecd = #{templecd} ) as templeaddr_jibun 
+          , (select templephone from TB_Temple where templecd = #{templecd} ) as templephone
+          </if>
           FROM TB_Temple_Program
           WHERE 1 = 1
+          <if test="templecd != null and templecd != ''" >
+          AND templecd  = #{templecd}
+          </if>
           <if test="programtype != null and programtype != ''" >
           AND programtype  = #{programtype}
+          </if>
+          <if test="checkdate != null and checkdate != ''" >
+          AND #{checkdate} BETWEEN availabledate_start AND availabledate_end 
           </if>
           <if test="programname != null and programname != ''" >
           AND programname  = #{programname}
