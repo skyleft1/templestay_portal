@@ -17,6 +17,8 @@
 <script src='/resources/js/jquery-3.1.0.js'></script>
 <script src='/resources/js/jquery-ui.js'></script>
 <script src='/resources/js/common.js'></script>
+<script src="/resources/js/ajaxsetup.js"></script>
+<script src="/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -33,7 +35,7 @@ $(document).ready(function(){
 
     <div class="wrap">
         <div class="header">
-            <%@ include file="../guide/header.jsp" %>
+            <%@ include file="../header_footer/header.jsp" %>
         </div>
 
 
@@ -49,7 +51,7 @@ $(document).ready(function(){
         
         
         <div class="footer">
-            <%@ include file="../guide/footer.jsp" %>
+            <%@ include file="../header_footer/footer.jsp" %>
         </div>
     </div>
 

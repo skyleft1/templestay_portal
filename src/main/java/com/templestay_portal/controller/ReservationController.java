@@ -3,6 +3,7 @@ package com.templestay_portal.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -56,28 +57,47 @@ public class ReservationController {
 
 		ModelTemple temple = new ModelTemple();
 		ModelTemple_Program templeprogram = new ModelTemple_Program();
-
+		List<ModelTemple_Program> list = new ArrayList<ModelTemple_Program>();
+		
 		// location으로 찾기: 주소를 가져와 getTempleOne을 호출함
 		if(location.hashCode() != 0){
 		    temple.setTempleaddr_jibun(location);
-	        ModelTemple temple1 = new ModelTemple();
-	        temple1 = srvtemple.getTempleOne(temple);
-	        templeprogram.setTemplecd(temple1.getTemplecd());
+	        List<ModelTemple> temple1 = srvtemple.getTempleList(temple);
+	        
+	        // 같은 주소의 여러 templecd가 있기때문에 list로 받음
+	        for(int i = 0 ; i <temple1.size(); i++ ){
+	            templeprogram.setTemplecd(temple1.get(i).getTemplecd());
+	            
+	            // 테마로 찾기
+	            if(thema.hashCode() != 0){
+	                templeprogram.setProgramtype(thema);
+	            }
+	            
+	            // reserve_date 로 찾기
+	            if(reserve_date.hashCode() != 0){
+	                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+	                Date checkdate = transFormat.parse(reserve_date);
+	                templeprogram.setCheckdate(checkdate);
+	            }
+	            
+	            list.addAll( srvtemplerogram.getTempleProgramList(templeprogram) );
+	        }
+		}
+		else {
+		      // 테마로 찾기
+	        if(thema.hashCode() != 0){
+	            templeprogram.setProgramtype(thema);
+	        }
+            if(reserve_date.hashCode() != 0){
+                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date checkdate = transFormat.parse(reserve_date);
+                templeprogram.setCheckdate(checkdate);
+            }
+            list = srvtemplerogram.getTempleProgramList(templeprogram);
 		}
 
-		// 테마로 찾기
-		if(thema.hashCode() != 0){
-		    templeprogram.setProgramtype(thema);
-		}
-        
-	    // reserve_date 로 찾기
-		if(reserve_date.hashCode() != 0){
-		    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-		    Date checkdate = transFormat.parse(reserve_date);
-            templeprogram.setCheckdate(checkdate);
-        }
-        
-		List<ModelTemple_Program> list = srvtemplerogram.getTempleProgramList(templeprogram);
+		
+		model.addAttribute("list_size", list.size());
 		model.addAttribute("list", list);
 		
 		// 날짜 유지
@@ -121,6 +141,9 @@ public class ReservationController {
             , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
             , HttpSession session) {
         logger.info("reservation_reservation");
+        
+        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        
         
         // 프로그램 값들 내보내기
         ModelTemple_Program program = new ModelTemple_Program();

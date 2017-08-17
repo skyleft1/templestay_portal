@@ -1,5 +1,7 @@
 package com.templestay_portal.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,49 +12,112 @@ import com.templestay_portal.dao.IDaoUser;
 import com.templestay_portal.model.ModelUser;
 
 @Service("serviceuser")
-
 public class ServiceUser implements IServiceUser {
-    // SLF4J Logging
-    private static Logger logger = LoggerFactory.getLogger(ServiceUser.class);
-
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Autowired
     @Qualifier("daouser")
     IDaoUser dao;
-
+    
+    
     @Override
-    public int insertuser(ModelUser user) {
-        int result = -1;
-        try {
-            result = dao.insertuser(user);
-        } catch (Exception e) {
-            logger.error("insertuser" + e.getMessage());
-        }
-        return result;
-    }
-
-    @Override
-    public ModelUser login (ModelUser user) {
+    public ModelUser login(String userid, String userpassword) {
         ModelUser result = null;
         try {
-            result = dao.login(user);
+            result = dao.login(userid, userpassword);
         } catch (Exception e) {
-            logger.error("login" + e.getMessage());
+            logger.error("getUserOne" + e.getMessage() );
+        }
+        return result;
+    }
+    
+    @Override
+    public ModelUser getUserOne(String userid) {
+        ModelUser result = null;
+        try {
+            result = dao.getUserOne(userid);
+        } catch (Exception e) {
+            logger.error("getUserOne" + e.getMessage() );
+        }
+        return result;
+    }
+    
+    @Override
+    public List<ModelUser> getUserList() {
+        List<ModelUser> result = null;
+        try {
+            result = dao.getUserList();
+        } catch (Exception e) {
+            logger.error("getUserList" + e.getMessage() );
+        }
+        return result;
+    }
+    
+    @Override
+    public int insertUser(ModelUser User) {
+        int result = -1;
+        try {
+            result = dao.insertUser(User);
+        } catch (Exception e) {
+            logger.error("insertUser" + e.getMessage() );
+        }
+        return result;
+    }
+    
+    @Override
+    public int insertUserList(List<ModelUser> Users) {
+        int result = -1;
+        try {
+            result = dao.insertUserList(Users);
+        } catch (Exception e) {
+            logger.error("insertUserList" + e.getMessage() );
         }
         return result;
     }
 
     @Override
-    public int edituser(ModelUser user) {
+    public int updatePassword(String newpassword, String currentpassword,
+            String userid) {
         int result = -1;
         try {
-            result = dao.edituser(user);
+            result = dao.updatePassword(newpassword, currentpassword, userid);
         } catch (Exception e) {
-            logger.error("edituser" + e.getMessage());
+            logger.error("insertUserList" + e.getMessage() );
         }
         return result;
     }
-    
 
-    
+    @Override
+    public int updateUser(ModelUser updateValue, ModelUser searchValue) {
+        int result = -1;
+        try {
+            result = dao.updateUser(updateValue, searchValue);
+        } catch (Exception e) {
+            logger.error("insertUserList" + e.getMessage() );
+        }
+        return result;
+    }
+
+    @Override
+    public int deleteUser(ModelUser user) {
+        int result = -1;
+        try {
+            result = dao.deleteUser(user);
+        } catch (Exception e) {
+            logger.error("insertUserList" + e.getMessage() );
+        }
+        return result;
+    }
+
+    @Override
+    public int checkuserid(String userid) {
+        int result = -1;
+        try {
+            result = dao.checkuserid(userid);
+        } catch (Exception e) {
+            logger.error("insertUserList" + e.getMessage() );
+        }
+        return result;
+    }
+
 }
-

@@ -73,7 +73,7 @@ $(document).ready(function(e){
 
     <div class="wrap">
         <div class="header">
-            <%@ include file="guide/header.jsp" %>
+            <%@ include file="header_footer/header.jsp" %>
         </div>
 
         <div class="wrap_index">
@@ -92,16 +92,16 @@ $(document).ready(function(e){
                         <!-- 지역명 선택창 -->
                         <div class='location_select'>
                             <ul>
-                                <li><span class='left_item'>경기도</span><span class='right_item'>00</span></li>
-                                <li><span class='left_item'>강원도</span><span class='right_item'>00</span></li>
-                                <li><span class='left_item'>제주도</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>경기</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>강원</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>제주</span><span class='right_item'></span></li>
                                 <li><span class='left_item'>인천</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>충청남도</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>충청북도</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>경상남도</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>경상북도</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>전라남도</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>전라북도</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>충남</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>충북</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>경남</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>경북</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>전남</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>전북</span><span class='right_item'></span></li>
                                 <li><span class='left_item'>부산</span><span class='right_item'></span></li>
                                 <li><span class='left_item'>서울</span><span class='right_item'></span></li>
                             </ul>
@@ -141,7 +141,7 @@ $(document).ready(function(e){
                 <div class="advertisement">
                     <div class="">
                         <div class="ad1">우리는 모두 죄인이야!</div>
-                        <div class="ad2"><img src="/resources/img/ad21.jpg" alt="광고" /></div>
+                        <div class="ad2"><img src="/resources/img/ad02.jpg" alt="광고" /></div>
                         <div class="ad3">
                             <div><strong>프리즌브레이크 사찰</strong></div>
                             <div>죄인 단체 이송 체험!</div>
@@ -193,7 +193,7 @@ $(document).ready(function(e){
 
 
         <div class="footer">
-            <%@ include file="guide/footer.jsp" %>
+            <%@ include file="header_footer/footer.jsp" %>
         </div>
     </div>
 

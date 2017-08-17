@@ -20,6 +20,21 @@
             </if>
     </select>
            
+    <select id="getTempleList" parameterType="ModelTemple" resultType="ModelTemple">
+        SELECT *
+          FROM TB_Temple 
+         WHERE 1 = 1
+            <if test="templecd != null and templecd != ''" >
+            AND templecd = #{templecd}
+            </if>
+            <if test="templeaddr_road != null and templeaddr_road != ''" >
+            AND templeaddr_road LIKE CONCAT( #{templeaddr_road}, '%' )
+            </if>
+            <if test="templeaddr_jibun != null and templeaddr_jibun != ''" >
+            AND templeaddr_jibun LIKE CONCAT( #{templeaddr_jibun}, '%' )
+            </if>
+    </select>
+           
            
     <insert id="insertTempleProgramOne" parameterType="ModelTemple_Program">
         INSERT INTO 
@@ -73,29 +88,26 @@
     </delete>
     
     
+    <!--  left 조인을 이용해서 부모인 temple의 값을 받아옴 -->
     <!--  between 이용해서 가능날짜별로 조회가능하게 함 --> 
     <select id="getTempleProgramList" parameterType="ModelTemple_Program" resultType="ModelTemple_Program" >
         SELECT * 
-          <if test="templecd != null and templecd != ''" >
-          , (select templeaddr_jibun from TB_Temple where templecd = #{templecd} ) as templeaddr_jibun 
-          , (select templephone from TB_Temple where templecd = #{templecd} ) as templephone
-          </if>
-          FROM TB_Temple_Program
+          FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
           WHERE 1 = 1
           <if test="templecd != null and templecd != ''" >
-          AND templecd  = #{templecd}
+          AND C.templecd  = #{templecd}
           </if>
           <if test="programtype != null and programtype != ''" >
-          AND programtype  = #{programtype}
+          AND C.programtype  = #{programtype}
           </if>
           <if test="checkdate != null and checkdate != ''" >
-          AND #{checkdate} BETWEEN availabledate_start AND availabledate_end 
+          AND #{checkdate} BETWEEN C.availabledate_start AND C.availabledate_end 
           </if>
           <if test="programname != null and programname != ''" >
-          AND programname  = #{programname}
+          AND C.programname  = #{programname}
           </if>
           <if test="programprice != null and programprice != ''" >
-          AND programprice  = #{programprice}
+          AND C.programprice  = #{programprice}
           </if>
         ORDER BY programno
     </select>

@@ -27,5 +27,16 @@ public class ServiceTemple implements IServiceTemple {
         return result;
     }
 
+    @Override
+    public List<ModelTemple> getTempleList(ModelTemple temple) {
+        List<ModelTemple> result = null;
+        try {
+            result = dao.getTempleList(temple);
+       } catch (Exception e) {
+           e.getMessage();
+       }
+        return result;
+    }
+
 
 }

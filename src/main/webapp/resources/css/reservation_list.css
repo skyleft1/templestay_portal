@@ -57,7 +57,7 @@ td input{
     height: 25px;
 }
 
-input[type='button']{
+.wrap_reservation input[type='button']{
     background-color: #ff6363;
     width: 120px;
     text-align: center;

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>user_join</title>
+<title>user_modify</title>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/join.css">
@@ -18,67 +18,12 @@
 <script src="/resources/js/ajaxsetup.js"></script>
 <script src="/resources/js/MyApp.js"></script>
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-<!--  다음 지도 이용 -->
-<!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
-
-<!-- 
-필요한 자바스크립트
-1 중복체크
-2 빈값 알림
-3 비밀번호 확인 일치여부(ajax로 하자)
-
- -->
 <script>
 $(document).ready(function(){
-    $('.id_check').click(function(e){
-    	var userid = $('input[name="userid"]').val();
-        $.ajax({
-            url : '/user/user_id_check'
-            , data: {'userid' : userid }       
-            , type: 'POST'       
-            , timeout: 30000    
-            , dataType: 'json'  
-            , beforeSend : function() {
-            }
-        }).done( function(data, textStatus, xhr ){
-            if (data.code === 1){
-                $('.popup_cancel_wrap').show();
-                $('.popup_content').text( data.msg );
-                $('.popup_button_cancel').click(function(e){
-                    $('.popup_cancel_wrap').hide();
-                });
-            }else {
-            	$('table input:not([type=button])').removeAttr('disabled', '').css('background-color', '#f7f7f7');
-            }
-        });
-    });
 
-
-    $('.join_submit').click(function(e) {
-    	var a = $('.submit_check');
-        if ($('.password').val() !== $('.password_confirm').val()) {
-            $('.popup_cancel_wrap').show();
-            $('.popup_content').text('비밀번호가 일치하지 않습니다.');
-            $('.popup_button_cancel').click(function(e){
-                $('.popup_cancel_wrap').hide();
-            });
-        }
-        else if( $(a[0]).val() === '' || $(a[1]).val() === '' || $(a[2]).val() === '' ){
-            $('.popup_cancel_wrap').show();
-            $('.popup_content').text('빈 값이 있습니다.');
-            $('.popup_button_cancel').click(function(e){
-                $('.popup_cancel_wrap').hide();
-            });
-        } else{
-            $('.join_form').submit();
-        }
-    });        
 });
 
 
-
-    
 </script>
 
 </head>
@@ -96,64 +41,51 @@ $(document).ready(function(){
         <div class='join_content'>
             <div class=''>
                 <div class='join_maintitle'>
-                    <h3>회원가입</h3>
+                    <h3>회원정보 수정</h3>
                 </div>
                 <div class=''>
-                    <form class='join_form' method='post' action='/user/user_join' >
+                
+                    <div><a href='/user/user_modify_password'>비밀번호 변경</a></div>
+                
+                    <form class='modify_form' method='post' action='/user/user_modify' >
                         <table>
                             <tbody>
-                                <tr>
-                                    <th>아이디</th>
-                                    <td> 
-                                        <input type='text' name='userid' value='' >
-                                        <input type='button' class='id_check' value='중복체크'>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>비밀번호</th>
-                                    <td><input type='password' name='userpassword' class ='password' value='' disabled style='background-color: grey' />
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <th>비밀번호 확인</th>
-                                    <td><input type='password' name='' class='password_confirm' value='' disabled style='background-color: grey' />
-                                    </td>
-                                </tr>
+                                <p>
+                                    <input type="hidden" name="userid" value="${modify.userid }" />
+                                </p>
                                 <tr>
                                     <th>이름</th>
-                                    <td><input type='text' name='username' value='' class='submit_check' disabled style='background-color: grey'></td>
+                                    <td><input type='text' name='username' value='${modify.username}' /></td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td><input type='email' name='useremail' value='' class='submit_check' disabled style='background-color: grey'>
-                                    </td>
+                                    <td><input type='email' name='useremail' value='${modify.useremail}' /></td>
                                 </tr>
                                 <tr>
                                     <th>연락처</th>
-                                    <td><input type='text' name='userphone' value='' class='submit_check' disabled style='background-color: grey'>
-                                    </td>
+                                    <td><input type='text' name='userphone' value='${modify.userphone}' /></td>
                                 </tr>
-                                
                                 <tr>
                                     <th>주소</th>
                                     <td>
-                                        <input type="text"  name="addr_postcode" id="sample4_postcode" placeholder="우편번호" value="">
+                                        <input type='text' name='addr_postcode' id="sample4_postcode"  value='${modify.addr_postcode}' />
                                         <input type="button"  onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                                        <input type="text" name="addr_road" id="sample4_roadAddress" placeholder="도로명주소" value="">
-                                        <input type="text" name="addr_jibun" id="sample4_jibunAddress" placeholder="지번주소" value="">
+                                        <input type='text' name='addr_road' id="sample4_roadAddress" value='${modify.addr_road}' />
+                                        <input type='text' name='addr_jibun' id="sample4_jibunAddress" value='${modify.addr_jibun}' />
                                         <span id="guide" style="color:#999"></span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class='wrap_submit'>
-                            <input type='button' class='join_submit' value='회원가입'>
+                            <input type='submit' class='modify_submit' value='회원정보 수정'>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -208,6 +140,8 @@ $(document).ready(function(){
         }).open();
     }
 </script>
+
+
     <!-- footer -->
     <div class='footer'>
         <%@ include file="../header_footer/footer.jsp" %>

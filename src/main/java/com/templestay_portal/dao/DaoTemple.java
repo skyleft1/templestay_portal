@@ -26,4 +26,9 @@ public class DaoTemple implements IDaoTemple {
         return session.selectOne("mapper.mappertemple.getTempleOne", temple);
     }
 
+    @Override
+    public List<ModelTemple> getTempleList(ModelTemple temple) {
+        return session.selectList("mapper.mappertemple.getTempleList", temple);
+    }
+
 }

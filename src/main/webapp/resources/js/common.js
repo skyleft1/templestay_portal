@@ -22,7 +22,7 @@ $(document).ready(function(){
 		$( ".calander" ).datepicker({
 			dateFormat: 'yy-mm-dd'
 			, minDate: 0
-		    , maxDate: 30
+		    , maxDate: 150
 		});
 	});
 });

@@ -17,6 +17,8 @@
 <script src='/resources/js/jquery-3.1.0.js'></script>
 <script src='/resources/js/jquery-ui.js'></script>
 <script src='/resources/js/common.js'></script>
+<script src="/resources/js/ajaxsetup.js"></script>
+<script src="/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -26,6 +28,8 @@ $(document).ready(function(){
 		console.log(document.getElementByName('select_num').value);
 	});
 	 */
+	 
+//  인원수 설정
     $('#select_num').change(function(e){
         var sel = document.getElementById('select_num');
         var select_num = sel.options[sel.selectedIndex].value;
@@ -36,8 +40,22 @@ $(document).ready(function(){
         else{
             $('.select_num_show').val(select_num);
         }
+        
+        
 
     });
+	 
+	 $('.go_num').click(function(e){
+	 var num = $('.select_num_show').val();
+     $('.fee_num').text(num);
+	 });
+	/*  
+	$('.select_num_show').val().change(function(e){
+		console.log("바뀜")
+    var num = $('.select_num_show').val();
+    $('.fee_num').text(num);
+	});	 
+	 */
 	/* 
 	$('#select_num').change(function(e){
 	$('.select_num_show').text(select_num);
@@ -55,7 +73,7 @@ $(document).ready(function(){
 
     <div class="wrap">
         <div class="header">
-            <%@ include file="../guide/header.jsp" %>
+            <%@ include file="../header_footer/header.jsp" %>
         </div>
 
 
@@ -80,18 +98,19 @@ $(document).ready(function(){
                             <OPTION VALUE=직접입력>직접입력</OPTION>
                         </SELECT>
                         <input type='text' class='select_num_show' disabled="disabled" value='1'> 명
+                        <input type='button' class='go_num' value='확인'>
                         </div>
                     </div>
                     <div class='left_3'>
-                        <div class=''><span>예약자아이디</span><input type='text' value='${userid}'></div>
-                        <div class=''><span>예약자이름</span><input type='text' value='${username}'></div>
-                        <div class=''><span>연락처</span><input type='text' value='${userphone}'></div>
+                        <div class=''><span>예약자아이디</span><input type='text' value='${session_user.userid}'></div>
+                        <div class=''><span>이름</span><input type='text' value='${ session_user.username}'></div>
+                        <div class=''><span>연락처</span><input type='text' value='${session_user.userphone}'></div>
                     </div>
                 </div>
                 <div class='right'> 
                     <div class='fee'>
                         <div class=''><span>요금</span>${program1.programprice} 원</div>
-                        <div class=''><span>인원</span>number 원</div>
+                        <div class=''><span>인원</span><d class='fee_num'>number </d> 명</div>
                         <div class=''><span>총 결제금액</span>원</div>
                     </div>
                     <div class='payment_type'>
@@ -119,7 +138,7 @@ $(document).ready(function(){
         
         
         <div class="footer">
-            <%@ include file="../guide/footer.jsp" %>
+            <%@ include file="../header_footer/footer.jsp" %>
         </div>
     </div>
 

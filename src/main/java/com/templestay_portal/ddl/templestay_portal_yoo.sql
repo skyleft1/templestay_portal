@@ -42,8 +42,12 @@ CREATE TABLE `tb_user` (
     `userid` VARCHAR(50) NOT NULL,
     `username` VARCHAR(30) NULL DEFAULT NULL,
     `userpassword` VARCHAR(30) NULL DEFAULT NULL,
-    `useremail` VARCHAR(100) NOT NULL,
-    `userephone` VARCHAR(100) NOT NULL,
+    `useremail` VARCHAR(100) NULL DEFAULT NULL,
+    `userphone` VARCHAR(100) NULL DEFAULT NULL,
+    `addr_postcode` VARCHAR(100) NULL DEFAULT NULL,
+    `addr_road` VARCHAR(100) NULL DEFAULT NULL,
+    `addr_jibun` VARCHAR(100) NULL DEFAULT NULL,
+     `joindate` Date NULL DEFAULT NULL,
     PRIMARY KEY (`userid`),
     UNIQUE INDEX `userno` (`userno`)
 )
@@ -52,6 +56,11 @@ ENGINE=InnoDB
 AUTO_INCREMENT=4
 ;
 
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'admin', 'admin', '12', 'admin@admin.com', '01012341234' );
+
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'yoo1', 'yoo1', '12', 'yoo1@naver.com', '01088888888' );
 
 
 CREATE TABLE `tb_board_article` (
@@ -122,15 +131,38 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
-VALUES('일각사', '00001', '경기도 이천시 대월면 대대리 726', '경기도 이천시 대월면 대대리 726', '01024242485'  );
+VALUES('일각사', '00001', '경기 이천시 대월면 대대리 726', '경기 이천시 대월면 대대리 726', '01024242485'  );
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
-VALUES('이각사', '22001', '강원도 영월군 영월읍 영흥리 660-1', '강원도 영월군 영월읍 영흥리 660-1', '087395425'  );
+VALUES('이각사', '22001', '강원 영월군 영월읍 영흥리 660-1', '강원도 영월군 영월읍 영흥리 660-1', '087395425'  );
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
-VALUES('삼각사', '33001', '충청북도 제천시 금성면 적덕리 산14-6', '충청북도 제천시 금성면 적덕리 산14-6', '0145845690'  );
+VALUES('삼각사', '33001', '충북 제천시 금성면 적덕리 산14-6', '충청북도 제천시 금성면 적덕리 산14-6', '0145845690'  );
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
 VALUES('사각사', '44001', '제주특별자치도 제주시 애월읍 장전리 926', '제주특별자치도 제주시 애월읍 장전리 926', '748845690'  );
 
-
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('경기사', '00001', '경기 가평군 가평읍 이화리 133', '경기 가평군 가평읍 이화리 133', '45720050000' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('강원사', '00001', '강원 강릉시 교동 1817-2', '강원 강릉시 교동 1817-2', '91543420000' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('제주사', '00001', '제주특별자치도 서귀포시 상예동 4563-3', '제주특별자치도 서귀포시 상예동 4563-3', '07800207540' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('인천사', '00001', '인천 강화군 양도면 조산리 754', '인천 강화군 양도면 조산리 754', '00100757500' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('충남사', '00001', '충남 홍성군 홍북읍 신경리 893', '충남 홍성군 홍북읍 신경리 893', '00100099990' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('충북사', '00001', '충북 괴산군 감물면 오성리 58-1', '충북 괴산군 감물면 오성리 58-1', '00100008880' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('경남사', '00001', '경남 거제시 장승포동 624-3', '경남 거제시 장승포동 624-3', '00177700000' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('경북사', '00001', '경북 경산시 갑제동 296-3', '경북 경산시 갑제동 296-3', '00100066660' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('전남사', '00001', '전남 강진군 강진읍 서성리 379-14', '전남 강진군 강진읍 서성리 379-14', '00155507000' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('전북사', '00001', '전북 고창군 고수면 은사리 901-1', '전북 고창군 고수면 은사리 901-1', '00103333000' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('부산사', '00001', '부산 강서구 생곡동 1598-1', '부산 강서구 생곡동 1598-1', '00100222222' );
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone ) 
+VALUES('서울사', '00001', '서울 강남구 도곡동 952-9', '서울 강남구 도곡동 952-9', '00111111111' );
 
 CREATE TABLE `tb_temple_program` (
     `programno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -226,6 +258,240 @@ VALUES('사각사', '자유형', '연습이름1', '연습용 내용입니다. �
 INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
 VALUES('사각사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
 , 5000, '2017-09-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('강원사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('강원사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('강원사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('강원사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('강원사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('제주사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('제주사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('제주사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('제주사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('제주사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('인천사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('인천사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('인천사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('인천사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('인천사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충남사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충북사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('충북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경남사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경북사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전남사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전남사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전남사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전북사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전북사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('전북사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('부산사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('부산사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('부산사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('부산사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('부산사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('서울사', '자유형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('서울사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('서울사', '체험형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('서울사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-12-10' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('서울사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-10' );
+
+
+-- 날짜 검증을 위한 부분 
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-10-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2017-10-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2017-11-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2017-11-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2017-12-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 30000, '2017-08-10' , '2017-12-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 24000, '2017-08-10' , '2018-01-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 50000, '2017-08-10' , '2018-01-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 12000, '2017-08-10' , '2018-02-01' );
+INSERT INTO tb_temple_program(templecd, programtype, programname, programdetail, programprice, availabledate_start, availabledate_end ) 
+VALUES('경기사', '휴식형', '연습이름1', '연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다. 연습용 내용입니다.'
+, 18000, '2017-08-10' , '2018-02-01' );
 
 
 CREATE TABLE `tb_reservation` (

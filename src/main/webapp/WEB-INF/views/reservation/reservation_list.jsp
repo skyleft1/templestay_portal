@@ -17,6 +17,8 @@
 <script src='/resources/js/jquery-3.1.0.js'></script>
 <script src='/resources/js/jquery-ui.js'></script>
 <script src='/resources/js/common.js'></script>
+<script src="/resources/js/ajaxsetup.js"></script>
+<script src="/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -84,7 +86,7 @@ $(document).ready(function(){
 
     <div class="wrap">
         <div class="header">
-            <%@ include file="../guide/header.jsp" %>
+            <%@ include file="../header_footer/header.jsp" %>
         </div>
 
 
@@ -98,30 +100,31 @@ $(document).ready(function(){
                                     <th class='location_select'>지역 선택</th>
                                     <td>
                                         <ul>
-                                            <li class='left_item'>경기도</span><span
+                                            <li class='left_item'>경기</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>강원도</span><span
+                                            <li class='left_item'>강원</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>제주도</span><span
+                                            <li class='left_item'>제주</span><span
                                                 class='right_item'></span></li>
                                             <li class='left_item'>인천</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>충청남도</span><span
+                                            <li class='left_item'>충남</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>충청북도</span><span
+                                            <li class='left_item'>충북</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>경상남도</span><span
+                                            <li class='left_item'>경남</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>경상북도</span><span
+                                            <li class='left_item'>경북</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>전라남도</span><span
+                                            <li class='left_item'>전남</span><span
                                                 class='right_item'></span></li>
-                                            <li class='left_item'>전라북도</span><span
+                                            <li class='left_item'>전북</span><span
                                                 class='right_item'></span></li>
                                             <li class='left_item'>부산</span><span
                                                 class='right_item'></span></li>
                                             <li class='left_item'>서울</span><span
                                                 class='right_item'></span></li>
+                                                
                                         </ul>
                                     </td>
                                 </tr>
@@ -156,12 +159,12 @@ $(document).ready(function(){
                             </tbody>
                         </table>
                         <div class=''>
-                            <input type='button' class='go_list' value='예약가기'>
+                            <input type='button' class='go_list' value='사찰찾기'>
                         </div>
                 </div>
                 
                 <div class='wrap_reservation_list'>
-                    <div class=''>
+                    <div class=''> <p><a2>총 <strong>${list_size}</strong> 개의 프로그램이 검색되었습니다.</a2><p>
                     <c:forEach var='programlist' items='${list}' varStatus='status'>
                         <div class='reservation_list' programno='${programlist.programno}'>
                             <div class='list_left'>
@@ -191,7 +194,7 @@ $(document).ready(function(){
         
         
         <div class="footer">
-            <%@ include file="../guide/footer.jsp" %>
+            <%@ include file="../header_footer/footer.jsp" %>
         </div>
     </div>
 

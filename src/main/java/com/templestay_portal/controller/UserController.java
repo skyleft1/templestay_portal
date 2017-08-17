@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,32 +25,32 @@ import com.templestay_portal.service.IServiceUser;
 
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
     
     @Autowired
     @Qualifier("serviceuser")
     IServiceUser srv;
-    
-    
-    /*
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-    
-    @RequestMapping(value = "/user/user_login", method = RequestMethod.GET)
-    public String login(Model model
-            , HttpSession session
-            ) {
-        logger.info("user_login");
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
+	@RequestMapping(value = "/user_login", method = RequestMethod.GET)
+	public String login(Model model
+	        , HttpSession session
+	        ) {
+		logger.info("user_login");
 
-        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+		ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
         if(user != null){
-            return "redirect:/index";
-        }else{
-            return "user/user_login";
-            
-        }
-    }
-    
-    @RequestMapping(value = "/user/user_login", method = RequestMethod.POST)
+		    return "redirect:/index";
+		}else{
+		    // URL을 직접 치고들어오는 상황 회피하자
+		    return "user/user_login";
+		    
+		}
+	}
+	
+    @RequestMapping(value = "/user_login", method = RequestMethod.POST)
     @ResponseBody
     public Map<String , Object> login(Model model
             , @ModelAttribute ModelUser user
@@ -76,7 +77,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = "/user/user_logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_logout", method = RequestMethod.GET)
     public String logout(Model model
             , HttpSession session
             ) {
@@ -84,11 +85,11 @@ public class UserController {
         
         session.removeAttribute(WebConstants.SESSION_NAME);
         
-        return "redirect:/";
+        return "redirect:/index";
     }
     
     
-    @RequestMapping(value = "/user/user_join", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_join", method = RequestMethod.GET)
     public String join(Locale locale, Model model) {
         logger.info("join:GET");
         
@@ -112,7 +113,7 @@ public class UserController {
     }
     
     // 아이디 체크하는 부분 (user_login의 ajax로 통신)
-    @RequestMapping(value = "/user/user_id_check", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_id_check", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> user_id_check( Model model 
             , @RequestParam(value="userid", defaultValue="") String userid
@@ -136,7 +137,7 @@ public class UserController {
     
     
     // 가입 성공!
-    @RequestMapping(value = "/user/user_join_success", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_join_success", method = RequestMethod.GET)
     public String user_join_success( Model model
             , HttpSession session
             ) {
@@ -147,7 +148,7 @@ public class UserController {
     
     
     // 유저 정보 보기
-    @RequestMapping(value = "/user/user_info", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_info", method = RequestMethod.GET)
     public String user_info( Model model 
             , HttpSession session
             ){
@@ -158,12 +159,12 @@ public class UserController {
 
             return "user/user_info";
         } else{
-            return "redirect:/";
+            return "redirect:/index";
         }
     }
     
     // 유저 정보 수정 
-    @RequestMapping(value = "/user/user_modify", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_modify", method = RequestMethod.GET)
     public String user_modify_GET( Model model 
             , HttpSession session
             ) {
@@ -176,12 +177,12 @@ public class UserController {
 
             return "user/user_modify";
         }else{
-            return "redirect:/";
+            return "redirect:/index";
         }
     }
     
     // 유저 정보 수정 POST
-    @RequestMapping(value = "/user/user_modify", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_modify", method = RequestMethod.POST)
     public String user_modify_POST( Model model
             , @RequestParam(value="userid", defaultValue="") String userid
             , @ModelAttribute ModelUser updateValue
@@ -206,7 +207,7 @@ public class UserController {
     }
     
     // 비밀번호 수정
-    @RequestMapping(value = "/user/user_modify_password", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_modify_password", method = RequestMethod.GET)
     public String user_modify_password_GET( Model model 
             , HttpSession session
             ) {
@@ -221,7 +222,7 @@ public class UserController {
     }
     
     // 비밀번호 수정 POST
-    @RequestMapping(value = "/user/user_modify_password", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_modify_password", method = RequestMethod.POST)
     public String user_modify_password_POST( Model model
             , @RequestParam(value="currentpassword", defaultValue="") String currentpassword
             , @RequestParam(value="newpassword", defaultValue="") String newpassword
@@ -246,7 +247,7 @@ public class UserController {
     }
     
     // 유저비밀번호 변경 성공
-    @RequestMapping(value = "/user/user_modify_password_success", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_modify_password_success", method = RequestMethod.GET)
     public String user_modify_password_success( Model model
             , HttpSession session
             ) {
@@ -257,7 +258,7 @@ public class UserController {
     
     
     // 회원 탈퇴
-    @RequestMapping(value = "/user/user_delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_delete", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> user_delete( Model model
             , HttpSession session) {
@@ -288,7 +289,7 @@ public class UserController {
 
     
     // 회원탈퇴 변경 성공
-    @RequestMapping(value = "/user/user_delete_success", method = RequestMethod.GET)
+    @RequestMapping(value = "/user_delete_success", method = RequestMethod.GET)
     public String user_delete_success( Model model
             , HttpSession session
             ) {
@@ -296,6 +297,4 @@ public class UserController {
         
         return "user/user_delete_success";
     }
-    
-    */
 }
