@@ -26,8 +26,8 @@ public class DaoReservation implements IDaoReservation {
     }
     
     @Override
-    public List<ModelReservation> getReservationList(ModelReservation reservation) {
-        return session.selectList("mapper.mapperreservation.getReservationList", reservation );
+    public List<ModelReservation> getReservationList(String userid) {
+        return session.selectList("mapper.mapperreservation.getReservationList", userid );
     }
     
     @Override

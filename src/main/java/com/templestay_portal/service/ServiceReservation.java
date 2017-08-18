@@ -29,10 +29,10 @@ public class ServiceReservation implements IServiceReservation {
     
     @Override
     public List<ModelReservation> getReservationList(
-            ModelReservation reservation) {
+            String userid) {
         List<ModelReservation> result = null;
         try {
-            result = dao.getReservationList(reservation);
+            result = dao.getReservationList(userid);
         } catch (Exception e) {
             e.getMessage();
         }

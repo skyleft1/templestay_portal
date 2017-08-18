@@ -13,8 +13,8 @@
     display: inline-block;
     text-align : center;
     width: 1100px;
-    height: 500px;
-    margin: 80px auto;
+    height: 620px;
+    margin: 100px auto;
     
 }
 form{
@@ -43,6 +43,12 @@ form > div{
 .left > div{
     padding: 20px 0;
 }
+
+.left span{
+    margin: 10px 0;
+}
+
+
 .left_2{
     border-top: 1px solid #CCCCCC;
     border-bottom: 1px solid #CCCCCC;
@@ -52,7 +58,7 @@ form > div{
     width: 205px;
 }
 .left_2 > div:nth-child(3) input[type='text']{
-    height: 26px;
+    height: 29px;
     width: 55px;
 
 

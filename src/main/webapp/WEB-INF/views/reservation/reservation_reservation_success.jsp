@@ -9,7 +9,7 @@
 <title></title>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/reservation_reservation.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/reservation_reservation_success.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
@@ -42,7 +42,9 @@ $(document).ready(function(){
         <div class="wrap_reservation_reservation_success">
             <div class="">
                 <div class=''>
-                    예약이 완료되었습니다. 
+                    예약이 완료되었습니다
+                    <br> 
+                    <p><a href= '/user/user_confirm_reservation_list' >예약확인 페이지로 가기</a></p>
                 </div>
             </div>
         </div>

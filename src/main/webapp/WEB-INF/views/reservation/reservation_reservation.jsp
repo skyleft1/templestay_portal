@@ -41,27 +41,25 @@ $(document).ready(function(){
             $('.select_num_show').val(select_num);
         }
         
-        
-
     });
-	 
-	 $('.go_num').click(function(e){
-	 var num = $('.select_num_show').val();
-     $('.fee_num').text(num);
-	 });
-	/*  
-	$('.select_num_show').val().change(function(e){
-		console.log("바뀜")
-    var num = $('.select_num_show').val();
-    $('.fee_num').text(num);
-	});	 
-	 */
-	/* 
-	$('#select_num').change(function(e){
-	$('.select_num_show').text(select_num);
-	console.log(select_num);
-	});
-	 */
+	    
+	var fixedprice = 0;
+    $('.go_num').click(function(e){
+        var num = $('.select_num_show').val();
+        $('.fee_num').text(num);
+        fixedprice = num*${program1.programprice}
+        $('.fee_all').text(fixedprice);
+    });
+    
+    // 결제 진행을 위한 submit
+    $('.complete_reservation').click(function(e){
+    	// date 형식으로 형변환 후 submit
+        var myDate = new Date($('.calander').val());
+    	$('.reservation_submit input[name="checkdate"]').val(myDate);
+    	$('.reservation_submit input[name="number"]').val( $('.fee_num').text());
+    	$('.reservation_submit input[name="fixedprice"]').val(fixedprice);
+    	$('.reservation_submit').submit();
+    });
 });
 
 </script>
@@ -79,7 +77,12 @@ $(document).ready(function(){
 
         <div class="wrap_reservation_reservation">
             <div class="">
-            <form>
+            <form class='reservation_submit' method='post'  action ='/reservation/reservation_reservation_success'>
+                <input type='hidden' name='programno' value='${program1.programno}'>
+                <input type='hidden' name='checkdate' value="">
+                <input type='hidden' name='number' value="">
+                <input type='hidden' name='fixedprice' value="">
+                
                 <div class='left'>
                     <div class='left_1'>
                         <div class=''><name>${temple1.templecd}</name></div>
@@ -87,7 +90,7 @@ $(document).ready(function(){
                     </div>
                     <div class='left_2'>
                         <div class=''><span>테마</span>[${program1.programtype}]</div>
-                        <div class=''><span>예약일</span><input class='calander' type='text' name='' value='${reserve_date}'>
+                        <div class=''><span>예약일</span><input class='calander' type='text' value='${reserve_date}'>
 
                         </div>
                         <div class=''><span>인원</span>
@@ -102,7 +105,7 @@ $(document).ready(function(){
                         </div>
                     </div>
                     <div class='left_3'>
-                        <div class=''><span>예약자아이디</span><input type='text' value='${session_user.userid}'></div>
+                        <div class=''><span>예약자아이디</span><input type='text' name='userid' value='${session_user.userid}'></div>
                         <div class=''><span>이름</span><input type='text' value='${ session_user.username}'></div>
                         <div class=''><span>연락처</span><input type='text' value='${session_user.userphone}'></div>
                     </div>
@@ -110,15 +113,15 @@ $(document).ready(function(){
                 <div class='right'> 
                     <div class='fee'>
                         <div class=''><span>요금</span>${program1.programprice} 원</div>
-                        <div class=''><span>인원</span><d class='fee_num'>number </d> 명</div>
-                        <div class=''><span>총 결제금액</span>원</div>
+                        <div class=''><span>인원</span><d class='fee_num' > </d> 명</div>
+                        <div class=''><span>총 결제금액</span><d class='fee_all'>${program1.programprice}</d> 원</div>
                     </div>
                     <div class='payment_type'>
                         <div class='credit'>
-                            <input type='radio' name='payment_type' checked='checked'>신용카드
+                            <input type='radio' checked='checked'>신용카드
                         </div>
                         <div class='without_bankbook'>
-                            <input type='radio' name='payment_type'>무통장입금
+                            <input type='radio' >무통장입금
                             <div>무통장입금 예약대기 시간은 최대 1시간입니다. 참여인원의
                                 제한으로 인해 입금기한 내 입금이 되지 않으면 예약이 자동 취소되며,
                                 먼저 입금이 완료된 고객에게 예약우선권이 있습니다. 긴 대기 예약시간이

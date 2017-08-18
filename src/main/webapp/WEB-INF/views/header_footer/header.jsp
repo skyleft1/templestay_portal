@@ -26,7 +26,7 @@ $(document).ready(function(e){
         window.location.href = "/user/user_info" ;
     });
     $('.go_user_reservation').click(function(e){
-        window.location.href = "/user/user_reservation" ;
+        window.location.href = "/user/user_confirm_reservation_list" ;
     });
 })
 

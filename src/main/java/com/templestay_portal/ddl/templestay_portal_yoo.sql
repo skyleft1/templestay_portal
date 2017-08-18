@@ -62,6 +62,54 @@ VALUES( 'admin', 'admin', '12', 'admin@admin.com', '01012341234' );
 INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
 VALUES( 'yoo1', 'yoo1', '12', 'yoo1@naver.com', '01088888888' );
 
+-- 연습용
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim11', '김일일', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim12', '김일이', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim13', '김일삼', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim14', '김일사', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim15', '김일오', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'kim16', '김일육', '12', 'yoo@naver.com', '01088888888' );
+
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park21', '박이일', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park22', '박이이', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park23', '박이삼', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park24', '박이사', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park25', '박이오', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'park26', '박이육', '12', 'yoo@naver.com', '01088888888' );
+
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin32', '신삼이', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin33', '신삼삼', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin34', '신삼사', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin35', '신삼오', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin36', '신삼육', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin37', '신삼칠', '12', 'yoo@naver.com', '01088888888' );
+INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 
+VALUES( 'shin38', '신삼팔', '12', 'yoo@naver.com', '01088888888' );
+
+
+
+
+
+
+
 
 CREATE TABLE `tb_board_article` (
     `articleno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -498,8 +546,10 @@ CREATE TABLE `tb_reservation` (
     `reservationno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `programno` INT(10) UNSIGNED NOT NULL,
     `userid` VARCHAR(50) NOT NULL,
-    `checkdate` DATETIME NULL DEFAULT NULL,
+    `checkdate` DATE NULL DEFAULT NULL,
+    `fixedprice` INT(11) NULL DEFAULT NULL,
     `number` INT(11) NULL DEFAULT NULL,
+    
     PRIMARY KEY (`reservationno`),
     INDEX `FK_tb_reservation_tb_user` (`userid`),
     INDEX `FK_tb_reservation_tb_temple_program` (`programno`),

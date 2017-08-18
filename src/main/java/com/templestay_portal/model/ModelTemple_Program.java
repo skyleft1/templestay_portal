@@ -26,6 +26,7 @@ public class ModelTemple_Program {
     private String templeaddr_road;
     private String templeaddr_jibun;
     private String templephone;
+    
     public ModelTemple_Program() {
         super();
     }

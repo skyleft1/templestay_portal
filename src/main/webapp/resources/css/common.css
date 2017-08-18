@@ -41,6 +41,7 @@ input[type='submit']
     color: white;
     margin: 15px;
     padding: 10px;
+    cursor: pointer !important;
 }
 
 a1{
@@ -139,14 +140,15 @@ addr{
 
 .footer_menu1{
     color: #b9b9b9;
-    font-size: 16px;
-    padding-top: 30px;
+    font-size: 17px;
+    padding-top: 40px;
 }
 
 .footer_menu2{
     color: #818181;
-    font-size: 13px;
-    padding-bottom: 30px;
+    font-size: 14px;
+    padding-bottom: 40px;
+    line-height: 24px;
 }
 
 

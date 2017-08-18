@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.templestay_portal.commons.WebConstants;
+import com.templestay_portal.model.ModelReservation;
 import com.templestay_portal.model.ModelTemple;
 import com.templestay_portal.model.ModelTemple_Program;
 import com.templestay_portal.model.ModelUser;
@@ -43,6 +44,9 @@ public class ReservationController {
     
     @Autowired
     IServiceTempleProgram srvtemplerogram;
+    
+    @Autowired
+    IServiceReservation srvreservation;
 
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 	
@@ -165,11 +169,21 @@ public class ReservationController {
         return "reservation/reservation_reservation";
     }
     
-    @RequestMapping(value = "/reservation_reservation_success", method = RequestMethod.GET)
-    public String reservation_reservation_success(Model model,
-            HttpSession session) {
+    @RequestMapping(value = "/reservation_reservation_success", method = RequestMethod.POST)
+    public String reservation_reservation_success(Model model
+            , @ModelAttribute ModelReservation reservation 
+            , HttpSession session
+            ) {
         logger.info("reservation_reservation_success");
         
-        return "reservation/reservation_reservation_success";
+        int result = srvreservation.insertReservation(reservation); 
+        
+        if (result == 1){
+            return "reservation/reservation_reservation_success";
+        }
+        else{
+            return "redirect:/reservation/reservation_reservation";            
+        }
+        
     }
 }

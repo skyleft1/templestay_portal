@@ -1,6 +1,7 @@
 package com.templestay_portal.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -20,7 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.templestay_portal.commons.WebConstants;
+import com.templestay_portal.model.ModelReservation;
+import com.templestay_portal.model.ModelTemple;
 import com.templestay_portal.model.ModelUser;
+import com.templestay_portal.service.IServiceReservation;
+import com.templestay_portal.service.IServiceTemple;
+import com.templestay_portal.service.IServiceTempleProgram;
 import com.templestay_portal.service.IServiceUser;
 
 
@@ -31,6 +37,12 @@ public class UserController {
     @Autowired
     @Qualifier("serviceuser")
     IServiceUser srv;
+    @Autowired
+    IServiceTemple srvtemple;
+    @Autowired
+    IServiceTempleProgram srvtempleprogram;
+    @Autowired
+    IServiceReservation srvreservation;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -297,4 +309,40 @@ public class UserController {
         
         return "user/user_delete_success";
     }
+    
+    
+    @RequestMapping(value = "/user_confirm_reservation_list", method = RequestMethod.GET)
+    public String user_confirm_reservation_list( Model model
+            , HttpSession session
+            ) {
+        logger.info("user_confirm_reservation_list");
+        
+        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        List<ModelReservation> list = srvreservation.getReservationList(user.getUserid());
+        
+        model.addAttribute("list", list);
+        
+        return "user/user_confirm_reservation_list";
+    }
+    
+    @RequestMapping(value = "/user_confirm_reservation_one", method = RequestMethod.GET)
+    public String user_confirm_reservation_one( Model model
+            , @ModelAttribute ModelReservation reservation
+            , HttpSession session
+            ) {
+        logger.info("user_confirm_reservation_one");
+        
+        ModelReservation reservation1 = srvreservation.getReservation(reservation);
+        
+        model.addAttribute("reservation1", reservation1);
+        
+        // templecd를 통해 temple의 주소와 전화번호를 가져옴
+        ModelTemple temple = new ModelTemple(); 
+        temple.setTemplecd(reservation1.getTemplecd());
+        ModelTemple temple1 = srvtemple.getTempleOne(temple); 
+        model.addAttribute("temple1", temple1);
+        
+        return "user/user_confirm_reservation_one";
+    }
 }
+
