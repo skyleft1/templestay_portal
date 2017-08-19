@@ -88,10 +88,11 @@ public class ReservationController {
 	        }
 		}
 		else {
-		      // 테마로 찾기
+		      // 주소 없이 테마만
 	        if(thema.hashCode() != 0){
 	            templeprogram.setProgramtype(thema);
 	        }
+            // 주소 없이 날짜만
             if(reserve_date.hashCode() != 0){
                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date checkdate = transFormat.parse(reserve_date);
@@ -100,7 +101,6 @@ public class ReservationController {
             list = srvtemplerogram.getTempleProgramList(templeprogram);
 		}
 
-		
 		model.addAttribute("list_size", list.size());
 		model.addAttribute("list", list);
 		
