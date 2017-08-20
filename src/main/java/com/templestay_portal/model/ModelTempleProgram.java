@@ -7,7 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import android.graphics.drawable.Drawable;
 
-public class ModelTemple_Program {
+public class ModelTempleProgram {
     
     private String templecd;
     private Integer programno;
@@ -34,7 +34,7 @@ public class ModelTemple_Program {
     private String  imageBase64 ;
     private CommonsMultipartFile image  ;
     
-    public ModelTemple_Program() {
+    public ModelTempleProgram() {
         super();
     }
 
@@ -169,7 +169,7 @@ public class ModelTemple_Program {
 
     @Override
     public String toString() {
-        return "ModelTemple_Program [templecd=" + templecd + ", programno="
+        return "ModelTempleProgram [templecd=" + templecd + ", programno="
                 + programno + ", programtype=" + programtype + ", programname="
                 + programname + ", programdetail=" + programdetail
                 + ", programprice=" + programprice + ", programimage="

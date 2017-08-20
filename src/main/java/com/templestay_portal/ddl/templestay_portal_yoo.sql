@@ -309,11 +309,11 @@ ENGINE=InnoDB
 
 CREATE TABLE TB_Upload_Image (
     `uploadImageNo` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `fileName` VARCHAR(50) NOT NULL,
-    `fileSize` INT(10) UNSIGNED NOT NULL,
-    `contentType` VARCHAR(30) NOT NULL,
-    `imageBytes` LONGBLOB NULL,
-    `imageBase64` LONGTEXT NULL,
+    `fileName` VARCHAR(50) NULL DEFAULT NULL,
+    `fileSize` INT(10) UNSIGNED NULL DEFAULT NULL,
+    `contentType` VARCHAR(30) NULL DEFAULT NULL,
+    `imageBytes` LONGBLOB NULL DEFAULT NULL,
+    `imageBase64` LONGTEXT NULL DEFAULT NULL,
     `programno` INT(10) UNSIGNED NULL DEFAULT NULL,
     PRIMARY KEY (`uploadImageNo`),
     INDEX `FK_tb_upload_image_tb_temple_program` (`programno`),
@@ -324,13 +324,6 @@ AUTO_INCREMENT=1
 DEFAULT CHARACTER SET utf8 
 COLLATE utf8_general_ci
 ;
-
-
-
-
-
-
-
 
 
 

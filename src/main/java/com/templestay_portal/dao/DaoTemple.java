@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.templestay_portal.model.ModelTemple;
-import com.templestay_portal.model.ModelTemple_Program;
 
 @Repository("daotemple")
 public class DaoTemple implements IDaoTemple {

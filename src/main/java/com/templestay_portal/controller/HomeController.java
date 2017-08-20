@@ -6,17 +6,24 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import com.templestay_portal.model.ModelTempleProgram;
+import com.templestay_portal.model.ModelUpload;
+import com.templestay_portal.service.IServiceTemple;
+import com.templestay_portal.service.IServiceTempleProgram;
+import com.templestay_portal.service.IServiceUpload;
+
 @Controller
 public class HomeController {
 	
+    @Autowired
+    IServiceTempleProgram srvprogram; 
+    
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -29,7 +36,35 @@ public class HomeController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("index");
+  
+        ModelTempleProgram program = new ModelTempleProgram(); 
+        program.setProgramno(27);
+        
+        ModelTempleProgram program1 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program1", program1);
+        
+        program.setProgramno(27);
+        ModelTempleProgram program2 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program2", program2);
+        
+        program.setProgramno(28);
+        ModelTempleProgram program3 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program3", program3);
+        
+        program.setProgramno(28);
+        ModelTempleProgram program4 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program4", program4);
+        
+        program.setProgramno(29);
+        ModelTempleProgram program5 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program5", program5);
+        
+        program.setProgramno(29);
+        ModelTempleProgram program6 = srvprogram.getTempleProgramOne(program);
+        model.addAttribute("program6", program6);
+        
         
         return "index"; 
     }
 }
+ 

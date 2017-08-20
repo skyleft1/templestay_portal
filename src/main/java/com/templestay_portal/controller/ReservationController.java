@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.templestay_portal.commons.WebConstants;
 import com.templestay_portal.model.ModelReservation;
 import com.templestay_portal.model.ModelTemple;
-import com.templestay_portal.model.ModelTemple_Program;
+import com.templestay_portal.model.ModelTempleProgram;
 import com.templestay_portal.model.ModelUpload;
 import com.templestay_portal.model.ModelUser;
 import com.templestay_portal.service.IServiceReservation;
@@ -64,8 +64,8 @@ public class ReservationController {
 		logger.info("reservation_list");
 
 		ModelTemple temple = new ModelTemple();
-		ModelTemple_Program templeprogram = new ModelTemple_Program();
-		List<ModelTemple_Program> list = new ArrayList<ModelTemple_Program>();
+		ModelTempleProgram templeprogram = new ModelTempleProgram();
+		List<ModelTempleProgram> list = new ArrayList<ModelTempleProgram>();
 		
 		// location으로 찾기: 주소를 가져와 getTempleOne을 호출함
 		if(location.hashCode() != 0){
@@ -124,9 +124,9 @@ public class ReservationController {
         logger.info("reservation_view");
         
         // 프로그램 값들 내보내기 
-        ModelTemple_Program program = new ModelTemple_Program();
+        ModelTempleProgram program = new ModelTempleProgram();
         program.setProgramno(programno);
-        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        ModelTempleProgram program1 = srvtemplerogram.getTempleProgramOne(program);
         
         model.addAttribute("program1", program1);
 
@@ -157,9 +157,9 @@ public class ReservationController {
         
         
         // 프로그램 값들 내보내기
-        ModelTemple_Program program = new ModelTemple_Program();
+        ModelTempleProgram program = new ModelTempleProgram();
         program.setProgramno(programno);
-        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        ModelTempleProgram program1 = srvtemplerogram.getTempleProgramOne(program);
         
         model.addAttribute("program1", program1);
 
