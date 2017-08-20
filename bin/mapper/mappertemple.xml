@@ -88,11 +88,13 @@
     </delete>
     
     
-    <!--  left 조인을 이용해서 부모인 temple의 값을 받아옴 -->
+    <!--  1 left 조인을 이용해서 부모인 temple의 값을 받아옴 -->
+    <!--  2 left 조인을 이용해서 upload 이미지를 받아옴 -->
     <!--  between 이용해서 가능날짜별로 조회가능하게 함 --> 
     <select id="getTempleProgramList" parameterType="ModelTemple_Program" resultType="ModelTemple_Program" >
         SELECT * 
           FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
+          left join tb_upload_image U on C.programno = U.programno
           WHERE 1 = 1
           <if test="templecd != null and templecd != ''" >
           AND C.templecd  = #{templecd}
@@ -109,7 +111,8 @@
           <if test="programprice != null and programprice != ''" >
           AND C.programprice  = #{programprice}
           </if>
-        ORDER BY programno
+            group by programname
+
     </select>
       
  </mapper>

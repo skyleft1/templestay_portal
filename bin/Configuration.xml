@@ -21,6 +21,7 @@
         <mapper resource="mapper/mapperreservation.xml" />
         <mapper resource="mapper/mapperuser.xml" />
         <mapper resource="mapper/mappertemple.xml" />
+        <mapper resource="mapper/mapperUpload.xml" />
 </mappers>
 
 </configuration>

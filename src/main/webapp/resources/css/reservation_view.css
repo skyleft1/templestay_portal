@@ -19,11 +19,11 @@
 }
 
 .wrap_reservation_view > div > div{
-    margin: 30px;
+    margin: 20px;
     border-bottom: 1px solid #adadad;
 }
 .wrap_reservation_view > div > div > div{
-    margin: 30px;
+    margin: 20px;
 }
 
 .wrap_reservation_view > div > div >div:nth-child(1){
@@ -36,7 +36,9 @@
     display: inline-block;
 }
 
-
+.go_reservation{
+    text-align: center;
+}
 
 
 

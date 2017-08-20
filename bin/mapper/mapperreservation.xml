@@ -54,16 +54,9 @@
     </update>
     
     
-    <!-- 예약번호로 먼저 찾고, 유저아이디만 입력시 해당유저의 예약 전체 삭제할수있음 -->
-    <delete id="deleteReservation" parameterType="ModelReservation">
+    <delete id="deleteReservation" parameterType="int">
         DELETE FROM TB_Reservation
-         WHERE 1 = 1
-         <if test="reservationno != null and reservationno != ''" >
-          AND reservationno  = #{reservationno}
-          </if> 
-          <if test="userid != null and userid != ''" >
-          AND userid  = #{userid}
-          </if>
+         WHERE reservationno  = #{reservationno}
     </delete>
     
 

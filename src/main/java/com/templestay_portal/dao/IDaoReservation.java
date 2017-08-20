@@ -11,6 +11,6 @@ public interface IDaoReservation {
     
     int insertReservation(ModelReservation reservation);
     int updateReservation(ModelReservation updateValue, ModelReservation searchValue);
-    int deleteReservation(ModelReservation reservation);
+    int deleteReservation(int reservationno);
     
 }

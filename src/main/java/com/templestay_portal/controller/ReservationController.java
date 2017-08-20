@@ -29,10 +29,12 @@ import com.templestay_portal.commons.WebConstants;
 import com.templestay_portal.model.ModelReservation;
 import com.templestay_portal.model.ModelTemple;
 import com.templestay_portal.model.ModelTemple_Program;
+import com.templestay_portal.model.ModelUpload;
 import com.templestay_portal.model.ModelUser;
 import com.templestay_portal.service.IServiceReservation;
 import com.templestay_portal.service.IServiceTemple;
 import com.templestay_portal.service.IServiceTempleProgram;
+import com.templestay_portal.service.IServiceUpload;
 import com.templestay_portal.service.IServiceUser;
 
 @Controller
@@ -47,6 +49,8 @@ public class ReservationController {
     
     @Autowired
     IServiceReservation srvreservation;
+    @Autowired
+    IServiceUpload srvupload;
 
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 	
@@ -119,7 +123,7 @@ public class ReservationController {
         
         logger.info("reservation_view");
         
-        // 프로그램 값들 내보내기
+        // 프로그램 값들 내보내기 
         ModelTemple_Program program = new ModelTemple_Program();
         program.setProgramno(programno);
         ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
@@ -130,8 +134,11 @@ public class ReservationController {
         // program1의 templecd값을 가져와 temple에 set 해줌
         temple.setTemplecd(program1.getTemplecd());
         ModelTemple temple1 = srvtemple.getTempleOne(temple);
-        
         model.addAttribute("temple1", temple1);
+        
+        // 이미지 보여주기
+        List<ModelUpload> list = srvupload.getImageList(programno);
+        model.addAttribute("list", list);
         
         // 날짜 유지
         model.addAttribute("reserve_date", reserve_date);
@@ -183,6 +190,24 @@ public class ReservationController {
         }
         else{
             return "redirect:/reservation/reservation_reservation";            
+        }
+        
+    }
+    
+    @RequestMapping(value = "/reservation_reservation_delete", method = RequestMethod.GET)
+    public String reservation_reservation_delete(Model model
+            , @RequestParam(value="reservationno", defaultValue="") Integer reservationno
+            , HttpSession session
+            ) {
+        logger.info("reservation_reservation_delete");
+        
+        int result = srvreservation.deleteReservation(reservationno); 
+        
+        if (result == 1){
+            return "reservation/reservation_reservation_delete_success";
+        }
+        else{
+            return "redirect:/user/user_confirm_reservation_one";           
         }
         
     }

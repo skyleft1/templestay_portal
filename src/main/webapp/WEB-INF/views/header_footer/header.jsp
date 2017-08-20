@@ -68,7 +68,7 @@ $(document).ready(function(e){
                     </c:otherwise>
                 </c:choose>
                 
-                
+                <a href='../upload/upload_image'>upload_image.jsp</a>
                 </div>
             </div>
         </div>

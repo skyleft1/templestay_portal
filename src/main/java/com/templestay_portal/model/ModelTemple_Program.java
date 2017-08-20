@@ -3,6 +3,8 @@ package com.templestay_portal.model;
 import java.util.Arrays;
 import java.util.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import android.graphics.drawable.Drawable;
 
 public class ModelTemple_Program {
@@ -27,34 +29,15 @@ public class ModelTemple_Program {
     private String templeaddr_jibun;
     private String templephone;
     
+    private String  contentType    ;
+    private byte[]  imageBytes  ;
+    private String  imageBase64 ;
+    private CommonsMultipartFile image  ;
+    
     public ModelTemple_Program() {
         super();
     }
-    public ModelTemple_Program(String templecd, Integer programno,
-            String programtype, String programname, String programdetail,
-            Integer programprice, byte[] programimage, Integer maxperson,
-            Integer totalperson, Date availabledate_start,
-            Date availabledate_end, Date checkdate, String templeaddr_postcode,
-            String templeaddr_road, String templeaddr_jibun,
-            String templephone) {
-        super();
-        this.templecd = templecd;
-        this.programno = programno;
-        this.programtype = programtype;
-        this.programname = programname;
-        this.programdetail = programdetail;
-        this.programprice = programprice;
-        this.programimage = programimage;
-        this.maxperson = maxperson;
-        this.totalperson = totalperson;
-        this.availabledate_start = availabledate_start;
-        this.availabledate_end = availabledate_end;
-        this.checkdate = checkdate;
-        this.templeaddr_postcode = templeaddr_postcode;
-        this.templeaddr_road = templeaddr_road;
-        this.templeaddr_jibun = templeaddr_jibun;
-        this.templephone = templephone;
-    }
+
     public String getTemplecd() {
         return templecd;
     }
@@ -151,6 +134,39 @@ public class ModelTemple_Program {
     public void setTemplephone(String templephone) {
         this.templephone = templephone;
     }
+    
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public byte[] getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(byte[] imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
+    public String getImageBase64() {
+        return imageBase64;
+    }
+
+    public void setImageBase64(String imageBase64) {
+        this.imageBase64 = imageBase64;
+    }
+
+    public CommonsMultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(CommonsMultipartFile image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "ModelTemple_Program [templecd=" + templecd + ", programno="
@@ -163,7 +179,11 @@ public class ModelTemple_Program {
                 + availabledate_end + ", checkdate=" + checkdate
                 + ", templeaddr_postcode=" + templeaddr_postcode
                 + ", templeaddr_road=" + templeaddr_road + ", templeaddr_jibun="
-                + templeaddr_jibun + ", templephone=" + templephone + "]";
+                + templeaddr_jibun + ", templephone=" + templephone
+                + ", contentType=" + contentType + ", imageBytes="
+                + Arrays.toString(imageBytes) + ", imageBase64=" + imageBase64
+                + ", image=" + image + "]";
     }
+
     
 }

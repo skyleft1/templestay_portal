@@ -66,20 +66,32 @@ $(document).ready(function(){
                 </div>
                 
                 <div class='program_info'>
+                
                     <div class=''>${program1.programname}</div>
                     <div class=''>[${program1.programtype}]</div>
                     <div class=''>${program1.programdetail}</div>
+                
+                
                     <div class=''>
-                        
                         <div class="big_img" >
+                        <c:forEach var='list' items='${list}' varStatus='status' >
+                            <img class="big_img_silde"  src="data:${list.contentType};base64,${list.imageBase64}" />
+<!-- 
                           <img class="big_img_silde" src="/resources/img/ad26.jpg" >
                           <img class="big_img_silde" src="/resources/img/ad25.jpg" >
                           <img class="big_img_silde" src="/resources/img/ad24.jpg" >
+ -->                          
+                          </c:forEach>
                         
                           <div class="small_img">
+                          <c:forEach var='list' items='${list}' varStatus='status' >
+                            <img class="small_img_click" src="data:${list.contentType};base64,${list.imageBase64}" />
+                          <!-- 
                               <img class="small_img_click" src="/resources/img/ad26.jpg" >
                               <img class="small_img_click" src="/resources/img/ad25.jpg" >
                               <img class="small_img_click" src="/resources/img/ad24.jpg" >
+                               -->
+                            </c:forEach>
                           </div>
                         </div>
                         
