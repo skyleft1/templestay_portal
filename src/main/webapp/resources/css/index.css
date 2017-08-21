@@ -6,7 +6,7 @@
 }
 
 .main_img{
-    background: url('../img/main01.jpg');
+    background: url('../img/main02.jpg');
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -70,6 +70,12 @@
 
 .location input{
     
+}
+
+/* 선택된 value에 강조효과 */
+.input_value{
+    color: black !important;
+    font-weight: bold ;
 }
     
 

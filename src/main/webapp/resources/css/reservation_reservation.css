@@ -53,21 +53,24 @@ form > div{
     border-top: 1px solid #CCCCCC;
     border-bottom: 1px solid #CCCCCC;
 }
+
 .left_2 > div:nth-child(2) input[type='text']{
     height: 30px;
     width: 205px;
 }
+
 .left_2 > div:nth-child(3) input[type='text']{
     height: 29px;
     width: 55px;
 
-
 }
+
 .left_2 > div:nth-child(3) SELECT{
     height: 35px;
     width: 60px;
     margin-left: -6px;
 }
+
 .left_2 input[type='button']{
     width: 60px;
     margin: 0;
@@ -137,4 +140,7 @@ form > div{
     margin: 15px;
     padding: 10px;
     background-color: #ff6363;
+    cursor: pointer !important;
 }
+
+

@@ -49,10 +49,12 @@ $(document).ready(function(e){
     $('.location li').click(function(e){
         var val = $(this).children('span').text();
         $('.location input').val(val);
+        $('.location input').addClass('input_value');
     });
     $('.thema li').click(function(e){
         var val = $(this).children('span').text();
         $('.thema input').val(val);
+        $('.thema input').addClass('input_value');
     });
     
     
@@ -140,51 +142,63 @@ $(document).ready(function(e){
                 </div>
                 <div class="advertisement">
                     <div class="">
-                        <div class="ad1">우리는 모두 죄인이야!</div>
-                        <div class="ad2"><img src="/resources/img/ad02.jpg" alt="광고" /></div>
+                        <div class="ad1">${program1.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program1.contentType};base64,${program1.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>프리즌브레이크 사찰</strong></div>
-                            <div>죄인 단체 이송 체험!</div>
+                            <div><strong>${program1.templecd}</strong></div>
+                            <div>스님의 북치기 경청!</div>
                         </div>
                     </div>
                     <div class="">
-                        <div class="ad1">멋있는! 올빼미! 많~고 많지만~</div>
-                        <div class="ad2"><img src="/resources/img/ad22.jpg" alt="광고" /></div>
+                        <div class="ad1">${program2.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program2.contentType};base64,${program2.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>유격 사찰</strong></div>
-                            <div>즐거운 피티 시간~ 다음엔 피티 8번?</div>
+                            <div><strong>${program2.templecd}</strong></div>
+                            <div>외국인도 오세요!</div>
                         </div>
                     </div>
                     <div class="">
-                        <div class="ad1">즐거운 낮잠!</div>
-                        <div class="ad2"><img src="/resources/img/ad23.jpg" alt="광고" /></div>
+                        <div class="ad1">${program3.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program3.contentType};base64,${program3.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>날로 사찰</strong></div>
-                            <div>비싼돈 내고 하루종일 숲속에서 잠만잘 수도 있지!</div>
+                            <div><strong>${program3.templecd}</strong></div>
+                            <div>옻단청 체험~</div>
                         </div>
                     </div>
                     <div class="">
-                        <div class="ad1">진도 못따라 갈 경우 보충수업도 착실히!</div>
-                        <div class="ad2"><img src="/resources/img/ad24.jpg" alt="광고" /></div>
+                        <div class="ad1">${program4.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program4.contentType};base64,${program4.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>스파르타 사찰</strong></div>
-                            <div>친구들 다 가고 혼자 절하는중!</div>
+                            <div><strong>${program4.templecd}</strong></div>
+                            <div>신나는 캠프파이어!</div>
                         </div>
                     </div>
                     <div class="">
-                        <div class="ad1">언능 찍어 ㅋ 꼬리뼈 아파 </div>
-                        <div class="ad2"><img src="/resources/img/ad25.jpg" alt="광고" /></div>
+                        <div class="ad1">${program5.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program5.contentType};base64,${program5.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>인생샷 사찰</strong></div>
-                            <div>인생샷도 찍을 수 있어요! (건당 추가비용 청구)</div>
+                            <div><strong>${program5.templecd}</strong></div>
+                            <div>공기좋고~ 자연치유되는 곳으로 오세요~</div>
                         </div>
                     </div>
                     <div class="">
-                        <div class="ad1">저어언하~!</div>
-                        <div class="ad2"><img src="/resources/img/ad26.jpg" alt="광고" /></div>
+                        <div class="ad1">${program6.programname}</div>
+                        <div class="ad2">
+                            <img class="" src="data:${program6.contentType};base64,${program6.imageBase64}" />
+                        </div>
                         <div class="ad3">
-                            <div><strong>넙죽 사찰</strong></div>
-                            <div>주지스님 오시는중!</div>
+                            <div><strong>${program6.templecd}</strong></div>
+                            <div>몸도 마음도 편안해져요!</div>
                         </div>
                     </div>
                 </div>

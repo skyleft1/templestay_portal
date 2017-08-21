@@ -168,4 +168,9 @@ td input{
 }
 
 
+/* go_view 와 go_reservation에 커서 추가 */
+.go_view,
+.go_reservation{
+    cursor: pointer !important;
+}
 

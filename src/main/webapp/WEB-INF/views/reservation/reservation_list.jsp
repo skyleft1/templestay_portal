@@ -168,14 +168,19 @@ $(document).ready(function(){
                     <c:forEach var='programlist' items='${list}' varStatus='status'>
                         <div class='reservation_list' programno='${programlist.programno}'>
                             <div class='list_left'>
+ 
+                                <img class="small_img_click" src="data:${programlist.contentType};base64,${programlist.imageBase64}" />
+
+                                <!-- 
                                 <img src='/resources/img/ad24.jpg'/>
+                                 -->
                             </div>
                             <div class='list_mid'>
                                 <div class=''><name>${programlist.templecd}</name><type>[${programlist.programtype}]</<type></div>
                                 <div class=''>${programlist.programname}</div>
                                 <div class=''>${programlist.programdetail}</div>
-                                <div class=''>${programlist.templeaddr_jibun}</div>
-                                <div class=''>${programlist.templephone}</div>
+                                <div class=''>주소 : ${programlist.templeaddr_jibun}</div>
+                                <div class=''>연락처 : ${programlist.templephone}</div>
                             </div>
                             <div class='list_right'>
                                 <div class='go_view' programno='${programlist.programno}'>상세정보</div>

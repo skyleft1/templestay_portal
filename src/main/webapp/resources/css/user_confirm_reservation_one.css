@@ -37,7 +37,9 @@ body{
     text-align: center;
 }
 
-
+table{
+    display: inline-block;
+}
 
 th, td {
 	font-size: 15px;
@@ -60,4 +62,13 @@ td {
  
 .wrap_submit{
 	display: inline-block;
+}
+
+.go_reservation_delete{
+    display: inline-block;
+    text-align: center !important;
+    color: white;
+    margin: 15px;
+    padding: 10px 30px;
+    background-color: #ff6363;
 }

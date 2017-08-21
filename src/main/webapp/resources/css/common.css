@@ -36,11 +36,10 @@ input[type='submit']
     border: 0;
     outline: 0;
     background-color: #ff6363;
-    width: 120px;
     text-align: center;
     color: white;
     margin: 15px;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer !important;
 }
 
@@ -114,7 +113,7 @@ addr{
     font-size: 16px;
     color:black;
     margin: 0;
-    padding: 0;
+    padding: 0 20px
 }
 
 

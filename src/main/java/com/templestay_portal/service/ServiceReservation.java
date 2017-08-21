@@ -63,10 +63,10 @@ public class ServiceReservation implements IServiceReservation {
     }
     
     @Override
-    public int deleteReservation(ModelReservation reservation) {
+    public int deleteReservation(int reservationno) {
         int result = -1;
         try {
-            result = dao.deleteReservation(reservation);
+            result = dao.deleteReservation(reservationno);
         } catch (Exception e) {
             e.getMessage();
         }

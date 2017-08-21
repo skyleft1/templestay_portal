@@ -68,7 +68,6 @@ $(document).ready(function(e){
                     </c:otherwise>
                 </c:choose>
                 
-                
                 </div>
             </div>
         </div>

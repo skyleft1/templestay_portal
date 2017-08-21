@@ -28,11 +28,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.templestay_portal.commons.WebConstants;
 import com.templestay_portal.model.ModelReservation;
 import com.templestay_portal.model.ModelTemple;
-import com.templestay_portal.model.ModelTemple_Program;
+import com.templestay_portal.model.ModelTempleProgram;
+import com.templestay_portal.model.ModelUpload;
 import com.templestay_portal.model.ModelUser;
 import com.templestay_portal.service.IServiceReservation;
 import com.templestay_portal.service.IServiceTemple;
 import com.templestay_portal.service.IServiceTempleProgram;
+import com.templestay_portal.service.IServiceUpload;
 import com.templestay_portal.service.IServiceUser;
 
 @Controller
@@ -47,6 +49,8 @@ public class ReservationController {
     
     @Autowired
     IServiceReservation srvreservation;
+    @Autowired
+    IServiceUpload srvupload;
 
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 	
@@ -60,8 +64,8 @@ public class ReservationController {
 		logger.info("reservation_list");
 
 		ModelTemple temple = new ModelTemple();
-		ModelTemple_Program templeprogram = new ModelTemple_Program();
-		List<ModelTemple_Program> list = new ArrayList<ModelTemple_Program>();
+		ModelTempleProgram templeprogram = new ModelTempleProgram();
+		List<ModelTempleProgram> list = new ArrayList<ModelTempleProgram>();
 		
 		// location으로 찾기: 주소를 가져와 getTempleOne을 호출함
 		if(location.hashCode() != 0){
@@ -88,10 +92,11 @@ public class ReservationController {
 	        }
 		}
 		else {
-		      // 테마로 찾기
+		      // 주소 없이 테마만
 	        if(thema.hashCode() != 0){
 	            templeprogram.setProgramtype(thema);
 	        }
+            // 주소 없이 날짜만
             if(reserve_date.hashCode() != 0){
                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date checkdate = transFormat.parse(reserve_date);
@@ -100,7 +105,6 @@ public class ReservationController {
             list = srvtemplerogram.getTempleProgramList(templeprogram);
 		}
 
-		
 		model.addAttribute("list_size", list.size());
 		model.addAttribute("list", list);
 		
@@ -119,10 +123,10 @@ public class ReservationController {
         
         logger.info("reservation_view");
         
-        // 프로그램 값들 내보내기
-        ModelTemple_Program program = new ModelTemple_Program();
+        // 프로그램 값들 내보내기 
+        ModelTempleProgram program = new ModelTempleProgram();
         program.setProgramno(programno);
-        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        ModelTempleProgram program1 = srvtemplerogram.getTempleProgramOne(program);
         
         model.addAttribute("program1", program1);
 
@@ -130,11 +134,16 @@ public class ReservationController {
         // program1의 templecd값을 가져와 temple에 set 해줌
         temple.setTemplecd(program1.getTemplecd());
         ModelTemple temple1 = srvtemple.getTempleOne(temple);
-        
         model.addAttribute("temple1", temple1);
+        
+        // 이미지 보여주기
+        List<ModelUpload> list = srvupload.getImageList(programno);
+        model.addAttribute("list", list);
         
         // 날짜 유지
         model.addAttribute("reserve_date", reserve_date);
+        
+        // 좌표 쏴주기
         
         return "reservation/reservation_view";
     }
@@ -150,9 +159,9 @@ public class ReservationController {
         
         
         // 프로그램 값들 내보내기
-        ModelTemple_Program program = new ModelTemple_Program();
+        ModelTempleProgram program = new ModelTempleProgram();
         program.setProgramno(programno);
-        ModelTemple_Program program1 = srvtemplerogram.getTempleProgramOne(program);
+        ModelTempleProgram program1 = srvtemplerogram.getTempleProgramOne(program);
         
         model.addAttribute("program1", program1);
 
@@ -183,6 +192,24 @@ public class ReservationController {
         }
         else{
             return "redirect:/reservation/reservation_reservation";            
+        }
+        
+    }
+    
+    @RequestMapping(value = "/reservation_reservation_delete", method = RequestMethod.GET)
+    public String reservation_reservation_delete(Model model
+            , @RequestParam(value="reservationno", defaultValue="") Integer reservationno
+            , HttpSession session
+            ) {
+        logger.info("reservation_reservation_delete");
+        
+        int result = srvreservation.deleteReservation(reservationno); 
+        
+        if (result == 1){
+            return "reservation/reservation_reservation_delete_success";
+        }
+        else{
+            return "redirect:/user/user_confirm_reservation_one";           
         }
         
     }

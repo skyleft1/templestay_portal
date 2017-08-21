@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.templestay_portal.dao.IDaoTempleProgram;
 import com.templestay_portal.model.ModelTemple;
-import com.templestay_portal.model.ModelTemple_Program;
+import com.templestay_portal.model.ModelTempleProgram;
 
 @Service("servicetempleprogram")
 public class ServiceTempleProgram implements IServiceTempleProgram {
@@ -20,18 +20,18 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
     IDaoTempleProgram dao;
     
     @Override
-    public int insertTempleProgramOne(ModelTemple_Program board) {
+    public int insertTempleProgramOne(ModelTempleProgram program) {
         int result = -1;
         try {
-             result = dao.insertTempleProgramOne(board);
+             result = dao.insertTempleProgramOne(program);
         } catch (Exception e) {
             e.getMessage();
         }
         return result;
     }
     @Override
-    public ModelTemple_Program getTempleProgramOne(ModelTemple_Program program) {
-        ModelTemple_Program result = null;
+    public ModelTempleProgram getTempleProgramOne(ModelTempleProgram program) {
+        ModelTempleProgram result = null;
         try {
              result = dao.getTempleProgramOne(program);
         } catch (Exception e) {
@@ -42,7 +42,7 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
     }
     
     @Override
-    public int updateTempleProgram(ModelTemple_Program updatemodel, ModelTemple_Program searchmodel) {
+    public int updateTempleProgram(ModelTempleProgram updatemodel, ModelTempleProgram searchmodel) {
         
         int result = -1;
         try {
@@ -55,10 +55,10 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
     }
     
     @Override
-    public int deleteTempleProgram(ModelTemple_Program board) {
+    public int deleteTempleProgram(ModelTempleProgram program) {
         int result = -1;
         try {
-            result = dao.deleteTempleProgram(board);
+            result = dao.deleteTempleProgram(program);
         } catch (Exception e) {
             e.getMessage();
         }
@@ -67,10 +67,10 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
     }
 
     @Override
-    public List<ModelTemple_Program> getTempleProgramList(ModelTemple_Program temp) {
-        List<ModelTemple_Program> result = null;
+    public List<ModelTempleProgram> getTempleProgramList(ModelTempleProgram program) {
+        List<ModelTempleProgram> result = null;
         try {
-            result = dao.getTempleProgramList(temp);
+            result = dao.getTempleProgramList(program);
         } catch (Exception e) {
             e.getMessage();
         }

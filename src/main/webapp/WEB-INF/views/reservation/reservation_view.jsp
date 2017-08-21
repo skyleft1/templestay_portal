@@ -59,38 +59,53 @@ $(document).ready(function(){
             <div class="">
                 <div class='temple_info'>
                     <div class=''>${temple1.templecd}</div>
-                    <div class=''>${temple1.templephone}</div>
-                    <div class=''>
-                        <div class=''>${temple1.templeaddr_jibun}</div>
-                    </div>
+                    <div class=''>연락처 : ${temple1.templephone}</div>
+                    <div class=''>지번주소 : ${temple1.templeaddr_road}</div>
+                    <div class=''>도로명주소 : ${temple1.templeaddr_jibun}</div>
                 </div>
-                
+                <div class='border'></div>
                 <div class='program_info'>
+                
                     <div class=''>${program1.programname}</div>
                     <div class=''>[${program1.programtype}]</div>
                     <div class=''>${program1.programdetail}</div>
-                    <div class=''>
-                        
+                
+                
+                    <div class='img'>
                         <div class="big_img" >
+                        <c:forEach var='list' items='${list}' varStatus='status' >
+                            <img class="big_img_silde"  src="data:${list.contentType};base64,${list.imageBase64}" />
+<!-- 
                           <img class="big_img_silde" src="/resources/img/ad26.jpg" >
                           <img class="big_img_silde" src="/resources/img/ad25.jpg" >
                           <img class="big_img_silde" src="/resources/img/ad24.jpg" >
+ -->                          
+                          </c:forEach>
                         
                           <div class="small_img">
+                          <c:forEach var='list' items='${list}' varStatus='status' >
+                            <img class="small_img_click" src="data:${list.contentType};base64,${list.imageBase64}" />
+                          <!-- 
                               <img class="small_img_click" src="/resources/img/ad26.jpg" >
                               <img class="small_img_click" src="/resources/img/ad25.jpg" >
                               <img class="small_img_click" src="/resources/img/ad24.jpg" >
+                               -->
+                            </c:forEach>
                           </div>
                         </div>
                         
                     </div>
                 </div>
+                <div class='border'></div>
                 <div class=''>
                     <div class=''>찾아오시는 길</div>
                     <div id='map'></div>
                 </div>
-               
-                <div class='go_reservation' programno='${program1.programno}'>예약하기</div>
+                <div class='border'></div>
+                <div class='wrap_go_reservation'>
+                    <div></div>
+                    <div class='go_reservation' programno='${program1.programno}'>예약하기</div>
+                </div>
             </div>
         </div>
         
@@ -108,11 +123,11 @@ $(document).ready(function(){
 var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 35.789840, lng: 129.331897},
+        center: {lat: ${temple1.lat} , lng: ${temple1.lng}},
         zoom: 15,
         });
         
-        var addLatlng1 = new google.maps.LatLng(35.789840, 129.331897);
+        var addLatlng1 = new google.maps.LatLng( ${temple1.lat}, ${temple1.lng});
         var addMarker1 = new google.maps.Marker ({position: addLatlng1, title: '목적지 입니다.'});
         addMarker1.setMap(map); 
 
