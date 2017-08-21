@@ -127,7 +127,7 @@ INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeadd
 VALUES('전남사', '74501', '전남 강진군 강진읍 서성리 379-14', '전남 강진군 강진읍 서성리 379-14', '85155507050' , 34.631790, 126.757682 );
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone , lat , lng ) 
 VALUES('전북사', '26001', '전북 고창군 고수면 은사리 901-1', '전북 고창군 고수면 은사리 901-1', '71213333060' , 35.378338, 126.709059 );
-INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone , lat , lng  , ) 
+INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone , lat , lng   ) 
 VALUES('부산사', '38001', '부산 강서구 생곡동 1598-1', '부산 강서구 생곡동 1598-1', '28100224522' , 35.132699, 128.878234 );
 INSERT INTO tb_temple (templecd, templeaddr_postcode, templeaddr_road, templeaddr_jibun, templephone , lat , lng  ) 
 VALUES('서울사', '62001', '서울 강남구 도곡동 952-9', '서울 강남구 도곡동 952-9', '60111164211' , 37.485939, 127.034097 );

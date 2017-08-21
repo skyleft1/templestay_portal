@@ -40,7 +40,7 @@ public class TestServiceUpload {
     @Test
     public void test_insertPhoto() {   
         try {
-            for(int programno=1; programno <= 36; programno++){
+            for(int programno=34; programno <= 36; programno++){
                 for(int imgno=1; imgno <= 3; imgno++){            
             
                     File file = new File("src/main/webapp/resources/templestay_img/"+ Integer.toString(programno) +"_"+ Integer.toString(imgno) +".jpg");
