@@ -59,6 +59,7 @@ public class ReservationController {
 	        , @RequestParam(value="location", defaultValue="") String location
 	        , @RequestParam(value="thema", defaultValue="") String thema
 	        , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
+	        , @RequestParam(value="searchword", defaultValue="") String searchword
 	        , HttpSession session
 	        ) throws ParseException {
 		logger.info("reservation_list");
@@ -67,43 +68,17 @@ public class ReservationController {
 		ModelTempleProgram templeprogram = new ModelTempleProgram();
 		List<ModelTempleProgram> list = new ArrayList<ModelTempleProgram>();
 		
-		// location으로 찾기: 주소를 가져와 getTempleOne을 호출함
-		if(location.hashCode() != 0){
-		    temple.setTempleaddr_jibun(location);
-	        List<ModelTemple> temple1 = srvtemple.getTempleList(temple);
-	        
-	        // 같은 주소의 여러 templecd가 있기때문에 list로 받음
-	        for(int i = 0 ; i <temple1.size(); i++ ){
-	            templeprogram.setTemplecd(temple1.get(i).getTemplecd());
-	            
-	            // 테마로 찾기
-	            if(thema.hashCode() != 0){
-	                templeprogram.setProgramtype(thema);
-	            }
-	            
-	            // reserve_date 로 찾기
-	            if(reserve_date.hashCode() != 0){
-	                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-	                Date checkdate = transFormat.parse(reserve_date);
-	                templeprogram.setCheckdate(checkdate);
-	            }
-	            
-	            list.addAll( srvtemplerogram.getTempleProgramList(templeprogram) );
-	        }
+		templeprogram.setTemplecd(searchword);
+		templeprogram.setTempleaddr_jibun(location);
+		templeprogram.setProgramtype(thema);
+		
+ 		if(reserve_date.hashCode() != 0){
+		    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        Date checkdate = transFormat.parse(reserve_date);
+	        templeprogram.setCheckdate(checkdate);
 		}
-		else {
-		      // 주소 없이 테마만
-	        if(thema.hashCode() != 0){
-	            templeprogram.setProgramtype(thema);
-	        }
-            // 주소 없이 날짜만
-            if(reserve_date.hashCode() != 0){
-                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date checkdate = transFormat.parse(reserve_date);
-                templeprogram.setCheckdate(checkdate);
-            }
-            list = srvtemplerogram.getTempleProgramList(templeprogram);
-		}
+		
+		list.addAll( srvtemplerogram.getTempleProgramList(templeprogram) );
 
 		model.addAttribute("list_size", list.size());
 		model.addAttribute("list", list);

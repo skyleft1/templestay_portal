@@ -36,7 +36,6 @@ $(document).ready(function(){
         $('.thema_option_selected').html("<span>"+option+"</span>");
     });
     
-    
     // 상세정보 가기
     $('body').on('click', '.go_view', function(e){
         var reserve_date = $('.calander').val();
@@ -67,13 +66,13 @@ $(document).ready(function(){
         }
     });
     
-    
     // 리스트 보여주기
     $('.go_list').click(function(e){
         var location = $('.location_option_selected').text();
         var thema = $('.thema_option_selected').text();
         var reserve_date = $('.calander').val();
-        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date;
+        var searchword = $('.searchword').val();
+        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
     });
     
     // index에서 날짜가 넘어올경우 유지함
@@ -101,6 +100,12 @@ $(document).ready(function(){
                 <div class='wrap_form'>
                         <table>
                             <tbody>
+                                <tr class='wrap_searchword'    >
+                                    <th>사찰 검색</th>
+                                    <td>
+                                        <input type='text'  class='searchword' placeholder='사찰이름을 입력하세요. 예) 경기사 -> 경기' />  
+                                    </td>
+                                </tr>
                                 <tr class='location_select_tr' >
                                     <!-- 지역명 선택창 -->
                                     <th class='location_select'>지역 선택</th>

@@ -99,7 +99,10 @@
           left join tb_upload_image U on C.programno = U.programno
           WHERE 1 = 1
           <if test="templecd != null and templecd != ''" >
-          AND C.templecd  = #{templecd}
+          AND C.templecd LIKE CONCAT( #{templecd}, '%' )  
+          </if>
+          <if test="templeaddr_jibun != null and templeaddr_jibun != ''" >
+          AND P.templeaddr_jibun LIKE CONCAT( #{templeaddr_jibun}, '%' )
           </if>
           <if test="programtype != null and programtype != ''" >
           AND C.programtype  = #{programtype}
