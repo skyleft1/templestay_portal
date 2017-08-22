@@ -23,29 +23,40 @@
 <script type="text/javascript">
 
 $(document).ready( function(e){
-		
-    $('.login_submit').click(function(e){
+
+	$('.login_submit').click(function(e){
         
         var userid = $('.userid').val();
         var userpassword = $('.userpassword').val();
+
         $.ajax({
             url : '/user/user_login'
-            , data: {'userid' : userid , 'userpassword' : userpassword }        // 사용하는 경우에는 { data1:'test1', data2:'test2' }
-            , type: 'POST'       // get, post
+            , data: {'userid' : userid , 'userpassword' : userpassword 
+                , 'programno' : '${programno}' , 'reserve_date' : '${reserve_date}' } //reserve_date는 값이 없을수도 있기에 ''를 해줌  } 
+            , type: 'POST'      
             , timeout: 30000    // 30초
-            , dataType: 'json'  // text, html, xml, json, jsonp, script
+            , dataType: 'json'  
             , beforeSend : function() {
-                // 통신이 시작되기 전에 이 함수를 타게 된다.
             }
         }).done( function(data, textStatus, xhr ){
             if (data.code === 1){
                 $('.popup_cancel_wrap').show();
                 $('.popup_content').text( data.userid + " 님 환영합니다. ");
                 $('.popup_button_cancel').click(function(e){
-                    $('.popup_cancel_wrap').hide();
-                    window.location.href = "/index" ;
+                	if (data.programno == null){
+                		$('.popup_cancel_wrap').hide();
+                        window.location.href = "/index" ;                		
+                	}
+                	else{
+                	/* 예약화면 전에 로그인을 깜박하고 안했을경우 로그인 화면으로 간 후
+                    로그인 하면 예약화면 가게끔 (유저 편리성)
+                    */
+                		$('.popup_cancel_wrap').hide();
+                        window.location.href= '/reservation/reservation_reservation?programno='+data.programno+'&reserve_date='+data.reserve_date;
+                	}
                 });
-            }else {
+                
+            }else{
                 $('.popup_cancel_wrap').show();
                 $('.popup_content').text( "아이디 또는 비밀번호가 틀렸습니다." );
                 $('.popup_button_cancel').click(function(e){

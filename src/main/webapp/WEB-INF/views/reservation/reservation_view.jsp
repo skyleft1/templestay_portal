@@ -24,6 +24,8 @@
 
 $(document).ready(function(){
 
+	var reserve_date = '${reserve_date}';
+	
     $('.small_img img').click(function(e){
     	$('.big_img > img').hide();
         var index = $(this).index() +1;
@@ -31,12 +33,26 @@ $(document).ready(function(){
     });
     
 
+ // 예약하기 가기
     $('body').on('click', '.go_reservation', function(e){
-    	var programno = $(this).attr('programno');
-    	var reserve_date = '${reserve_date}';
-        window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
-    });
+        
+        // 로그인 하지 않았을 경우 팝업 경고 출력
+        if(${session_user.userid == null}){
+            var programno = $(this).attr('programno');
+            
+            $('.popup_cancel_wrap').show();
+            $('.popup_content').text( "로그인을 해야 이용가능한 서비스입니다." );
+            $('.popup_button_cancel').click(function(e){
+                $('.popup_cancel_wrap').hide();
+                window.location.href= '/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
+            })
+        }
 
+        else{
+            var programno = $(this).attr('programno');
+            window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
+        }
+    });
 });
 
 
@@ -67,7 +83,7 @@ $(document).ready(function(){
                 <div class='program_info'>
                 
                     <div class=''>${program1.programname}</div>
-                    <div class=''>[${program1.programtype}]</div>
+                    <div class=''>[${program1.programtype}] 　　　　　예약가능일 : <fmt:formatDate value="${program1.availabledate_start}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${program1.availabledate_end}" pattern="yyyy.MM.dd"/></div>
                     <div class=''>${program1.programdetail}</div>
                 
                 

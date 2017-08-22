@@ -49,15 +49,22 @@ public class UserController {
 	
 	@RequestMapping(value = "/user_login", method = RequestMethod.GET)
 	public String login(Model model
+	        , @RequestParam(value="programno", defaultValue="") Integer programno
+            , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
+            /* 예약화면 전에 로그인을 깜박하고 안했을경우 로그인 화면으로 간 후
+            로그인 하면 예약화면 가게끔 (유저 편리성)
+            */
 	        , HttpSession session
 	        ) {
 		logger.info("user_login");
 
+		// URL을 직접 치고들어오는 상황 회피하자
 		ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
         if(user != null){
 		    return "redirect:/index";
 		}else{
-		    // URL을 직접 치고들어오는 상황 회피하자
+		    model.addAttribute("programno", programno);
+		    model.addAttribute("reserve_date", reserve_date);
 		    return "user/user_login";
 		    
 		}
@@ -69,6 +76,8 @@ public class UserController {
             , @ModelAttribute ModelUser user
             , @RequestParam(value="userid", defaultValue="") String userid
             , @RequestParam(value="userpassword", defaultValue="") String userpassword
+            , @RequestParam(value="programno", defaultValue="") Integer programno
+            , @RequestParam(value="reserve_date", defaultValue="") String reserve_date
             , HttpSession session
             ) {
         logger.info("login:POST");
@@ -82,7 +91,17 @@ public class UserController {
             
             map.put("code"  , 1);
             map.put("userid", userid);
+            
+            /* 예약화면 전에 로그인을 깜박하고 안했을경우 로그인 화면으로 간 후
+             로그인 하면 예약화면 가게끔 (유저 편리성)
+             */
+            if(programno != null ){
+                map.put("code"  , 1);
+                map.put("programno", programno);
+                map.put("reserve_date", reserve_date);
+            }
             return map;
+            
         }else{
             map.put("code"  , 2);
             return map;

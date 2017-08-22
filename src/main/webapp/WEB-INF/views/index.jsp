@@ -126,7 +126,7 @@ $(document).ready(function(e){
                         <input class='calander' type='text' name='' placeholder='예약일선택'>
                     </div>
                     <div class=''>
-                        <input type='button' class='go_list' value='예약가기'>
+                        <input type='button' class='go_list' value='사찰찾기'>
                     </div>
 <!--                     
                 </form>

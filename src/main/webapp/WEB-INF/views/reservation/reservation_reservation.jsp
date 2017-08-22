@@ -44,8 +44,10 @@ $(document).ready(function(){
     });
 	    
 	var fixedprice = 0;
+	var num = 0;
+	
     $('.go_num').click(function(e){
-        var num = $('.select_num_show').val();
+        num = $('.select_num_show').val();
         $('.fee_num').text(num);
         fixedprice = num*${program1.programprice}
         $('.fee_all').text(fixedprice);
@@ -53,12 +55,30 @@ $(document).ready(function(){
     
     // 결제 진행을 위한 submit
     $('.complete_reservation').click(function(e){
-    	// date 형식으로 형변환 후 submit
-        var myDate = new Date($('.calander').val());
-    	$('.reservation_submit input[name="checkdate"]').val(myDate);
-    	$('.reservation_submit input[name="number"]').val( $('.fee_num').text());
-    	$('.reservation_submit input[name="fixedprice"]').val(fixedprice);
-    	$('.reservation_submit').submit();
+    	if ($('.fee_num').text() == 0 ){
+    		//인원선택 안하고 예약시 경고창 출력하게끔
+            $('.popup_cancel_wrap').show();
+            $('.popup_content').text( "인원수를 선택해주세요." );
+            $('.popup_button_cancel').click(function(e){
+                $('.popup_cancel_wrap').hide();
+            })
+    	}
+    	else if($('.calander').val() == '' ){
+            //날짜선택 안하고 예약시 경고창 출력하게끔
+            $('.popup_cancel_wrap').show();
+            $('.popup_content').text( "예약날짜를 선택해주세요." );
+            $('.popup_button_cancel').click(function(e){
+                $('.popup_cancel_wrap').hide();
+            })
+    	}
+    	else{
+            // date 형식으로 형변환 후 submit
+            var myDate = new Date($('.calander').val());
+            $('.reservation_submit input[name="checkdate"]').val(myDate);
+            $('.reservation_submit input[name="number"]').val( $('.fee_num').text());
+            $('.reservation_submit input[name="fixedprice"]').val(fixedprice);
+            $('.reservation_submit').submit();
+    	}
     });
 });
 
@@ -118,10 +138,10 @@ $(document).ready(function(){
                     </div>
                     <div class='payment_type'>
                         <div class='credit'>
-                            <input type='radio' checked='checked'>신용카드
+                            <input type='radio' name='redio1'checked='checked'>신용카드
                         </div>
                         <div class='without_bankbook'>
-                            <input type='radio' >무통장입금
+                            <input type='radio' name='redio1'>무통장입금
                             <div>무통장입금 예약대기 시간은 최대 1시간입니다. 참여인원의
                                 제한으로 인해 입금기한 내 입금이 되지 않으면 예약이 자동 취소되며,
                                 먼저 입금이 완료된 고객에게 예약우선권이 있습니다. 긴 대기 예약시간이

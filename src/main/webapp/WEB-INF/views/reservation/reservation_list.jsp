@@ -37,26 +37,32 @@ $(document).ready(function(){
     });
     
     
-    // 상세정보, 예약하기 가기
+    // 상세정보 가기
     $('body').on('click', '.go_view', function(e){
-    	if($('.calander').val() == null){
-    		var programno = $(this).attr('programno');
-            window.location.href= '/reservation/reservation_view?programno='+programno;            
-        }
-        if($('.calander').val() != null){
-            var reserve_date = $('.calander').val();
-            var programno = $(this).attr('programno');
-            window.location.href= '/reservation/reservation_view?programno='+programno+'&reserve_date='+reserve_date;
-        }
+        var reserve_date = $('.calander').val();
+        var programno = $(this).attr('programno');
+        window.location.href= '/reservation/reservation_view?programno='+programno+'&reserve_date='+reserve_date;
     });
+    
+    // 예약하기 가기
     $('body').on('click', '.go_reservation', function(e){
-        if($('.calander').val() == null){
+    	
+    	// 로그인 하지 않았을 경우 팝업 경고 출력
+    	if(${session_user.userid == null}){
+    		var programno = $(this).attr('programno');
+    		var reserve_date = $('.calander').val();
+    		
+            $('.popup_cancel_wrap').show();
+            $('.popup_content').text( "로그인을 해야 이용가능한 서비스입니다." );
+            $('.popup_button_cancel').click(function(e){
+                $('.popup_cancel_wrap').hide();
+                window.location.href= '/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
+            })
+    	}
+
+    	else{
             var programno = $(this).attr('programno');
-            window.location.href= '/reservation/reservation_reservation?programno='+programno;            
-        }
-        if($('.calander').val() != null){
             var reserve_date = $('.calander').val();
-            var programno = $(this).attr('programno');
             window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
         }
     });
@@ -180,7 +186,7 @@ $(document).ready(function(){
                                 <div class=''>${programlist.programname}</div>
                                 <div class=''>${programlist.programdetail}</div>
                                 <div class=''>주소 : ${programlist.templeaddr_jibun}</div>
-                                <div class=''>연락처 : ${programlist.templephone}</div>
+                                <div class=''>연락처 : ${programlist.templephone} / 예약가능일 : <fmt:formatDate value="${programlist.availabledate_start}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${programlist.availabledate_end}" pattern="yyyy.MM.dd"/></div>
                             </div>
                             <div class='list_right'>
                                 <div class='go_view' programno='${programlist.programno}'>상세정보</div>
