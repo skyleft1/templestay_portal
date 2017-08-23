@@ -18,9 +18,6 @@
 <script src='/resources/js/jquery-ui.js'></script>
 <script src='/resources/js/common.js'></script>
 
-<script>
-console.log('ccc');
-</script>
 
 <script>
 
@@ -216,9 +213,6 @@ $(document).ready(function(e){
                 </div>
             </div>
         </div>
-<script>
-console.log('bbb');
-</script>
 
         <div class="footer">
             <%@ include file="header_footer/footer.jsp" %>
