@@ -19,8 +19,14 @@
 <script src='/resources/js/common.js'></script>
 
 <script>
+console.log('ccc');
+</script>
+
+<script>
 
 $(document).ready(function(e){
+	
+	console.log('aaa');
 	
 	// 슬라이드
 	$('.wrap_main_reserve input').click(function(e){
@@ -47,24 +53,26 @@ $(document).ready(function(e){
     
     // 슬라이드 선택시 해당 값을 input의 value값으로 넣어준다
     $('.location li').click(function(e){
-        var val = $(this).children('span').text();
+        var val = $(this).find($('.left_item')).text();
         $('.location input').val(val);
         $('.location input').addClass('input_value');
     });
     $('.thema li').click(function(e){
-        var val = $(this).children('span').text();
+        var val = $(this).find($('.left_item')).text();
         $('.thema input').val(val);
         $('.thema input').addClass('input_value');
     });
     
     
     $('.go_list').click(function(e){
-    	var location = $('.location_input').val();
+        var location = $('.location_input').val();
         var thema = $('.thema_input').val();
         var reserve_date = $('.calander').val();
-        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date;
+        var searchword = $('.searchword').val();
+        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
     });
 
+    
 });
 
 </script>
@@ -81,6 +89,7 @@ $(document).ready(function(e){
         <div class="wrap_index">
             <div class="">
                 <div class="main_img">
+                
 
                 </div>
             </div>
@@ -88,24 +97,27 @@ $(document).ready(function(e){
             <!-- 
                 <form class='' action='/reservation/reservation_list' method='get'  >
                  -->
+                    <div>
+                        <input class='searchword' type='text' name='' placeholder='사찰이름을 검색해주세요'>
+                    </div>
                     <div class='location'>
                         <input class='location_input' type='text' name='' placeholder='지역명을 선택해 주세요.'>
                         
                         <!-- 지역명 선택창 -->
                         <div class='location_select'>
                             <ul>
-                                <li><span class='left_item'>경기</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>강원</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>제주</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>인천</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>충남</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>충북</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>경남</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>경북</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>전남</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>전북</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>부산</span><span class='right_item'></span></li>
-                                <li><span class='left_item'>서울</span><span class='right_item'></span></li>
+                                <li><span class='left_item'>경기</span><span class='right_item'>${count1}</span></li>
+                                <li><span class='left_item'>강원</span><span class='right_item'>${count2}</span></li>
+                                <li><span class='left_item'>제주</span><span class='right_item'>${count3}</span></li>
+                                <li><span class='left_item'>인천</span><span class='right_item'>${count4}</span></li>
+                                <li><span class='left_item'>충남</span><span class='right_item'>${count5}</span></li>
+                                <li><span class='left_item'>충북</span><span class='right_item'>${count6}</span></li>
+                                <li><span class='left_item'>경남</span><span class='right_item'>${count7}</span></li>
+                                <li><span class='left_item'>경북</span><span class='right_item'>${count8}</span></li>
+                                <li><span class='left_item'>전남</span><span class='right_item'>${count9}</span></li>
+                                <li><span class='left_item'>전북</span><span class='right_item'>${count10}</span></li>
+                                <li><span class='left_item'>부산</span><span class='right_item'>${count11}</span></li>
+                                <li><span class='left_item'>서울</span><span class='right_item'>${count12}</span></li>
                             </ul>
                         </div>
                         
@@ -204,7 +216,9 @@ $(document).ready(function(e){
                 </div>
             </div>
         </div>
-
+<script>
+console.log('bbb');
+</script>
 
         <div class="footer">
             <%@ include file="header_footer/footer.jsp" %>

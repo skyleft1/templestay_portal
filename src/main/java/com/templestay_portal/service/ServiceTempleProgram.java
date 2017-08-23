@@ -43,7 +43,6 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
     
     @Override
     public int updateTempleProgram(ModelTempleProgram updatemodel, ModelTempleProgram searchmodel) {
-        
         int result = -1;
         try {
             result = dao.updateTempleProgram(updatemodel, searchmodel);
@@ -75,6 +74,16 @@ public class ServiceTempleProgram implements IServiceTempleProgram {
             e.getMessage();
         }
         
+        return result;
+    }
+    @Override
+    public int getTempleProgramCount(ModelTempleProgram program) {
+        int result = -1;
+        try {
+             result = dao.getTempleProgramCount(program);
+        } catch (Exception e) {
+            e.getMessage();
+        }
         return result;
     }
 

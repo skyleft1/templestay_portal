@@ -6,6 +6,7 @@ import com.templestay_portal.model.ModelReservation;
 
 public interface IDaoReservation {
     
+    int getReservationno(ModelReservation reservation);
     ModelReservation getReservation(ModelReservation reservation);
     List<ModelReservation> getReservationList(String userid);
     

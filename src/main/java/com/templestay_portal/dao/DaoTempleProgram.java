@@ -34,6 +34,11 @@ public class DaoTempleProgram implements IDaoTempleProgram {
     }
 
     @Override
+    public int getTempleProgramCount(ModelTempleProgram program) {
+        return session.selectOne("mapper.mappertemple.getTempleProgramCount", program);
+    }
+    
+    @Override
     public int updateTempleProgram(ModelTempleProgram updatemodel,
             ModelTempleProgram searchmodel) {
         Map<String, ModelTempleProgram> map = new HashMap<String, ModelTempleProgram>();
@@ -51,4 +56,5 @@ public class DaoTempleProgram implements IDaoTempleProgram {
     public List<ModelTempleProgram> getTempleProgramList(ModelTempleProgram program) {
         return session.selectList("mapper.mappertemple.getTempleProgramList", program);
     }
+
 }

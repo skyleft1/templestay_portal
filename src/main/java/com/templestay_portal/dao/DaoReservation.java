@@ -21,6 +21,11 @@ public class DaoReservation implements IDaoReservation {
     SqlSession session;
     
     @Override
+    public int getReservationno(ModelReservation reservation) {
+        return session.selectOne("mapper.mapperreservation.getReservationno", reservation );
+    }
+    
+    @Override
     public ModelReservation getReservation(ModelReservation reservation) {
         return session.selectOne("mapper.mapperreservation.getReservation", reservation );
     }

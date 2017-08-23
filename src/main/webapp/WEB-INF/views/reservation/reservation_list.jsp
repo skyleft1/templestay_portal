@@ -25,7 +25,7 @@
 $(document).ready(function(){
 	$('.wrap_form').on('click', '.location_select_tr .left_item', function(e){
 		$(this).addClass('location_selected');
-		$(this).siblings().removeClass('location_selected');
+		$(this).parent().siblings().children().removeClass('location_selected');
 		var option = $(this).text();
 		$('.location_option_selected').html("<span>"+option+"</span>");
     });
@@ -100,41 +100,29 @@ $(document).ready(function(){
                 <div class='wrap_form'>
                         <table>
                             <tbody>
-                                <tr class='wrap_searchword'    >
+                                <tr class='wrap_searchword' >
                                     <th>사찰 검색</th>
                                     <td>
                                         <input type='text'  class='searchword' placeholder='사찰이름을 입력하세요. 예) 경기사 -> 경기' />  
                                     </td>
                                 </tr>
                                 <tr class='location_select_tr' >
-                                    <!-- 지역명 선택창 -->
+                                <!-- 지역명 선택창 -->
                                     <th class='location_select'>지역 선택</th>
                                     <td>
                                         <ul>
-                                            <li class='left_item'>경기</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>강원</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>제주</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>인천</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>충남</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>충북</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>경남</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>경북</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>전남</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>전북</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>부산</span><span
-                                                class='right_item'></span></li>
-                                            <li class='left_item'>서울</span><span
-                                                class='right_item'></span></li>
+                                <li><span class='left_item'>경기</span><span class='right_item'>${count1}</span></li>
+                                <li><span class='left_item'>강원</span><span class='right_item'>${count2}</span></li>
+                                <li><span class='left_item'>제주</span><span class='right_item'>${count3}</span></li>
+                                <li><span class='left_item'>인천</span><span class='right_item'>${count4}</span></li>
+                                <li><span class='left_item'>충남</span><span class='right_item'>${count5}</span></li>
+                                <li><span class='left_item'>충북</span><span class='right_item'>${count6}</span></li>
+                                <li><span class='left_item'>경남</span><span class='right_item'>${count7}</span></li>
+                                <li><span class='left_item'>경북</span><span class='right_item'>${count8}</span></li>
+                                <li><span class='left_item'>전남</span><span class='right_item'>${count9}</span></li>
+                                <li><span class='left_item'>전북</span><span class='right_item'>${count10}</span></li>
+                                <li><span class='left_item'>부산</span><span class='right_item'>${count11}</span></li>
+                                <li><span class='left_item'>서울</span><span class='right_item'>${count12}</span></li>
                                                 
                                         </ul>
                                     </td>
@@ -142,7 +130,7 @@ $(document).ready(function(){
 
                                 <!-- 테마 선택창 -->
                                 <tr class='thema_select_tr' >
-                                    <th class='Thema_select'>테마 선택</th>
+                                    <th class='thema_select'>테마 선택</th>
                                     <td>
                                         <ul>
                                             <li class='left_item'>휴식형</span><span

@@ -1,0 +1,50 @@
+templestay_site
+동영상 촬영 순서
+
+
+Spring MVC 프로젝트 
+
+작업환경
+- java 1.*
+- Spring 4.x
+- Tomcat 8.0
+- MySQL 5.x
+- MyBatis 
+- Gradle 3.x
+
+적용언어 
+- java
+- HTML5
+- CSS
+- JavaScrpit
+- jQuery
+
+적용 API
+- Daum 주소검색
+- Google 지도
+
+참고사이트
+- 없음
+
+촬영 순서
+로그인 : kim11
+
+index에서 지역만, 선택해서 넘어감
+index에서 테마만, 선택해서 넘어감
+index에서 지역명, 테마, 날자선택해서 넘어감
+
+list에서 지역명, 테마, 날자선택해서, 선택 찾기 - 결과보여줌
+list에서 index에서 지역만, 선택 찾기 - 결과보여줌
+list에서 index에서 테마만, 선택 찾기 - 결과보여줌
+전체중 날짜에 따라 변하는 총프로그램 보여주기
+
+9-15
+12-15
+1-15
+
+
+예약
+인원수 미선택시 경고
+예약날짜 미선택시 경고
+
+

@@ -56,6 +56,9 @@ td input{
     width: 200px;
     height: 25px;
 }
+.searchword{
+    width: 300px;
+}
 
 .wrap_reservation input[type='button']{
     background-color: #ff6363;
@@ -81,6 +84,21 @@ td input{
     margin-right: 20px;
 }
     
+
+ /* db 에서 받아온 count 뿌려줌 */
+.left_item{
+    margin-right: 30px;
+}
+.thema_select .left_item{
+    margin-right: 50px;
+}
+
+.right_item{
+    color: #ff6363;
+    font-weight: bold;
+}
+
+
 
 
 /* 사찰 리스트 */

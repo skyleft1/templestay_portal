@@ -16,6 +16,18 @@ public class ServiceReservation implements IServiceReservation {
     @Qualifier("daoreservation")
     IDaoReservation dao;
     
+    
+    @Override
+    public int getReservationno(ModelReservation reservation) {
+        int result = -1;
+        try {
+            result = dao.getReservationno(reservation);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return result;
+    }
+    
     @Override
     public ModelReservation getReservation(ModelReservation reservation) {
         ModelReservation result = null;

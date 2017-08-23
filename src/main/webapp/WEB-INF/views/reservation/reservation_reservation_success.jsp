@@ -42,7 +42,7 @@ $(document).ready(function(){
         <div class="wrap_reservation_reservation_success">
             <div class="">
                 <div class=''>
-                    예약이 완료되었습니다
+                    예약번호 [ ${reservationno} ] 로 예약완료 되었습니다
                     <br> 
                     <p><a href= '/user/user_confirm_reservation_list' >예약확인 페이지로 가기</a></p>
                 </div>

@@ -57,6 +57,18 @@
          group by programname
     </select>
     
+    <select id="getTempleProgramCount" parameterType="ModelTempleProgram" resultType="int">
+         SELECT count(*)
+            FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
+         WHERE 1 = 1 
+         <if test="templeaddr_jibun != null and templeaddr_jibun != ''">
+         AND P.templeaddr_jibun LIKE CONCAT( #{templeaddr_jibun}, '%' )
+         </if>
+         <if test="programtype != null and programtype != ''">
+         AND C.programtype LIKE CONCAT( #{programtype}, '%' )
+         </if>  
+    </select>
+    
     <update id="updateTempleProgram" parameterType="hashmap" >
         UPDATE TB_Temple_Program 
             SET programname   = #{updateValue.programname}

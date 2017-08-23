@@ -12,6 +12,9 @@ import com.templestay_portal.model.ModelTempleProgram;
 public interface IDaoTempleProgram {
     
     ModelTempleProgram getTempleProgramOne(ModelTempleProgram program);
+    //프로그램 수 카운트
+    int getTempleProgramCount(ModelTempleProgram program);
+    
     int updateTempleProgram(ModelTempleProgram updatemodel, ModelTempleProgram searchmodel);
     int deleteTempleProgram(ModelTempleProgram temp);
     List<ModelTempleProgram> getTempleProgramList(ModelTempleProgram temp);

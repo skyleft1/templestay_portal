@@ -48,7 +48,7 @@
 
 
 .thema_select {
-    width: 205px;
+    width: 173px;
     border: 1px solid #E0E0E0;
     position: absolute;
     display:none;
@@ -80,14 +80,14 @@
     
 
 .reserve_date{
-    width: 260px;
+    width: 150px;
 }
 .reserve_date input{
 
 }
 
 .thema{
-    width: 200px;
+    width: 170px;
 }
 .thema input{
 
@@ -102,10 +102,20 @@
     line-height: 60px;
     padding: 0px 2px;    
 }
+.left_item{
+    margin-right: 100px;
+}
+.thema_select .left_item{
+    margin-right: 50px;
+}
+
+.right_item{
+    color: #ff6363;
+    font-weight: bold;
+}
 
 
-
-
+/* 광고 배너 부분 */
 
 .wrap_advertisement{
     display: inline-block;

@@ -4,6 +4,20 @@
 
 <mapper namespace="mapper.mapperreservation">
 
+<!-- 예약번호 얻어오기 -->
+    <select id="getReservationno" parameterType="ModelReservation" resultType="int">        
+        SELECT reservationno
+          FROM TB_Reservation R
+         WHERE 1 = 1 
+        <if  test="userid != null and userid != ''">
+           AND userid = #{userid} 
+        </if>
+        <if  test="programno != null and programno != ''">
+           AND programno = #{programno} 
+        </if>
+
+    </select>
+
     <select id="getReservation" parameterType="ModelReservation" resultType="ModelReservation">        
         SELECT *
           FROM TB_Reservation R

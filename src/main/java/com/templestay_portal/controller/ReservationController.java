@@ -64,7 +64,63 @@ public class ReservationController {
 	        ) throws ParseException {
 		logger.info("reservation_list");
 
-		ModelTemple temple = new ModelTemple();
+		
+        ModelTempleProgram program = new ModelTempleProgram();
+        int count = -1;
+        
+        // 지역에 해당 프로그램 수 보여주기
+        program.setTempleaddr_jibun("경기");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count1", count);
+        
+        program.setTempleaddr_jibun("강원");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count2", count);
+        
+        program.setTempleaddr_jibun("제주");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count3", count);
+        
+        program.setTempleaddr_jibun("인천");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count4", count);
+        
+        program.setTempleaddr_jibun("충남");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count5", count);
+        
+        program.setTempleaddr_jibun("충북");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count6", count);
+        
+        program.setTempleaddr_jibun("경남");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count7", count);
+        
+        program.setTempleaddr_jibun("경북");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count8", count);
+        
+        program.setTempleaddr_jibun("전남");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count9", count);
+        
+        program.setTempleaddr_jibun("전북");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count10", count);
+        
+        program.setTempleaddr_jibun("부산");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count11", count);
+        
+        program.setTempleaddr_jibun("서울");
+        count = srvtemplerogram.getTempleProgramCount(program);
+        model.addAttribute("count12", count);
+		
+		
+		
+		
+		
 		ModelTempleProgram templeprogram = new ModelTempleProgram();
 		List<ModelTempleProgram> list = new ArrayList<ModelTempleProgram>();
 		
@@ -162,7 +218,11 @@ public class ReservationController {
         
         int result = srvreservation.insertReservation(reservation); 
         
+        
         if (result == 1){
+            // 예약번호를 예약한 사용자에게 보여주기 위함
+            int reservationno = srvreservation.getReservationno(reservation);
+            model.addAttribute("reservationno", reservationno);
             return "reservation/reservation_reservation_success";
         }
         else{
