@@ -30,12 +30,14 @@ CREATE TABLE `tb_user` (
     `userid` VARCHAR(50) NOT NULL,
     `username` VARCHAR(30) NULL DEFAULT NULL,
     `userpassword` VARCHAR(30) NULL DEFAULT NULL,
+    `password_hint` VARCHAR(30) NULL DEFAULT NULL,
+    `usersex` CHAR(1) NULL DEFAULT NULL,
     `useremail` VARCHAR(100) NULL DEFAULT NULL,
     `userphone` VARCHAR(100) NULL DEFAULT NULL,
     `addr_postcode` VARCHAR(100) NULL DEFAULT NULL,
     `addr_road` VARCHAR(100) NULL DEFAULT NULL,
     `addr_jibun` VARCHAR(100) NULL DEFAULT NULL,
-     `joindate` Date NULL DEFAULT NULL,
+    `joindate` DATE NULL DEFAULT NULL,
     PRIMARY KEY (`userid`),
     UNIQUE INDEX `userno` (`userno`)
 )
