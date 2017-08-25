@@ -26,24 +26,25 @@ DROP TABLE IF EXISTS tb_user;
 
 
 CREATE TABLE `tb_user` (
-    `userno` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `userno` INT(10) NOT NULL AUTO_INCREMENT,
     `userid` VARCHAR(50) NOT NULL,
-    `username` VARCHAR(30) NULL DEFAULT NULL,
-    `userpassword` VARCHAR(30) NULL DEFAULT NULL,
-    `password_hint` VARCHAR(30) NULL DEFAULT NULL,
+    `username` VARCHAR(40) NOT NULL,
+    `userpassword` VARCHAR(40) NOT NULL,
+    `password_hint` VARCHAR(40) NULL DEFAULT NULL,
+    `password_hint_confirm` VARCHAR(40) NULL DEFAULT NULL,
     `usersex` CHAR(1) NULL DEFAULT NULL,
-    `useremail` VARCHAR(100) NULL DEFAULT NULL,
-    `userphone` VARCHAR(100) NULL DEFAULT NULL,
-    `addr_postcode` VARCHAR(100) NULL DEFAULT NULL,
-    `addr_road` VARCHAR(100) NULL DEFAULT NULL,
-    `addr_jibun` VARCHAR(100) NULL DEFAULT NULL,
-    `joindate` DATE NULL DEFAULT NULL,
+    `useremail` VARCHAR(40) NULL DEFAULT NULL,
+    `userphone` VARCHAR(40) NULL DEFAULT NULL,
+    `addr_postcode` VARCHAR(40) NULL DEFAULT NULL,
+    `addr_road` VARCHAR(40) NULL DEFAULT NULL,
+    `addr_jibun` VARCHAR(40) NULL DEFAULT NULL,
+    `joindate` DATETIME NULL DEFAULT NULL,
     PRIMARY KEY (`userid`),
     UNIQUE INDEX `userno` (`userno`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=4
+AUTO_INCREMENT=1
 ;
 
 INSERT INTO tb_user (userid, username, userpassword, useremail, userphone ) 

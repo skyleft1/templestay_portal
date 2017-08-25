@@ -37,7 +37,7 @@ $(document).ready(function(e){
         <div class="wrap_menu">
             <div class="">
                 <div class="logo">
-                    <a href='/index'> <img src="/resources/img/logo01.png" alt="로고" /></a>
+                    <a href='/'> <img src="/resources/img/logo01.png" alt="로고" /></a>
                 </div>
                 <div class="menu">
                 

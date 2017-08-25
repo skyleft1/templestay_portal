@@ -27,14 +27,9 @@ public class HomeController {
     
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("home");
-		
-		return "home";
-	}
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("index");
         

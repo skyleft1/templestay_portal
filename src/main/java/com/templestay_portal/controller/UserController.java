@@ -61,7 +61,7 @@ public class UserController {
 		// URL을 직접 치고들어오는 상황 회피하자
 		ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
         if(user != null){
-		    return "redirect:/index";
+		    return "redirect:/";
 		}else{
 		    model.addAttribute("programno", programno);
 		    model.addAttribute("reserve_date", reserve_date);
@@ -117,7 +117,7 @@ public class UserController {
         
         session.removeAttribute(WebConstants.SESSION_NAME);
         
-        return "redirect:/index";
+        return "redirect:/";
     }
     
     
@@ -191,7 +191,7 @@ public class UserController {
 
             return "user/user_info";
         } else{
-            return "redirect:/index";
+            return "redirect:/";
         }
     }
     
@@ -209,7 +209,7 @@ public class UserController {
 
             return "user/user_modify";
         }else{
-            return "redirect:/index";
+            return "redirect:/";
         }
     }
     
@@ -329,6 +329,69 @@ public class UserController {
         
         return "user/user_delete_success";
     }
+    
+
+    // 비밀번호 찾기/재설정 :get
+    @RequestMapping(value = "/user_find_password", method = RequestMethod.GET)
+    public String user_find_password_get( Model model
+            , HttpSession session
+            ) {
+        logger.info("user_find_password_get");
+        
+        return "user/user_find_password";
+    }
+    // 비밀번호 찾기/재설정 :get
+    @RequestMapping(value = "/user_find_password", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> user_find_password_post( Model model
+            , @ModelAttribute ModelUser user
+            , HttpSession session
+            ) {
+        logger.info("user_find_password_post");
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        
+        ModelUser user1 = new ModelUser(); 
+        user1 = srv.getUserOne(user.getUserid());
+        
+        String hint = user.getPassword_hint();
+        String hint_confirm = user.getPassword_hint_confirm();
+        
+        // 기존 DB의 비밀번호 힌트와 사용자가 입력한 비밀번호 힌트가 맞는지 확인한다. 
+        if( hint.equals(user1.getPassword_hint()) && hint_confirm.equals(user1.getPassword_hint_confirm())){
+            map.put("code", 1);
+            return map;
+        } else {
+            map.put("code", 2);
+            return map;
+        }
+    }
+    
+    // 비밀번호 재설정 POST
+    @RequestMapping(value = "/user_new_password", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object>  user_new_password( Model model
+            , @RequestParam(value="userid", defaultValue="") String userid
+            , @RequestParam(value="newpassword", defaultValue="") String newpassword
+            , HttpSession session
+            ) {
+        logger.info("user_new_password");
+        Map<String, Object> map = new HashMap<String, Object>();
+        ModelUser user = srv.getUserOne(userid);
+        
+        // jsp에서 받아온 userid, newpassword를 통해 비빌번호를 변경한다. 
+        int result = srv.updatePassword(newpassword, user.getUserpassword(), userid);
+            
+        if(result == 1){
+            map.put("code", 1);
+            return map;                
+        }else{
+            map.put("code", 2);
+            return map;
+        }
+    }
+    
+    
     
     
     @RequestMapping(value = "/user_confirm_reservation_list", method = RequestMethod.GET)

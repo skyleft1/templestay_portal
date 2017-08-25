@@ -17,18 +17,18 @@
 <script src='/resources/js/jquery-ui.js'></script>
 <script src="/resources/js/common.js"></script>
 <script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src="/resources/js/MyApp.board.js"></script>
 
 
 <script type="text/javascript">
 
 $(document).ready( function(e){
-
-	$('.login_submit').click(function(e){
+		
+    $('.login_submit').click(function(e){
         
         var userid = $('.userid').val();
         var userpassword = $('.userpassword').val();
-
+        
         $.ajax({
             url : '/user/user_login'
             , data: {'userid' : userid , 'userpassword' : userpassword 
@@ -43,20 +43,20 @@ $(document).ready( function(e){
                 $('.popup_cancel_wrap').show();
                 $('.popup_content').text( data.userid + " 님 환영합니다. ");
                 $('.popup_button_cancel').click(function(e){
-                	if (data.programno == null){
-                		$('.popup_cancel_wrap').hide();
-                        window.location.href = "/index" ;                		
-                	}
-                	else{
-                	/* 예약화면 전에 로그인을 깜박하고 안했을경우 로그인 화면으로 간 후
+                    if (data.programno == null){
+                        $('.popup_cancel_wrap').hide();
+                        window.location.href = "/" ;                       
+                    }
+                    else{
+                    /* 예약화면 전에 로그인을 깜박하고 안했을경우 로그인 화면으로 간 후
                     로그인 하면 예약화면 가게끔 (유저 편리성)
                     */
-                		$('.popup_cancel_wrap').hide();
+                        $('.popup_cancel_wrap').hide();
                         window.location.href= '/reservation/reservation_reservation?programno='+data.programno+'&reserve_date='+data.reserve_date;
-                	}
+                    }
                 });
                 
-            }else{
+            }else {
                 $('.popup_cancel_wrap').show();
                 $('.popup_content').text( "아이디 또는 비밀번호가 틀렸습니다." );
                 $('.popup_button_cancel').click(function(e){
@@ -97,6 +97,9 @@ $(document).ready( function(e){
                         </div>
                         <div>
                             아직 회원이 아닌가요? <a href='/user/user_join'>회원가입</a>
+                        </div>
+                        <div>
+                            비밀번호를 잊어버렸나요? <a href='/user/user_find_password'>비밀번호 찾기/재설정</a>
                         </div>
 
                     </form>

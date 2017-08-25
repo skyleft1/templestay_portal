@@ -15,7 +15,7 @@
 <script src='/resources/js/jquery-ui.js'></script>
 <script src="/resources/js/common.js"></script>
 <script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src="/resources/js/MyApp.board.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -77,6 +77,7 @@ $(document).ready(function(){
 
     <!-- join -->
     <div class='wrap'>
+        <div class='side_menu'></div>
         <div class='join_content'>
             <div class=''>
                 <div class='join_maintitle'>
@@ -92,6 +93,19 @@ $(document).ready(function(){
                                 <tr>
                                     <th>이름</th>
                                     <td>${session_user.username}</td>
+                                </tr>
+                                <tr>
+                                    <th>성별</th>
+                                    <td>
+                                    <c:choose>
+                                        <c:when test='${session_user.usersex == "M" }'>
+                                            남성
+                                        </c:when>
+                                        <c:when test="${session_user.usersex == 'F'}">
+                                            여성
+                                        </c:when>
+                                    </c:choose>                
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>

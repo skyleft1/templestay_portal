@@ -78,6 +78,7 @@ addr{
 
 
 .wrap_menu{
+    background-color: #ffffff;
     border-bottom: 1px solid #d4d4d4;
 }
 
@@ -88,6 +89,7 @@ addr{
 .wrap_menu > div{
     text-align: center;
     width: 1100px;
+
 }
 .logo {
     width: 190px;
