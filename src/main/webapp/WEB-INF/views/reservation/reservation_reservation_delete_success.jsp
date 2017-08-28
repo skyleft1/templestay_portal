@@ -8,17 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/reservation_reservation_success.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/reservation_reservation_success.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src='/resources/js/common.js'></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/common.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
                 <div class=''>
                     예약취소가 완료되었습니다
                     <br> 
-                    <p><a href= '/user/user_confirm_reservation_list' >예약확인 페이지로 가기</a></p>
+                    <p><a href= '${pageContext.request.contextPath}/user/user_confirm_reservation_list' >예약확인 페이지로 가기</a></p>
                 </div>
             </div>
         </div>

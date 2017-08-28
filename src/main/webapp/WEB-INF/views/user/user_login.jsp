@@ -10,14 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_login</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.board.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.board.js"></script>
 
 
 <script type="text/javascript">
@@ -30,7 +30,7 @@ $(document).ready( function(e){
         var userpassword = $('.userpassword').val();
         
         $.ajax({
-            url : '/user/user_login'
+            url : '${pageContext.request.contextPath}/user/user_login'
             , data: {'userid' : userid , 'userpassword' : userpassword 
                 , 'programno' : '${programno}' , 'reserve_date' : '${reserve_date}' } //reserve_date는 값이 없을수도 있기에 ''를 해줌  } 
             , type: 'POST'      
@@ -52,7 +52,7 @@ $(document).ready( function(e){
                     로그인 하면 예약화면 가게끔 (유저 편리성)
                     */
                         $('.popup_cancel_wrap').hide();
-                        window.location.href= '/reservation/reservation_reservation?programno='+data.programno+'&reserve_date='+data.reserve_date;
+                        window.location.href= '${pageContext.request.contextPath}/reservation/reservation_reservation?programno='+data.programno+'&reserve_date='+data.reserve_date;
                     }
                 });
                 
@@ -61,7 +61,7 @@ $(document).ready( function(e){
                 $('.popup_content').text( "아이디 또는 비밀번호가 틀렸습니다." );
                 $('.popup_button_cancel').click(function(e){
                     $('.popup_cancel_wrap').hide();
-                    window.location.href = "/user/user_login";
+                    window.location.href = "${pageContext.request.contextPath}/user/user_login";
                 });
             }
         });
@@ -85,7 +85,7 @@ $(document).ready( function(e){
             <div class=''>
                 <h3>로그인</h3>
                 <div class=''>
-                    <form method='post' action='/user/user_login' >
+                    <form method='post' action='${pageContext.request.contextPath}/user/user_login' >
                         <div>아이디
                             <input type='text' name='userid' value='' class='userid'/>
                         </div>
@@ -96,10 +96,10 @@ $(document).ready( function(e){
                             <input type='button' name='' value='로그인' class='login_submit' />
                         </div>
                         <div>
-                            아직 회원이 아닌가요? <a href='/user/user_join'>회원가입</a>
+                            아직 회원이 아닌가요? <a href='${pageContext.request.contextPath}/user/user_join'>회원가입</a>
                         </div>
                         <div>
-                            비밀번호를 잊어버렸나요? <a href='/user/user_find_password'>비밀번호 찾기/재설정</a>
+                            비밀번호를 잊어버렸나요? <a href='${pageContext.request.contextPath}/user/user_find_password'>비밀번호 찾기/재설정</a>
                         </div>
 
                     </form>

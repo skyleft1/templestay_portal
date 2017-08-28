@@ -7,7 +7,7 @@
 <!-- 예약번호 얻어오기 -->
     <select id="getReservationno" parameterType="ModelReservation" resultType="int">        
         SELECT reservationno
-          FROM TB_Reservation
+          FROM tb_reservation
          WHERE 1 = 1 
         <if  test="userid != null and userid != ''">
            AND userid = #{userid} 
@@ -20,8 +20,8 @@
 
     <select id="getReservation" parameterType="ModelReservation" resultType="ModelReservation">        
         SELECT *
-          FROM TB_Reservation R
-          left join TB_Temple_Program P on R.programno = P.programno
+          FROM tb_reservation R
+          left join tb_temple_program P on R.programno = P.programno
          WHERE 1 = 1 
         <if  test="reservationno != null and reservationno != ''">
            AND reservationno = #{reservationno} 
@@ -41,21 +41,21 @@
 <!--  사용자 화면에 사용자 자신의 예약한 내역을 보여줌 -->    
     <select id="getReservationList" parameterType="String" resultType="ModelReservation">        
     SELECT *
-        FROM TB_Reservation R 
-            left join TB_Temple_Program P on R.programno = P.programno
+        FROM tb_reservation R 
+            left join tb_temple_program P on R.programno = P.programno
     WHERE userid = #{userid}
     </select>
     
            
     <insert id="insertReservation" parameterType="ModelReservation">
         INSERT INTO 
-        TB_Reservation ( programno, userid, checkdate, fixedprice,  number )
+        tb_reservation ( programno, userid, checkdate, fixedprice,  number )
         VALUES       ( #{programno}, #{userid}, #{checkdate}, #{fixedprice}, #{number})
     </insert>
  
     <!--  예약일과 인원 변경 정도가 가능할듯. 값을 반드시 넘기게 해야함-->
     <update id="updateReservation" parameterType="hashmap" >
-        UPDATE TB_Reservation 
+        UPDATE tb_reservation 
             SET checkdate   = #{updateValue.checkdate}
               , number = #{updateValue.number}
             WHERE 1 = 1 
@@ -69,7 +69,7 @@
     
     
     <delete id="deleteReservation" parameterType="int">
-        DELETE FROM TB_Reservation
+        DELETE FROM tb_reservation
          WHERE reservationno  = #{reservationno}
     </delete>
     

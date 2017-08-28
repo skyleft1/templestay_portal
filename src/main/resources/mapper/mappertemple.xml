@@ -7,7 +7,7 @@
     <!--  concat으로 주소의 첫부분(ex. 서울) 만 검색해도 나오게 함 -->
     <select id="getTempleOne" parameterType="ModelTemple" resultType="ModelTemple">
         SELECT *
-          FROM TB_Temple 
+          FROM tb_temple 
          WHERE 1 = 1
             <if test="templecd != null and templecd != ''" >
             AND templecd = #{templecd}
@@ -22,7 +22,7 @@
            
     <select id="getTempleList" parameterType="ModelTemple" resultType="ModelTemple">
         SELECT *
-          FROM TB_Temple 
+          FROM tb_temple 
          WHERE 1 = 1
             <if test="templecd != null and templecd != ''" >
             AND templecd = #{templecd}
@@ -38,14 +38,14 @@
            
     <insert id="insertTempleProgramOne" parameterType="ModelTempleProgram">
         INSERT INTO 
-        TB_Temple_Program (programname, availabledate, programprice, maxperson    )
+        tb_temple_program (programname, availabledate, programprice, maxperson    )
         VALUES       ( #{programname}, #{availabledate}, #{programprice}, #{maxperson} )
     </insert> 
 
 
     <select id="getTempleProgramOne" parameterType="ModelTempleProgram" resultType="ModelTempleProgram">
         SELECT *
-            FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
+            FROM tb_temple_program C left join tb_temple P on C.templecd = P.templecd
             left join tb_upload_image U on C.programno = U.programno
          WHERE 1 = 1
          <if test="programno != null and programno != ''">
@@ -59,7 +59,7 @@
     
     <select id="getTempleProgramCount" parameterType="ModelTempleProgram" resultType="int">
          SELECT count(*)
-            FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
+            FROM tb_temple_program C left join tb_temple P on C.templecd = P.templecd
          WHERE 1 = 1 
          <if test="templeaddr_jibun != null and templeaddr_jibun != ''">
          AND P.templeaddr_jibun LIKE CONCAT( #{templeaddr_jibun}, '%' )
@@ -70,7 +70,7 @@
     </select>
     
     <update id="updateTempleProgram" parameterType="hashmap" >
-        UPDATE TB_Temple_Program 
+        UPDATE tb_temple_program
             SET programname   = #{updateValue.programname}
               , availabledate = #{updateValue.availabledate}
               , programprice  = #{updateValue.programprice}
@@ -88,7 +88,7 @@
     </update>
     
     <delete id="deleteTempleProgram" parameterType="ModelTempleProgram">
-        DELETE FROM TB_Temple_Program 
+        DELETE FROM tb_temple_program 
          WHERE 1 = 1 
           <if test="programname != null and programname != ''" >
           AND programname  = #{programname}
@@ -107,7 +107,7 @@
     <!--  between 이용해서 가능날짜별로 조회가능하게 함 --> 
     <select id="getTempleProgramList" parameterType="ModelTempleProgram" resultType="ModelTempleProgram" >
         SELECT * 
-          FROM TB_Temple_Program C left join TB_Temple P on C.templecd = p.templecd
+          FROM tb_temple_program C left join tb_temple P on C.templecd = P.templecd
           left join tb_upload_image U on C.programno = U.programno
           WHERE 1 = 1
           <if test="templecd != null and templecd != ''" >

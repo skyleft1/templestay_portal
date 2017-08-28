@@ -8,15 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/index.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src='/resources/js/common.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/common.js'></script>
 
 
 <script>
@@ -66,7 +66,7 @@ $(document).ready(function(e){
         var thema = $('.thema_input').val();
         var reserve_date = $('.calander').val();
         var searchword = $('.searchword').val();
-        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
+        window.location.href = '${pageContext.request.contextPath}/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
     });
 
     
@@ -92,7 +92,7 @@ $(document).ready(function(e){
             </div>
             <div class="wrap_main_reserve">
             <!-- 
-                <form class='' action='/reservation/reservation_list' method='get'  >
+                <form class='' action='${pageContext.request.contextPath}/reservation/reservation_list' method='get'  >
                  -->
                     <div>
                         <input class='searchword' type='text' name='' placeholder='사찰이름을 검색해주세요'>

@@ -9,21 +9,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_confirm_reservation</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/user_confirm_reservation_list.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user_confirm_reservation_list.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 $(document).ready(function(){
     $('.reservation_one').click(function(e){
         var reservationno = $(this).attr('reservationno');
 
-    	window.location.href= '/user/user_confirm_reservation_one?reservationno='+reservationno
+    	window.location.href= '${pageContext.request.contextPath}/user/user_confirm_reservation_one?reservationno='+reservationno
     })
     
 });
@@ -49,7 +49,7 @@ $(document).ready(function(){
                 </div>
                 <div class=''>
 <!--                 
-                    <div><a href='/user/user_modify_reservation'>예약변경</a></div>
+                    <div><a href='${pageContext.request.contextPath}/user/user_modify_reservation'>예약변경</a></div>
  -->
                     <table>
                         <thead>

@@ -9,14 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_join</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/find_password.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/find_password.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.board.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.board.js"></script>
 
 
 <script>
@@ -38,7 +38,7 @@ $(document).ready(function(){
         }
         else{
             $.ajax({
-                url : '/user/user_find_password'
+                url : '${pageContext.request.contextPath}/user/user_find_password'
                 , data: {'userid' : userid , 'password_hint' : password_hint , 'password_hint_confirm' : password_hint_confirm }       
                 , type: 'POST'       
                 , timeout: 30000    
@@ -75,7 +75,7 @@ $(document).ready(function(){
             var newpassword = $('input[name="newpassword"]').val();
             
             $.ajax({
-                url : '/user/user_new_password'
+                url : '${pageContext.request.contextPath}/user/user_new_password'
                 , data: {'userid' : userid , 'newpassword' : newpassword }       
                 , type: 'POST'       
                 , timeout: 30000    
@@ -88,7 +88,7 @@ $(document).ready(function(){
                     $('.popup_content').text( '비밀번호가 성공적으로 변경되었습니다.' );
                     $('.popup_button_cancel').click(function(e){
                         $('.popup_cancel_wrap').hide();
-                        window.location.href= '/user/user_login';
+                        window.location.href= '${pageContext.request.contextPath}/user/user_login';
                     });
                 }else {
                     $('.popup_cancel_wrap').show();

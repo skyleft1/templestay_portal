@@ -8,17 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/reservation_list.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/reservation_list.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src='/resources/js/common.js'></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/common.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
     $('body').on('click', '.go_view', function(e){
         var reserve_date = $('.calander').val();
         var programno = $(this).attr('programno');
-        window.location.href= '/reservation/reservation_view?programno='+programno+'&reserve_date='+reserve_date;
+        window.location.href= '${pageContext.request.contextPath}/reservation/reservation_view?programno='+programno+'&reserve_date='+reserve_date;
     });
     
     // 예약하기 가기
@@ -55,14 +55,14 @@ $(document).ready(function(){
             $('.popup_content').text( "로그인을 해야 이용가능한 서비스입니다." );
             $('.popup_button_cancel').click(function(e){
                 $('.popup_cancel_wrap').hide();
-                window.location.href= '/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
+                window.location.href= '${pageContext.request.contextPath}/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
             })
     	}
 
     	else{
             var programno = $(this).attr('programno');
             var reserve_date = $('.calander').val();
-            window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
+            window.location.href= '${pageContext.request.contextPath}/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
         }
     });
     
@@ -72,7 +72,7 @@ $(document).ready(function(){
         var thema = $('.thema_option_selected').text();
         var reserve_date = $('.calander').val();
         var searchword = $('.searchword').val();
-        window.location.href = '/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
+        window.location.href = '${pageContext.request.contextPath}/reservation/reservation_list?location='+location+'&thema='+thema+'&reserve_date='+reserve_date+'&searchword='+searchword;
     });
     
     // index에서 날짜가 넘어올경우 유지함
@@ -171,7 +171,7 @@ $(document).ready(function(){
                                 <img class="small_img_click" src="data:${programlist.contentType};base64,${programlist.imageBase64}" />
 
                                 <!-- 
-                                <img src='/resources/img/ad24.jpg'/>
+                                <img src='${pageContext.request.contextPath}/resources/img/ad24.jpg'/>
                                  -->
                             </div>
                             <div class='list_mid'>

@@ -16,7 +16,10 @@ FLUSH PRIVILEGES;
 -- 데이터베이스 변경
 USE templestay_portal_yoo;
 
-DROP TABLE IF EXISTS TB_Upload_Image;
+-- 데이터베이스 변경 (서버용)
+USE skyleft;
+
+DROP TABLE IF EXISTS tb_upload_image;
 DROP TABLE IF EXISTS tb_reservation;
 DROP TABLE IF EXISTS tb_temple_program;
 DROP TABLE IF EXISTS tb_temple;
@@ -468,7 +471,7 @@ ENGINE=InnoDB
 
 
 
-CREATE TABLE TB_Upload_Image (
+CREATE TABLE tb_upload_image (
     `uploadImageNo` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `fileName` VARCHAR(50) NULL DEFAULT NULL,
     `fileSize` INT(10) UNSIGNED NULL DEFAULT NULL,

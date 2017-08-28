@@ -9,14 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_modify</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/join.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/join.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -45,9 +45,9 @@ $(document).ready(function(){
                 </div>
                 <div class=''>
                 
-                    <div><a href='/user/user_modify_password'>비밀번호 변경</a></div>
+                    <div><a href='${pageContext.request.contextPath}/user/user_modify_password'>비밀번호 변경</a></div>
                 
-                    <form class='modify_form' method='post' action='/user/user_modify' >
+                    <form class='modify_form' method='post' action='${pageContext.request.contextPath}/user/user_modify' >
                         <table>
                             <tbody>
                                 <p>

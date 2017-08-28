@@ -9,14 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_join</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/join.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/join.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.board.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.board.js"></script>
 
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
@@ -36,7 +36,7 @@ $(document).ready(function(){
     $('.id_check').click(function(e){
     	var userid = $('input[name="userid"]').val();
         $.ajax({
-            url : '/user/user_id_check'
+            url : '${pageContext.request.contextPath}/user/user_id_check'
             , data: {'userid' : userid }       
             , type: 'POST'       
             , timeout: 30000    
@@ -101,7 +101,7 @@ $(document).ready(function(){
                     <h3>회원가입</h3>
                 </div>
                 <div class=''>
-                    <form class='join_form' method='post' action='/user/user_join' >
+                    <form class='join_form' method='post' action='${pageContext.request.contextPath}/user/user_join' >
                         <table>
                             <tbody>
                                 <tr>

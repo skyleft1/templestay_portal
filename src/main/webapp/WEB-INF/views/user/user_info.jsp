@@ -8,23 +8,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user_info</title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/user_info.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user_info.css">
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src="/resources/js/common.js"></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.board.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.board.js"></script>
 
 <script>
 $(document).ready(function(){
 	// 회원정보 수정
     $('.go_user_modify').click(function(e){
-        window.location = "/user/user_modify" ;
+        window.location = "${pageContext.request.contextPath}/user/user_modify" ;
     });
     $('.go_user_modify_password').click(function(e){
-	    window.location = "/user/user_modify_password" ;
+	    window.location = "${pageContext.request.contextPath}/user/user_modify_password" ;
 	});
 	
 	// 회원 탈퇴
@@ -36,7 +36,7 @@ $(document).ready(function(){
             $('.popup_cancel_wrap').hide();
 
                 $.ajax({
-                    url : '/user/user_delete',
+                    url : '${pageContext.request.contextPath}/user/user_delete',
                     data : null, 
                     type : 'POST', 
                     timeout : 30000, 

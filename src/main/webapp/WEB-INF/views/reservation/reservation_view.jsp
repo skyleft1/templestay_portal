@@ -8,17 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/reservation_view.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/reservation_view.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src='/resources/js/common.js'></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/common.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -44,13 +44,13 @@ $(document).ready(function(){
             $('.popup_content').text( "로그인을 해야 이용가능한 서비스입니다." );
             $('.popup_button_cancel').click(function(e){
                 $('.popup_cancel_wrap').hide();
-                window.location.href= '/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
+                window.location.href= '${pageContext.request.contextPath}/user/user_login?programno='+programno+'&reserve_date='+reserve_date;
             })
         }
 
         else{
             var programno = $(this).attr('programno');
-            window.location.href= '/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
+            window.location.href= '${pageContext.request.contextPath}/reservation/reservation_reservation?programno='+programno+'&reserve_date='+reserve_date;
         }
     });
 });
@@ -92,9 +92,9 @@ $(document).ready(function(){
                         <c:forEach var='list' items='${list}' varStatus='status' >
                             <img class="big_img_silde"  src="data:${list.contentType};base64,${list.imageBase64}" />
 <!-- 
-                          <img class="big_img_silde" src="/resources/img/ad26.jpg" >
-                          <img class="big_img_silde" src="/resources/img/ad25.jpg" >
-                          <img class="big_img_silde" src="/resources/img/ad24.jpg" >
+                          <img class="big_img_silde" src="${pageContext.request.contextPath}/resources/img/ad26.jpg" >
+                          <img class="big_img_silde" src="${pageContext.request.contextPath}/resources/img/ad25.jpg" >
+                          <img class="big_img_silde" src="${pageContext.request.contextPath}/resources/img/ad24.jpg" >
  -->                          
                           </c:forEach>
                         
@@ -102,9 +102,9 @@ $(document).ready(function(){
                           <c:forEach var='list' items='${list}' varStatus='status' >
                             <img class="small_img_click" src="data:${list.contentType};base64,${list.imageBase64}" />
                           <!-- 
-                              <img class="small_img_click" src="/resources/img/ad26.jpg" >
-                              <img class="small_img_click" src="/resources/img/ad25.jpg" >
-                              <img class="small_img_click" src="/resources/img/ad24.jpg" >
+                              <img class="small_img_click" src="${pageContext.request.contextPath}/resources/img/ad26.jpg" >
+                              <img class="small_img_click" src="${pageContext.request.contextPath}/resources/img/ad25.jpg" >
+                              <img class="small_img_click" src="${pageContext.request.contextPath}/resources/img/ad24.jpg" >
                                -->
                             </c:forEach>
                           </div>

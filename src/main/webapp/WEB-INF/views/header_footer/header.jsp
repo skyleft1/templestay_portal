@@ -5,10 +5,10 @@
 <script>
 $(document).ready(function(e){
     $('.go_login').click(function(e){
-        window.location.href = "/user/user_login" ;
+        window.location.href = "${pageContext.request.contextPath}/user/user_login" ;
         });
     $('.go_join').click(function(e){
-        window.location.href = "/user/user_join" ;
+        window.location.href = "${pageContext.request.contextPath}/user/user_join" ;
         });
             
     
@@ -17,16 +17,16 @@ $(document).ready(function(e){
         $('.popup_content').text('로그아웃 되었습니다.');
         $('.popup_button_cancel').click(function(e){
             $('.popup_cancel_wrap').hide();
-            window.location.href = "/user/user_logout" ;
+            window.location.href = "${pageContext.request.contextPath}/user/user_logout" ;
         });
 
     });
 
     $('.go_user_info').click(function(e){
-        window.location.href = "/user/user_info" ;
+        window.location.href = "${pageContext.request.contextPath}/user/user_info" ;
     });
     $('.go_user_reservation').click(function(e){
-        window.location.href = "/user/user_confirm_reservation_list" ;
+        window.location.href = "${pageContext.request.contextPath}/user/user_confirm_reservation_list" ;
     });
 })
 
@@ -37,7 +37,7 @@ $(document).ready(function(e){
         <div class="wrap_menu">
             <div class="">
                 <div class="logo">
-                    <a href='/'> <img src="/resources/img/logo01.png" alt="로고" /></a>
+                    <a href='${pageContext.request.contextPath}'> <img src="${pageContext.request.contextPath}/resources/img/logo01.png" alt="로고" /></a>
                 </div>
                 <div class="menu">
                 

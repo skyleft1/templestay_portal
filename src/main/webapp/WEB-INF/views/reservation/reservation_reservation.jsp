@@ -8,17 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/reservation_reservation.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/reservation_reservation.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 
 <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
 
-<script src='/resources/js/jquery-3.1.0.js'></script>
-<script src='/resources/js/jquery-ui.js'></script>
-<script src='/resources/js/common.js'></script>
-<script src="/resources/js/ajaxsetup.js"></script>
-<script src="/resources/js/MyApp.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-3.1.0.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/jquery-ui.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/common.js'></script>
+<script src="${pageContext.request.contextPath}/resources/js/ajaxsetup.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/MyApp.js"></script>
 
 <script>
 
@@ -97,7 +97,7 @@ $(document).ready(function(){
 
         <div class="wrap_reservation_reservation">
             <div class="">
-            <form class='reservation_submit' method='post'  action ='/reservation/reservation_reservation_success'>
+            <form class='reservation_submit' method='post'  action ='${pageContext.request.contextPath}/reservation/reservation_reservation_success'>
                 <input type='hidden' name='programno' value='${program1.programno}'>
                 <input type='hidden' name='checkdate' value="">
                 <input type='hidden' name='number' value="">

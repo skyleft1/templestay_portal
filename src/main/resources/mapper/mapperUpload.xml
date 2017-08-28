@@ -6,24 +6,24 @@
 
     <select id="getImageList" parameterType="int" resultType="ModelUpload">
         SELECT uploadImageNo, fileName, contentType, fileSize, imageBytes, imageBase64
-        FROM TB_Upload_Image
+        FROM tb_upload_image
         where programno = #{programno}
     </select>
     
     <select id="getImageByte" parameterType="int" resultType="ModelUpload">
         SELECT uploadImageNo, fileName, contentType, fileSize, imageBytes, imageBase64
-        FROM TB_Upload_Image
+        FROM tb_upload_image
         where uploadImageNo = #{uploadImageNo}
     </select>
     
     <insert id="insertPhoto" parameterType="ModelUpload" useGeneratedKeys="true" keyProperty="uploadImageNo">       
         INSERT INTO 
-        TB_Upload_Image   (   fileName ,   fileSize ,   contentType ,   imageBytes ,   imageBase64  , programno     )
+        tb_upload_image   (   fileName ,   fileSize ,   contentType ,   imageBytes ,   imageBase64  , programno     )
         VALUES            ( #{fileName}, #{fileSize}, #{contentType}, #{imageBytes}, #{imageBase64} , #{programno} )            
     </insert>
 
     <update id="updateAttachImage" parameterType="ModelUpload">
-        update TB_Upload_Image
+        update tb_upload_image
         <set>
             <if test="photo.originalFilename != null">fileName     = #{photo.originalFilename}, </if>
             <if test="photo.ContentType      != null">contentType  = #{photo.contentType}     , </if>
